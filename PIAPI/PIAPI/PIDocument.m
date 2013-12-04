@@ -1,13 +1,13 @@
 //
-//  PIViewController.h
-//  Starter-kit
+//  PIDocument.m
+//  PIAPI
 //
 //  Created by Étienne VALLETTE d'OSIA on 27/11/2013.
 //  Copyright (c) 2013 Zengularity. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "PIDocument.h"
 
-@interface PIViewController : UIViewController
+@implementation PIDocument
 
 @end
