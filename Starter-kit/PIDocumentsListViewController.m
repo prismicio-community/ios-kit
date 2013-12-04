@@ -52,12 +52,11 @@
 }
 
 - (void)loadInitialData {
-    PIDocument* item1 = [self.api getDocument];
-    [self.documents addObject: item1];
-    PIDocument* item2 = [self.api getDocument];
-    [self.documents addObject: item2];
-    PIDocument* item3 = [self.api getDocument];
-    [self.documents addObject: item3];
+    NSDictionary *forms = [self.api forms];
+    for (NSString *formName in forms) {
+        PIForm *form = [self.api formForName:formName];
+        [self.documents addObject: form];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -86,8 +85,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
 
-    PIDocument *document = [self.documents objectAtIndex:indexPath.row];
-    cell.textLabel.text = @"Oui";
+    PIForm *form = [self.documents objectAtIndex:indexPath.row];
+    cell.textLabel.text = [form name];
     
     // Configure the cell...
     
