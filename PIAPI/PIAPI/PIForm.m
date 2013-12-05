@@ -40,7 +40,7 @@
     return _type;
 }
 
-- (NSString *)default
+- (NSString *)fieldDefault
 {
     return _default;
 }

@@ -13,7 +13,7 @@
 + (PIField *)fieldWithJson:(NSDictionary *)jsonObject name:(NSString *)name;
 
 - (NSString *)type;
-- (NSString *)default;
+- (NSString *)fieldDefault;
 
 @end
 
