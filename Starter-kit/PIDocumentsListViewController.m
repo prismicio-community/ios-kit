@@ -8,6 +8,8 @@
 
 #import "PIDocumentsListViewController.h"
 
+#import "PIDocumentViewController.h"
+
 #import "PIAPI/PIAPI.h"
 
 @interface PIDocumentsListViewController ()
@@ -132,16 +134,23 @@
 }
 */
 
-/*
+- (PIForm *) detailForIndexPath:(NSIndexPath *)indexPath
+{
+    return [self.documents objectAtIndex:indexPath.row];
+}
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"TO_DOCUMENT_VIEW"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        PIDocumentViewController *documentViewController = [segue destinationViewController];
+        documentViewController.form = [self detailForIndexPath:indexPath];
+    }
 }
 
- */
+
 
 @end

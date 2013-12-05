@@ -12,4 +12,6 @@
 
 @interface PIDocumentViewController : UIViewController
 
+@property PIForm *form;
+
 @end

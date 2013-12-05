@@ -59,7 +59,7 @@
                                 </tableViewCellContentView>
                                 <gestureRecognizers/>
                                 <connections>
-                                    <segue destination="hZQ-cY-zKc" kind="push" id="Qxo-Kl-JEr"/>
+                                    <segue destination="hZQ-cY-zKc" kind="push" identifier="TO_DOCUMENT_VIEW" id="Qxo-Kl-JEr"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
