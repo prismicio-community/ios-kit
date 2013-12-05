@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E022298184F979000F8ECDC /* PIDocumentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E022297184F979000F8ECDC /* PIDocumentViewController.m */; };
 		9E3144E91846590A0017E6A6 /* PIDocumentsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E3144E81846590A0017E6A6 /* PIDocumentsListViewController.m */; };
 		9E3144EC18465C2E0017E6A6 /* PIAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E3144EB18465C2E0017E6A6 /* PIAppDelegate.m */; };
 		9E69B269184626ED000B1480 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E69B268184626ED000B1480 /* Foundation.framework */; };
@@ -39,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9E022296184F979000F8ECDC /* PIDocumentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIDocumentViewController.h; sourceTree = "<group>"; };
+		9E022297184F979000F8ECDC /* PIDocumentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIDocumentViewController.m; sourceTree = "<group>"; };
 		9E3144E71846590A0017E6A6 /* PIDocumentsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIDocumentsListViewController.h; sourceTree = "<group>"; };
 		9E3144E81846590A0017E6A6 /* PIDocumentsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIDocumentsListViewController.m; sourceTree = "<group>"; };
 		9E3144EA18465C2E0017E6A6 /* PIAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIAppDelegate.h; sourceTree = "<group>"; };
@@ -119,6 +122,8 @@
 				9E3144EB18465C2E0017E6A6 /* PIAppDelegate.m */,
 				9E69B2D618462C0D000B1480 /* Main_iPad.storyboard */,
 				9E69B2D818462C0D000B1480 /* Main_iPhone.storyboard */,
+				9E022296184F979000F8ECDC /* PIDocumentViewController.h */,
+				9E022297184F979000F8ECDC /* PIDocumentViewController.m */,
 				9E3144E71846590A0017E6A6 /* PIDocumentsListViewController.h */,
 				9E3144E81846590A0017E6A6 /* PIDocumentsListViewController.m */,
 				9E69B2DA18462C0D000B1480 /* Images.xcassets */,
@@ -232,6 +237,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E022298184F979000F8ECDC /* PIDocumentViewController.m in Sources */,
 				9E3144E91846590A0017E6A6 /* PIDocumentsListViewController.m in Sources */,
 				9E69B2FA18462C0D000B1480 /* main.m in Sources */,
 				9E3144EC18465C2E0017E6A6 /* PIAppDelegate.m in Sources */,
