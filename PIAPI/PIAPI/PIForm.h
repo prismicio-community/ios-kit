@@ -14,6 +14,7 @@
 
 - (NSString *)type;
 - (NSString *)fieldDefault;
+- (BOOL)isMultiple;
 
 @end
 
