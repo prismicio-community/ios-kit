@@ -10,25 +10,26 @@
 
 @interface PIField : NSObject
 
-+ (PIField *) fieldWithJson:(NSDictionary *)jsonObject andName:(NSString *)name;
++ (PIField *)fieldWithJson:(NSDictionary *)jsonObject name:(NSString *)name;
 
-- (NSString *) type;
-- (NSString *) default;
+- (NSString *)type;
+- (NSString *)default;
 
 @end
 
 @interface PIForm : NSObject
 
-+ (PIForm *) formWithJson:(NSDictionary *)jsonObject andName:(NSString *)name;
++ (PIForm *)formWithJson:(NSDictionary *)jsonObject name:(NSString *)name;
 
-- (NSString *) name;
-- (NSString *) method;
-- (NSString *) rel;
-- (NSString *) enctype;
-- (NSString *) action;
-- (NSDictionary *) fields;
+- (NSString *)name;
+- (NSString *)method;
+- (NSString *)rel;
+- (NSString *)enctype;
+- (NSString *)action;
+- (NSDictionary *)fields;
 
-- (PIField *) fieldForName:(NSString *)name;
+- (PIField *)fieldForName:(NSString *)name;
+
 
 
 @end

@@ -19,7 +19,7 @@
 
 @implementation PIField
 
-+ (PIField *) fieldWithJson:(NSDictionary *)jsonObject andName:(NSString *)name
++ (PIField *)fieldWithJson:(NSDictionary *)jsonObject name:(NSString *)name
 {
     PIField *field = [[PIField alloc] init];
     field->_name = name;
@@ -30,22 +30,22 @@
     return field;
 }
 
-- (NSString *) name
+- (NSString *)name
 {
     return _name;
 }
 
-- (NSString *) type
+- (NSString *)type
 {
     return _type;
 }
 
-- (NSString *) default
+- (NSString *)default
 {
     return _default;
 }
 
-- (BOOL) isMultiple
+- (BOOL)isMultiple
 {
     return _multiple;
 }
@@ -65,7 +65,7 @@
 
 @implementation PIForm
 
-+ (PIForm *) formWithJson:(NSDictionary *)jsonObject andName:(NSString *)name
++ (PIForm *)formWithJson:(NSDictionary *)jsonObject name:(NSString *)name
 {
     PIForm *form = [[PIForm alloc] init];
     form->_name = name;
@@ -78,43 +78,43 @@
     form->_fields = fields;
     for (NSString *fieldName in fieldsJson) {
         NSDictionary *fieldJson = [fieldsJson objectForKey:fieldName];
-        PIField *field = [PIField fieldWithJson:fieldJson andName:fieldName];
+        PIField *field = [PIField fieldWithJson:fieldJson name:fieldName];
         [fields setValue:field forKey:fieldName];
     }
     return form;
 }
 
-- (NSString *) name
+- (NSString *)name
 {
     return _name;
 }
 
-- (NSString *) method
+- (NSString *)method
 {
     return _method;
 }
 
-- (NSString *) rel
+- (NSString *)rel
 {
     return _rel;
 }
 
-- (NSString *) enctype
+- (NSString *)enctype
 {
     return _enctype;
 }
 
-- (NSString *) action
+- (NSString *)action
 {
     return _action;
 }
 
-- (NSDictionary *) fields
+- (NSDictionary *)fields
 {
     return _fields;
 }
 
-- (PIField *) fieldForName:(NSString *)name
+- (PIField *)fieldForName:(NSString *)name
 {
     return [_fields valueForKey:name];
 }

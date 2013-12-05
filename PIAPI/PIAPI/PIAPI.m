@@ -45,7 +45,7 @@
 
 @implementation PIAPI
 
-+ (PIAPI *) apiWithURL: (NSURL *)url error: (NSError **)error
++ (PIAPI *)apiWithURL:(NSURL *)url error:(NSError **)error
 {
     // Send a synchronous request
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
@@ -55,8 +55,7 @@
     NSData *data = [NSURLConnection sendSynchronousRequest:request
                                          returningResponse:&response
                                                      error:&localError];
-    if (localError == nil)
-    {
+    if (localError == nil) {
         PIAPI *api = [PIAPI apiWithJsonString:data error:&localError];
         if (localError == nil) {
             api->_url = url;
@@ -74,15 +73,14 @@
     }
 }
 
-+ (PIAPI *) apiWithURL: (NSURL *)url andAccessToken: (NSString *)accessToken error: (NSError **)error
++ (PIAPI *)apiWithURL:(NSURL *)url andAccessToken:(NSString *)accessToken error:(NSError **)error
 {
     
     NSError *localError = nil;
     NSString *query = [[NSString alloc] initWithFormat:@"%@=%@", @"access_token", accessToken];
     NSURL *urlWithQuery = [url URLByAppendingQueryString: query];
     PIAPI *api = [PIAPI apiWithURL:urlWithQuery error:&localError];
-    if (localError == nil)
-    {
+    if (localError == nil) {
         api->_accessToken = accessToken;
         api->_url = url;  // stores the URL without the accessToken part
         return api;
@@ -93,7 +91,7 @@
     }
 }
 
-+ (PIAPI *) apiWithJsonString: (id)jsonString error: (NSError **)error
++ (PIAPI *)apiWithJsonString:(id)jsonString error:(NSError **)error
 {
     NSError * localError = nil;
     id jsonObjects = [NSJSONSerialization JSONObjectWithData:jsonString
@@ -109,7 +107,7 @@
     }
 }
 
-+ (PIAPI *) apiWithJson: (id)jsonObjects
++ (PIAPI *)apiWithJson:(id)jsonObjects
 {
     PIAPI *api = [[PIAPI alloc] init];
     
@@ -147,7 +145,7 @@
     NSDictionary *forms = [jsonObjects objectForKey:@"forms"];
     for (NSString *formName in forms) {
         NSDictionary *formJson = [forms objectForKey:formName];
-        PIForm *form = [PIForm formWithJson:formJson andName:formName];
+        PIForm *form = [PIForm formWithJson:formJson name:formName];
         [api->_forms setValue:form forKey:formName];
     }
     
@@ -157,81 +155,81 @@
     return api;
 }
 
-- (NSURL *) url
+- (NSURL *)url
 {
     return _url;
 }
 
-- (NSString *) accessToken
+- (NSString *)accessToken
 {
     return _accessToken;
 }
 
-- (PIDocument *) getDocument
+- (PIDocument *)getDocument
 {
     return [[PIDocument alloc] init];
 }
 
-- (NSDictionary *) refs
+- (NSDictionary *)refs
 {
     return _refs;
 }
 
-- (NSDictionary *) bookmarks
+- (NSDictionary *)bookmarks
 {
     return _bookmarks;
 }
 
-- (NSDictionary *) types
+- (NSDictionary *)types
 {
     return _types;
 }
 
-- (NSArray *) tags
+- (NSArray *)tags
 {
     return _tags;
 }
 
-- (NSDictionary *) forms {
+- (NSDictionary *)forms {
     return _forms;
 }
 
-- (NSString *) oauthInitiate
+- (NSString *)oauthInitiate
 {
     return _oauthInitiate;
 }
 
-- (NSString *) oauthToken
+- (NSString *)oauthToken
 {
     return _oauthToken;
 }
 
-- (PIRef *) refObjectForName:(NSString *)name
+- (PIRef *)refObjectForName:(NSString *)name
 {
     return [_refs valueForKey:name];
 }
 
-- (NSString *) refForName:(NSString *)name
+- (NSString *)refForName:(NSString *)name
 {
     return [[_refs valueForKey:name] ref];
 }
 
-- (NSString *) master
+- (NSString *)master
 {
     return [_masterRef ref];
 }
 
-- (NSString *) bookmarkForName:(NSString *)name
+- (NSString *)bookmarkForName:(NSString *)name
 {
     return [_bookmarks objectForKey:name];
 }
 
-- (NSString *) typeForName:(NSString *)name
+- (NSString *)typeForName:(NSString *)name
 {
     return [_types objectForKey:name];
 }
 
-- (PIForm *) formForName:(NSString *)name
+- (PIForm *)formForName:(NSString *)name
 {
     return [_forms objectForKey:name];
 }
