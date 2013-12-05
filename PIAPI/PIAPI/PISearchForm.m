@@ -1,0 +1,217 @@
+//
+//  PISearchForm.m
+//  PIAPI
+//
+//  Created by Étienne VALLETTE d'OSIA on 05/12/2013.
+//  Copyright (c) 2013 Zengularity. All rights reserved.
+//
+
+#import "PISearchForm.h"
+
+@implementation NSURL (Additions)
+
+- (NSURL *)URLByAppendingQueryString:(NSString *)queryString
+{
+    if (![queryString length]) {
+        return self;
+    }
+    
+    NSString *URLString = [[NSString alloc] initWithFormat:@"%@%@%@", [self absoluteString],
+                           [self query] ? @"&" : @"?", queryString];
+    NSURL *theURL = [NSURL URLWithString:URLString];
+    return theURL;
+}
+
+@end
+
+@protocol PIFormData
+
+- (void)setValue:(id)value;
+
+- (NSString *)queryString;
+@end
+
+@interface PIFormDatum : NSObject <PIFormData>
+{
+    id _name;
+    id _value;
+}
+@end
+
+@implementation PIFormDatum
+
++ (PIFormDatum *)formDatumWithName:(NSString *)name
+{
+    PIFormDatum *datum = [[PIFormDatum alloc] init];
+    datum->_name = name;
+    return datum;
+}
+
+- (void)setValue:(id)value
+{
+    self->_value = value;
+}
+
+- (NSString *)queryString
+{
+    return [NSString stringWithFormat:@"%@=%@", _name, _value];
+}
+
+@end
+
+@interface PIFormData : NSObject <PIFormData>
+{
+    NSMutableArray *_values;
+    id _name;
+}
+@end
+
+@implementation PIFormData
+
++ (PIFormData *)formDataWithName:(NSString *)name
+{
+    PIFormData *data = [[PIFormData alloc] init];
+    data->_name = name;
+    return data;
+}
+
+- (void)setValue:(id)value
+{
+    [_values addObject:value];
+}
+
+- (NSString *)queryString
+{
+    NSMutableArray *query = [[NSMutableArray alloc] init];
+    for (id value in _values) {
+        [query addObject:[NSString stringWithFormat:@"%@=%@", _name, value]];
+    }
+    return [query componentsJoinedByString:@"&"];
+}
+
+@end
+
+@interface PISearchForm ()
+{
+    PIAPI *_api;
+    PIForm *_form;
+    NSMutableDictionary *_data;
+}
+@end
+
+@implementation PISearchForm
+
++ (PISearchForm *)searchFormWithApi:(PIAPI *)api form:(PIForm *)form
+{
+    PISearchForm *searchForm = [[PISearchForm alloc] init];
+    searchForm->_api = api;
+    searchForm->_form = form;
+    searchForm->_data = [[NSMutableDictionary alloc] init];
+    NSDictionary *fields = [searchForm->_form fields];
+    for (NSString *fieldName in fields) {
+        PIField *field = [fields objectForKey:fieldName];
+        id fieldDefault = [field fieldDefault];
+        if (fieldDefault) {
+            [searchForm setValue:fieldDefault forKey:fieldName];
+        }
+    }
+    return searchForm;
+}
+
+- (void)setValue:(id)value forKey:(NSString *)key
+{
+    id <PIFormData> data = [_data objectForKey:key];
+    if (!data) {
+        if ([self isMultiple:key]) {
+            data = [PIFormData formDataWithName:key];
+        }
+        else {
+            data = [PIFormDatum formDatumWithName:key];
+        }
+        [_data setValue:data forKey:key];
+    }
+    [data setValue:value];
+}
+
+- (void)addQuery:(NSString *)query
+{
+    [self setValue:query forKey:@"query"];
+}
+
+- (void)setRefName:(NSString *)name
+{
+    [self setRef:[_api refForName:name]];
+}
+
+- (void)setRefObject:(PIRef *)ref
+{
+    [self setRef:[ref ref]];
+}
+
+- (void)setRef:(NSString *)ref
+{
+    [self setValue:ref forKey:@"ref"];
+}
+
+- (PISearchResult *)submit:(NSError **)error
+{
+    // TODO throw error if not ref
+    // TOTO if form_method == "GET" && enctype == "application/x-www-form-urlencoded"
+    NSString *accessToken = _api.accessToken;
+    NSURL *url = [NSURL URLWithString:_form.action];
+    if (accessToken) {
+        [self setValue:accessToken forKey:@"access_token"];
+    }
+    NSString *query = [self queryString];
+    NSURL *urlWithQuery = [url URLByAppendingQueryString: query];
+    NSLog(@"%@", urlWithQuery);
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:urlWithQuery];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    NSURLResponse *response = nil;
+    NSError *localError = nil;
+    NSData *data = [NSURLConnection sendSynchronousRequest:request
+                                         returningResponse:&response
+                                                     error:&localError];
+    if (localError == nil) {
+        id jsonObjects = [NSJSONSerialization JSONObjectWithData:data
+                                                         options:NSJSONReadingMutableContainers
+                                                           error:&localError];
+        if (localError == nil) {
+            PISearchResult *result = [PISearchResult SearchResultFromJson:jsonObjects];
+            return result;
+        }
+        else {
+            *error = localError;
+            return nil;
+        }
+    }
+    else {
+        *error = localError;
+        return nil;
+    }
+}
+
+// HELPERS
+
+- (BOOL)isMultiple:(NSString *)fieldName
+{
+    PIField *field = [_form fieldForName:fieldName];
+    if (field) {
+        return [field isMultiple];
+    }
+    else {
+        return false;
+    }
+}
+
+- (NSString *)queryString
+{
+    NSMutableArray *query = [[NSMutableArray alloc] init];
+    for (id <PIFormData> name in _data) {
+        id <PIFormData> datum = [_data objectForKey:name];
+        [query addObject:[datum queryString]];
+    }
+    return [query componentsJoinedByString:@"&"];
+}
+
+@end

@@ -28,6 +28,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = [self.form name];
+    PISearchForm *searchForm = [self.api searchFormForName:[self.form name]];
+    [searchForm setRefName:@"Master"];
+    NSError *error = nil;
+    PISearchResult *searchResult = [searchForm submit:&error];
+    if (error == nil) {
+        NSLog(@"OK");
+    }
+    else {
+        NSLog(@"KO");
+    }
 }
 
 - (void)didReceiveMemoryWarning

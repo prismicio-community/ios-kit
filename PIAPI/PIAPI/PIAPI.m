@@ -234,4 +234,10 @@
     return [_forms objectForKey:name];
 }
 
+- (PISearchForm *)searchFormForName:(NSString *)name
+{
+    PIForm *form = [self formForName:name];
+    return [PISearchForm searchFormWithApi:self form:form];
+}
+
 @end

@@ -112,7 +112,7 @@
         // Delete the row from the data source
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+    else if (editingStyle == UITableViewCe searchFormForName:[form name]];llEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
@@ -147,6 +147,7 @@
     if ([segue.identifier isEqualToString:@"TO_DOCUMENT_VIEW"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         PIDocumentViewController *documentViewController = [segue destinationViewController];
+        documentViewController.api = self.api;
         documentViewController.form = [self detailForIndexPath:indexPath];
     }
 }

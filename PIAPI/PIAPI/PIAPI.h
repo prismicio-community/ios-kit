@@ -11,6 +11,14 @@
 #import "PIDocument.h"
 #import "PIRef.h"
 #import "PIForm.h"
+#import "PISearchForm.h"
+#import "PISearchResult.h"
+
+@class PIDocument;
+@class PIRef;
+@class PIForm;
+@class PISearchForm;
+@class PISearchResult;
 
 @interface PIAPI : NSObject
 
@@ -36,5 +44,7 @@
 - (NSString *)typeForName:(NSString *)name;
 
 - (PIForm *)formForName:(NSString *)name;
+
+- (PISearchForm *)searchFormForName:(NSString *)name;
 
 @end
