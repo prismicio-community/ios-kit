@@ -36,7 +36,7 @@
         NSLog(@"OK");
     }
     else {
-        NSLog(@"KO");
+        NSLog(@"KO: %@", error);
     }
 }
 

@@ -155,30 +155,45 @@
 
 - (PISearchResult *)submit:(NSError **)error
 {
-    // TODO throw error if not ref
-    // TOTO if form_method == "GET" && enctype == "application/x-www-form-urlencoded"
-    NSString *accessToken = _api.accessToken;
-    NSURL *url = [NSURL URLWithString:_form.action];
-    if (accessToken) {
-        [self setValue:accessToken forKey:@"access_token"];
+    NSString *ref = [self ref];
+    if (ref == nil) {
+        NSString *description = NSLocalizedString(@"Missing ref", @"");
+        NSDictionary *errorDictionary = @{NSLocalizedDescriptionKey : description};
+        *error = [[NSError alloc] initWithDomain:@"prismic.io"
+                                            code:2
+                                        userInfo:errorDictionary];
+        return nil;
     }
-    NSString *query = [self queryString];
-    NSURL *urlWithQuery = [url URLByAppendingQueryString: query];
-    NSLog(@"%@", urlWithQuery);
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:urlWithQuery];
-    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    NSURLResponse *response = nil;
-    NSError *localError = nil;
-    NSData *data = [NSURLConnection sendSynchronousRequest:request
-                                         returningResponse:&response
-                                                     error:&localError];
-    if (localError == nil) {
-        id jsonObjects = [NSJSONSerialization JSONObjectWithData:data
-                                                         options:NSJSONReadingMutableContainers
-                                                           error:&localError];
+    NSString *formMethod = [_form method];
+    NSString *formEnctype = [_form enctype];
+    if ([formMethod isEqualToString:@"GET"] && [formEnctype isEqualToString:@"application/x-www-form-urlencoded"]) {
+        NSString *accessToken = _api.accessToken;
+        NSURL *url = [NSURL URLWithString:_form.action];
+        if (accessToken) {
+            [self setValue:accessToken forKey:@"access_token"];
+        }
+        NSString *query = [self queryString];
+        NSURL *urlWithQuery = [url URLByAppendingQueryString: query];
+        NSLog(@"%@", urlWithQuery);
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:urlWithQuery];
+        [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+        NSURLResponse *response = nil;
+        NSError *localError = nil;
+        NSData *data = [NSURLConnection sendSynchronousRequest:request
+                                             returningResponse:&response
+                                                         error:&localError];
         if (localError == nil) {
-            PISearchResult *result = [PISearchResult SearchResultFromJson:jsonObjects];
-            return result;
+            id jsonObjects = [NSJSONSerialization JSONObjectWithData:data
+                                                             options:NSJSONReadingMutableContainers
+                                                               error:&localError];
+            if (localError == nil) {
+                PISearchResult *result = [PISearchResult SearchResultFromJson:jsonObjects];
+                return result;
+            }
+            else {
+                *error = localError;
+                return nil;
+            }
         }
         else {
             *error = localError;
@@ -186,7 +201,14 @@
         }
     }
     else {
-        *error = localError;
+        NSString *description = NSLocalizedString(@"Form's method or enctype not handled", @"");
+        NSDictionary *errorDictionary = @{NSLocalizedDescriptionKey : description,
+                                          @"formName" : [_form name],
+                                          @"formMethod" : formMethod,
+                                          @"formEnctype" : formEnctype};
+        *error = [[NSError alloc] initWithDomain:@"prismic.io"
+                                            code:0
+                                        userInfo:errorDictionary];
         return nil;
     }
 }
@@ -212,6 +234,11 @@
         [query addObject:[datum queryString]];
     }
     return [query componentsJoinedByString:@"&"];
+}
+
+- (NSString *)ref
+{
+    return [_data objectForKey:@"ref"];
 }
 
 @end
