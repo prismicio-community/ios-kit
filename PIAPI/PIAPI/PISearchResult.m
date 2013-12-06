@@ -8,6 +8,9 @@
 
 #import "PISearchResult.h"
 
+#import "PIDocument.h"
+
+@class PIDocument;
 
 /*
  
@@ -25,7 +28,7 @@
 
 @interface PISearchResult ()
 {
-    NSArray *_results;
+    NSMutableArray *_results;
     NSNumber *_page;
     NSNumber *_resultsPerPage;
     NSNumber *_resultsSize;
@@ -44,7 +47,11 @@
     PISearchResult *searchResult = [[PISearchResult alloc] init];
     
     searchResult->_results = [[NSMutableArray alloc] init];
-    [jsonObject objectForKey:@"results"];
+    NSArray *results = [jsonObject objectForKey:@"results"];
+    for (id result in results) {
+        PIDocument *document = [PIDocument documentWithJson:result];
+        [searchResult->_results addObject:document];
+    }
 
     searchResult->_page = [jsonObject objectForKey:@"page"];
     searchResult->_resultsPerPage = [jsonObject objectForKey:@"results_per_page"];
