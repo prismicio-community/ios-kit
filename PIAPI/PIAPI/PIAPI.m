@@ -214,7 +214,12 @@
     return [[_refs valueForKey:name] ref];
 }
 
-- (NSString *)master
+- (PIRef *)masterRefObject
+{
+    return _masterRef;
+}
+
+- (NSString *)masterRefName
 {
     return [_masterRef ref];
 }

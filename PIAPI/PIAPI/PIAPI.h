@@ -37,7 +37,8 @@
 
 - (PIRef *)refObjectForName:(NSString *)name;
 - (NSString *)refForName:(NSString *)name;
-- (NSString *)master;
+- (PIRef *)masterRefObject;
+- (NSString *)masterRefName;
 
 - (NSString *)bookmarkForName:(NSString *)name;
 
