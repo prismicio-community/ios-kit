@@ -71,4 +71,51 @@
     return searchResult;
 }
 
+- (NSMutableArray *)results
+{
+    return _results;
+}
+
+- (NSNumber *)page
+{
+    return _page;
+}
+
+
+- (NSNumber *)resultsPerPage
+{
+    return _resultsPerPage;
+}
+
+
+- (NSNumber *)resultsSize
+{
+    return _resultsSize;
+}
+
+
+- (NSNumber *)totalPages
+{
+    return _totalPages;
+}
+
+
+- (NSNumber *)totalResultsSize
+{
+    return _totalResultsSize;
+}
+
+
+- (NSURL *)prevPage
+{
+    return _prevPage;
+}
+
+
+- (NSURL *)nextPage
+{
+    return _nextPage;
+}
+
+
 @end

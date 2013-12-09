@@ -14,4 +14,20 @@
 
 + (PISearchResult *)SearchResultFromJson:(id)jsonObject;
 
+- (NSMutableArray *)results;
+
+- (NSNumber *)page;
+
+- (NSNumber *)resultsPerPage;
+
+- (NSNumber *)resultsSize;
+
+- (NSNumber *)totalPages;
+
+- (NSNumber *)totalResultsSize;
+
+- (NSURL *)prevPage;
+
+- (NSURL *)nextPage;
+
 @end
