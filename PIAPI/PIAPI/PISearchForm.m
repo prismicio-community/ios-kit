@@ -109,7 +109,7 @@
     searchForm->_data = [[NSMutableDictionary alloc] init];
     NSDictionary *fields = [searchForm->_form fields];
     for (NSString *fieldName in fields) {
-        PIField *field = [fields objectForKey:fieldName];
+        PIField *field = fields[fieldName];
         id fieldDefault = [field fieldDefault];
         if (fieldDefault) {
             [searchForm setValue:fieldDefault forKey:fieldName];
@@ -120,7 +120,7 @@
 
 - (void)setValue:(id)value forKey:(NSString *)key
 {
-    id <PIFormData> data = [_data objectForKey:key];
+    id <PIFormData> data = _data[key];
     if (!data) {
         if ([self isMultiple:key]) {
             data = [PIFormData formDataWithName:key];
@@ -128,7 +128,7 @@
         else {
             data = [PIFormDatum formDatumWithName:key];
         }
-        [_data setValue:data forKey:key];
+        _data[key] = data;
     }
     [data setValue:value];
 }
@@ -242,7 +242,7 @@
 {
     NSMutableArray *query = [[NSMutableArray alloc] init];
     for (id <PIFormData> name in _data) {
-        id <PIFormData> datum = [_data objectForKey:name];
+        id <PIFormData> datum = _data[name];
         [query addObject:[datum queryString]];
     }
     return [query componentsJoinedByString:@"&"];
@@ -250,7 +250,7 @@
 
 - (NSString *)ref
 {
-    return [_data objectForKey:@"ref"];
+    return _data[@"ref"];
 }
 
 @end

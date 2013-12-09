@@ -21,9 +21,9 @@
 + (PIRef *) refWithJson:(NSDictionary *)jsonObject
 {
     PIRef *ref = [[PIRef alloc] init];
-    ref->_ref = [jsonObject objectForKey:@"ref"];
-    ref->_label = [jsonObject objectForKey:@"label"];
-    NSNumber *isMasterRef = [jsonObject objectForKey:@"isMasterRef"];
+    ref->_ref = jsonObject[@"ref"];
+    ref->_label = jsonObject[@"label"];
+    NSNumber *isMasterRef = jsonObject[@"isMasterRef"];
     ref->_isMasterRef = isMasterRef && isMasterRef.boolValue;
     return ref;
 }

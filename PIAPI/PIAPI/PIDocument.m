@@ -26,27 +26,27 @@
     PIDocument *document = [[PIDocument alloc] init];
 
     document->_data = [[NSMutableDictionary alloc] init];
-    NSDictionary *data = [jsonObject objectForKey:@"data"];
+    NSDictionary *docData = jsonObject[@"data"];
     // TODO parse data :-)
 
-    NSString *href = [jsonObject objectForKey:@"href"];
+    NSString *href = jsonObject[@"href"];
     document->_href = href ? [NSURL URLWithString:href] : nil;
 
-    document->_id = [jsonObject objectForKey:@"id"];
+    document->_id = jsonObject[@"id"];
 
     document->_slugs = [[NSMutableArray alloc] init];
-    NSArray *slugs = [jsonObject objectForKey:@"slugs"];
+    NSArray *slugs = jsonObject[@"slugs"];
     for (NSString *slug in slugs) {
         [document->_slugs addObject:slug];
     }
 
     document->_tags = [[NSMutableArray alloc] init];
-    NSArray *tags = [jsonObject objectForKey:@"tags"];
+    NSArray *tags = jsonObject[@"tags"];
     for (NSString *tag in tags) {
         [document->_tags addObject:tag];
     }
 
-    document->_type = [jsonObject objectForKey:@"type"];
+    document->_type = jsonObject[@"type"];
 
     return document;
 }

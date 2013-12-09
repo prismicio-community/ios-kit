@@ -23,9 +23,9 @@
 {
     PIField *field = [[PIField alloc] init];
     field->_name = name;
-    field->_type = [jsonObject objectForKey:@"type"];
-    field->_default = [jsonObject objectForKey:@"default"];
-    NSNumber *multiple = [jsonObject objectForKey:@"multiple"];
+    field->_type = jsonObject[@"type"];
+    field->_default = jsonObject[@"default"];
+    NSNumber *multiple = jsonObject[@"multiple"];
     field->_multiple = multiple && multiple.boolValue;;
     return field;
 }
@@ -69,17 +69,17 @@
 {
     PIForm *form = [[PIForm alloc] init];
     form->_name = name;
-    form->_method = [jsonObject objectForKey:@"method"];
-    form->_rel = [jsonObject objectForKey:@"rel"];
-    form->_enctype = [jsonObject objectForKey:@"enctype"];
-    form->_action = [jsonObject objectForKey:@"action"];
-    NSDictionary *fieldsJson = [jsonObject objectForKey:@"fields"];
+    form->_method = jsonObject[@"method"];
+    form->_rel = jsonObject[@"rel"];
+    form->_enctype = jsonObject[@"enctype"];
+    form->_action = jsonObject[@"action"];
+    NSDictionary *fieldsJson = jsonObject[@"fields"];
     NSMutableDictionary *fields = [[NSMutableDictionary alloc] init];
     form->_fields = fields;
     for (NSString *fieldName in fieldsJson) {
-        NSDictionary *fieldJson = [fieldsJson objectForKey:fieldName];
+        NSDictionary *fieldJson = fieldsJson[fieldName];
         PIField *field = [PIField fieldWithJson:fieldJson name:fieldName];
-        [fields setValue:field forKey:fieldName];
+        fields[fieldName] = field;
     }
     return form;
 }

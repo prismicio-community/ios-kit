@@ -112,45 +112,45 @@
     PIAPI *api = [[PIAPI alloc] init];
     
     api->_refs = [[NSMutableDictionary alloc] init];
-    NSArray *refsJson = [jsonObjects objectForKey:@"refs"];
+    NSArray *refsJson = jsonObjects[@"refs"];
     for (id refJson in refsJson) {
         PIRef *ref = [PIRef refWithJson:refJson];
         if ([ref isMasterRef]) {
             api->_masterRef = ref;
         }
-        [api->_refs setValue:ref forKey:[ref label]];
+        api->_refs[[ref label]] = ref;
     }
     
     api->_bookmarks = [[NSMutableDictionary alloc] init];
-    NSDictionary *bookmarks = [jsonObjects objectForKey:@"bookmarks"];
+    NSDictionary *bookmarks = jsonObjects[@"bookmarks"];
     for (NSString *bookmarkName in bookmarks) {
-        NSString *bookmark = [bookmarks objectForKey:bookmarkName];
-        [api->_bookmarks setValue:bookmark forKey:bookmarkName];
+        NSString *bookmark = bookmarks[bookmarkName];
+        api->_bookmarks[bookmarkName] = bookmark;
     }
     
     api->_types = [[NSMutableDictionary alloc] init];
-    NSDictionary *types = [jsonObjects objectForKey:@"types"];
+    NSDictionary *types = jsonObjects[@"types"];
     for (NSString *typeName in types) {
-        NSString *type = [types objectForKey:typeName];
-        [api->_types setValue:type forKey:typeName];
+        NSString *type = types[typeName];
+        api->_types[typeName] = type;
     }
     
     api->_tags = [[NSMutableArray alloc] init];
-    NSArray *tags = [jsonObjects objectForKey:@"tags"];
+    NSArray *tags = jsonObjects[@"tags"];
     for (NSString *tag in tags) {
         [api->_tags addObject:tag];
     }
     
     api->_forms = [[NSMutableDictionary alloc] init];
-    NSDictionary *forms = [jsonObjects objectForKey:@"forms"];
+    NSDictionary *forms = jsonObjects[@"forms"];
     for (NSString *formName in forms) {
-        NSDictionary *formJson = [forms objectForKey:formName];
+        NSDictionary *formJson = forms[formName];
         PIForm *form = [PIForm formWithJson:formJson name:formName];
-        [api->_forms setValue:form forKey:formName];
+        api->_forms[formName] = form;
     }
     
-    api->_oauthInitiate = [jsonObjects objectForKey:@"oauth_initiate"];
-    api->_oauthToken = [jsonObjects objectForKey:@"oauth_token"];
+    api->_oauthInitiate = jsonObjects[@"oauth_initiate"];
+    api->_oauthToken = jsonObjects[@"oauth_token"];
     
     return api;
 }
@@ -206,12 +206,12 @@
 
 - (PIRef *)refObjectForName:(NSString *)name
 {
-    return [_refs valueForKey:name];
+    return _refs[name];
 }
 
 - (NSString *)refForName:(NSString *)name
 {
-    return [[_refs valueForKey:name] ref];
+    return [_refs[name] ref];
 }
 
 - (PIRef *)masterRefObject
@@ -226,17 +226,17 @@
 
 - (NSString *)bookmarkForName:(NSString *)name
 {
-    return [_bookmarks objectForKey:name];
+    return _bookmarks[name];
 }
 
 - (NSString *)typeForName:(NSString *)name
 {
-    return [_types objectForKey:name];
+    return _types[name];
 }
 
 - (PIForm *)formForName:(NSString *)name
 {
-    return [_forms objectForKey:name];
+    return _forms[name];
 }
 
 - (PISearchForm *)searchFormForName:(NSString *)name
