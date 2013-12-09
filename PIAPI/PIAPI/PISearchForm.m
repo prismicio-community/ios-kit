@@ -213,6 +213,18 @@
     }
 }
 
+- (PISearchResult *)submitWithRefObject:(PIRef *)ref error:(NSError **)error
+{
+    [self setRefObject:ref];
+    return [self submit:error];
+}
+
+- (PISearchResult *)submitWithRefName:(NSString *)ref error:(NSError **)error
+{
+    [self setRefName:ref];
+    return [self submit:error];
+}
+
 // HELPERS
 
 - (BOOL)isMultiple:(NSString *)fieldName

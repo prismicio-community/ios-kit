@@ -32,4 +32,8 @@
 
 - (PISearchResult *)submit:(NSError **)error;
 
+- (PISearchResult *)submitWithRefObject:(PIRef *)ref error:(NSError **)error;
+
+- (PISearchResult *)submitWithRefName:(NSString *)ref error:(NSError **)error;
+
 @end
