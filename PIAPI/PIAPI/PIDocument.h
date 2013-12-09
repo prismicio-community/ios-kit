@@ -13,10 +13,17 @@
 + (PIDocument *)documentWithJson:(id)jsonObject;
 
 - (NSMutableDictionary *)data;
+
 - (NSURL *)href;
+
 - (NSString *)id;
+
 - (NSMutableArray *)slugs;
+
 - (NSMutableArray *)tags;
+
 - (NSString *)type;
+
+- (NSString *)firstTitle;
 
 @end

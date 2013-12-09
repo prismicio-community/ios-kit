@@ -14,7 +14,7 @@
 
 @interface PIDocumentsListViewController ()
 
-@property NSMutableArray* documents;
+@property NSMutableArray *documents;
 
 @property PIAPI *api;
 
@@ -54,10 +54,18 @@
 }
 
 - (void)loadInitialData {
-    NSDictionary *forms = [self.api forms];
-    for (NSString *formName in forms) {
-        PIForm *form = [self.api formForName:formName];
-        [self.documents addObject: form];
+    PISearchForm *searchForm = [self.api searchFormForName:@"everything"];
+    PIRef *master = [self.api masterRefObject];
+    NSError *error;
+    PISearchResult *searchResults = [searchForm submitWithRefObject:master error:&error];
+    if (error == nil) {
+        NSArray *results = [searchResults results];
+        for (PIDocument *document in results) {
+            [self.documents addObject:document];
+        }
+    }
+    else {
+        NSLog(@"Error while search 'everything': %@", error);
     }
 }
 
@@ -87,8 +95,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
 
-    PIForm *form = [self.documents objectAtIndex:indexPath.row];
-    cell.textLabel.text = [form name];
+    PIDocument *document = [self.documents objectAtIndex:indexPath.row];
+    cell.textLabel.text = [document firstTitle];
     
     // Configure the cell...
     
@@ -134,7 +142,7 @@
 }
 */
 
-- (PIForm *) detailForIndexPath:(NSIndexPath *)indexPath
+- (PIDocument *) detailForIndexPath:(NSIndexPath *)indexPath
 {
     return [self.documents objectAtIndex:indexPath.row];
 }
@@ -148,7 +156,7 @@
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         PIDocumentViewController *documentViewController = [segue destinationViewController];
         documentViewController.api = self.api;
-        documentViewController.form = [self detailForIndexPath:indexPath];
+        documentViewController.document = [self detailForIndexPath:indexPath];
     }
 }
 

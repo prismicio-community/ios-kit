@@ -13,6 +13,6 @@
 @interface PIDocumentViewController : UIViewController
 
 @property PIAPI *api;
-@property PIForm *form;
+@property PIDocument *document;
 
 @end

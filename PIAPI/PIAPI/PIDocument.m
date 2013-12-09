@@ -81,5 +81,10 @@
     return _type;
 }
 
+- (NSString *)firstTitle
+{
+    return @"A title";
+}
+
 
 @end
