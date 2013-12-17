@@ -8,6 +8,9 @@
 
 #import "PIDocument.h"
 
+#import "PIFragmentText.h"
+#import "PIFragmentStructuredText.h"
+
 @interface PIDocument ()
 {
     NSMutableDictionary *_data;
@@ -19,7 +22,29 @@
 }
 @end
 
+
+
 @implementation PIDocument
+
++ (id <PIFragment>)parseFragment:(id)jsonObject
+{
+    id <PIFragment> fragment = nil;
+    if ([jsonObject isKindOfClass:[NSDictionary class]]) {
+        NSString *type = jsonObject[@"type"];
+        id <PIFragment> (^selectedCase)() = @{
+            @"Text" : ^{
+                return [PIFragmentText textWithJson:jsonObject];
+            },
+            @"StructuredText" : ^{
+                return [PIFragmentStructuredText structuredTextWithJson:jsonObject];
+            }
+        }[type];
+        if (selectedCase != nil) {
+            fragment = selectedCase();
+        }
+    }
+    return fragment;
+}
 
 + (PIDocument *)documentWithJson:(id)jsonObject
 {
@@ -27,7 +52,17 @@
 
     document->_data = [[NSMutableDictionary alloc] init];
     NSDictionary *docData = jsonObject[@"data"];
-    // TODO parse data :-)
+    for (NSString *docName in docData) {
+        // 1st loop for free (data's syntax is {"<collection>":{<real-data>}}
+        NSDictionary *data = docData[docName];
+        for (NSString *fieldName in data) {
+            NSDictionary *field = data[fieldName];
+            id <PIFragment> fragment = [PIDocument parseFragment:field];
+            if (fragment != nil) {
+                [document->_data setObject:fragment forKey:fieldName];
+            }
+        }
+    }
 
     NSString *href = jsonObject[@"href"];
     document->_href = href ? [NSURL URLWithString:href] : nil;
@@ -81,10 +116,29 @@
     return _type;
 }
 
-- (NSString *)firstTitle
+- (PIFragmentBlockHeading *)firstTitleObject
 {
-    return @"A title";
+    PIFragmentBlockHeading *res = nil;
+    for (NSString *key in _data) {
+        id <PIFragment> fragment = _data[key];
+        if ([fragment isKindOfClass:[PIFragmentStructuredText class]]) {
+            PIFragmentStructuredText *structuredText = fragment;
+            PIFragmentBlockHeading *heading = [structuredText firstTitleObject];
+            if (res == nil || [res heading] < [heading heading]) {
+                res = heading;
+            }
+        }
+    }
+    return res;
 }
 
+- (NSString *)firstTitle
+{
+    PIFragmentBlockHeading *heading = [self firstTitleObject];
+    if (heading) {
+        return [heading text];
+    }
+    return nil;
+}
 
 @end
