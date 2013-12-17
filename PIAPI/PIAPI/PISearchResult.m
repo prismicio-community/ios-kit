@@ -12,20 +12,6 @@
 
 @class PIDocument;
 
-/*
- 
- {
- "next_page": "https://lesbonneschoses-uj8crgij1aniotz.prismic.io/api/documents/search?ref=UpXqTwEAAG8A9k-0&page=2&pageSize=20",
- "page": 1,
- "prev_page": null,
- "results": [],
- "results_per_page": 20,
- "results_size": 20,
- "total_pages": 3,
- "total_results_size": 45
- }
- */
-
 @interface PISearchResult ()
 {
     NSMutableArray *_results;
