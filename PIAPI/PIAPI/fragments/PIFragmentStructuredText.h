@@ -10,19 +10,41 @@
 
 #import "PIFragment.h"
 
+/* spans */
+
+@protocol PIFragmentBlockSpan <NSObject>
+
+- (NSString *)type;
+
+@end
+
+@interface PIFragmentBlockSpanEm : NSObject <PIFragmentBlockSpan>
+@end
+
+@interface PIFragmentBlockSpanStrong : NSObject <PIFragmentBlockSpan>
+@end
+
+/* block */
+
 @protocol PIFragmentBlock <NSObject>
 - (NSString *)text;
 @end
 
-@interface PIFragmentBlockParagraph : NSObject <PIFragmentBlock>
+@protocol PIFragmentBlockText <PIFragmentBlock>
+
+- (NSArray *)spans;
+
+@end
+
+@interface PIFragmentBlockParagraph : NSObject <PIFragmentBlockText>
 + (PIFragmentBlockParagraph *)paragraphWithJson:(id)jsonObject;
 @end
 
-@interface PIFragmentBlockPreformated : NSObject <PIFragmentBlock>
+@interface PIFragmentBlockPreformated : NSObject <PIFragmentBlockText>
 + (PIFragmentBlockPreformated *)preformatedWithJson:(id)jsonObject;
 @end
 
-@interface PIFragmentBlockHeading : NSObject <PIFragmentBlock>
+@interface PIFragmentBlockHeading : NSObject <PIFragmentBlockText>
 + (PIFragmentBlockHeading *)headingWithJson:(id)jsonObject heading:(NSNumber *)heading;
 - (NSNumber *)heading;
 @end

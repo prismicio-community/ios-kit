@@ -8,10 +8,93 @@
 
 #import "PIFragmentStructuredText.h"
 
+/* span */
+
+@interface PIFragmentBlockSpanEm ()
+{
+    NSNumber *_start;
+    NSNumber *_end;
+}
+@end
+
+@implementation PIFragmentBlockSpanEm
+
++ (PIFragmentBlockSpanEm *)spanWithJson:(id)jsonObject
+{
+    PIFragmentBlockSpanEm *span = [[PIFragmentBlockSpanEm alloc] init];
+    span->_start = jsonObject[@"start"];
+    span->_end = jsonObject[@"end"];
+    return span;
+}
+
+- (NSString *)type
+{
+    return @"em";
+}
+
+@end
+
+@interface PIFragmentBlockSpanStrong ()
+{
+    NSNumber *_start;
+    NSNumber *_end;
+}
+@end
+
+@implementation PIFragmentBlockSpanStrong
+
++ (PIFragmentBlockSpanStrong *)spanWithJson:(id)jsonObject
+{
+    PIFragmentBlockSpanStrong *span = [[PIFragmentBlockSpanStrong alloc] init];
+    span->_start = jsonObject[@"start"];
+    span->_end = jsonObject[@"end"];
+    return span;
+}
+
+- (NSString *)type
+{
+    return @"strong";
+}
+
+@end
+
+/* block */
+
+@interface PIFragmentBlockSpan : NSObject
+@end
+@implementation PIFragmentBlockSpan
++ (id <PIFragmentBlockSpan>)spanWithJson:(id)jsonObject
+{
+    id <PIFragmentBlockSpan> span = nil;
+    if ([jsonObject isKindOfClass:[NSDictionary class]]) {
+        NSString *type = jsonObject[@"type"];
+        id <PIFragmentBlockSpan> (^selectedCase)() = @{
+            @"em" : ^{
+                return [PIFragmentBlockSpanEm spanWithJson:jsonObject];
+            },
+            @"strong" : ^{
+                return [PIFragmentBlockSpanStrong spanWithJson:jsonObject];
+            },
+            /*@"hyperlink" : ^{
+                return [PIFragmentBlockSpanLink linkWithJson:jsonObject heading:@1];
+            },*/
+        }[type];
+        if (selectedCase != nil) {
+            span = selectedCase();
+        }
+        else {
+            NSLog(@"Unsupported block type: %@", type);
+        }
+    }
+    return span;
+}
+
+@end
 
 @interface PIFragmentBlockParagraph ()
 {
     NSString *_text;
+    NSMutableArray *_spans;
 }
 @end
 @implementation PIFragmentBlockParagraph
@@ -20,6 +103,14 @@
 {
     PIFragmentBlockParagraph *paragraph = [[PIFragmentBlockParagraph alloc] init];
     paragraph->_text = jsonObject[@"text"];
+    paragraph->_spans = [[NSMutableArray alloc] init];
+    NSArray *spans = jsonObject[@"spans"];
+    for (id jsonSpan in spans) {
+        PIFragmentBlockSpan *span = [PIFragmentBlockSpan spanWithJson:jsonSpan];
+        if (span != nil) {
+            [paragraph->_spans addObject:span];
+        }
+    }
     return paragraph;
 }
 
@@ -28,11 +119,17 @@
     return _text;
 }
 
+- (NSArray *)spans
+{
+    return _spans;
+}
+
 @end
 
 @interface PIFragmentBlockPreformated ()
 {
     NSString *_text;
+    NSMutableArray *_spans;
 }
 @end
 @implementation PIFragmentBlockPreformated
@@ -41,6 +138,14 @@
 {
     PIFragmentBlockPreformated *preformated = [[PIFragmentBlockPreformated alloc] init];
     preformated->_text = jsonObject[@"text"];
+    preformated->_spans = [[NSMutableArray alloc] init];
+    NSArray *spans = jsonObject[@"spans"];
+    for (id jsonSpan in spans) {
+        PIFragmentBlockSpan *span = [PIFragmentBlockSpan spanWithJson:jsonSpan];
+        if (span != nil) {
+            [preformated->_spans addObject:span];
+        }
+    }
     return preformated;
 }
 
@@ -49,11 +154,17 @@
     return _text;
 }
 
+- (NSArray *)spans
+{
+    return _spans;
+}
+
 @end
 
 @interface PIFragmentBlockHeading ()
 {
     NSString *_text;
+    NSMutableArray *_spans;
     NSNumber *_heading;
 }
 @end
@@ -63,6 +174,14 @@
 {
     PIFragmentBlockHeading *headingBlock = [[PIFragmentBlockHeading alloc] init];
     headingBlock->_text = jsonObject[@"text"];
+    headingBlock->_spans = [[NSMutableArray alloc] init];
+    NSArray *spans = jsonObject[@"spans"];
+    for (id jsonSpan in spans) {
+        PIFragmentBlockSpan *span = [PIFragmentBlockSpan spanWithJson:jsonSpan];
+        if (span != nil) {
+            [headingBlock->_spans addObject:span];
+        }
+    }
     headingBlock->_heading = heading;
     return headingBlock;
 }
@@ -77,7 +196,14 @@
     return _heading;
 }
 
+- (NSArray *)spans
+{
+    return _spans;
+}
+
 @end
+
+/* fragment */
 
 @interface PIFragmentStructuredText () {
     NSMutableArray *_blocks;
@@ -113,6 +239,9 @@
         }[type];
         if (selectedCase != nil) {
             block = selectedCase();
+        }
+        else {
+            NSLog(@"Unsupported fragment type: %@", type);
         }
     }
     return block;
