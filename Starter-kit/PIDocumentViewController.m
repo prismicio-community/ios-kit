@@ -9,6 +9,7 @@
 #import "PIDocumentViewController.h"
 
 @interface PIDocumentViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *content;
 
 @end
 
@@ -28,6 +29,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = [self.document firstTitle];
+    [self.content setAttributedText:[self.document firstParagraphFormatted]];
 }
 
 - (void)didReceiveMemoryWarning
