@@ -15,6 +15,7 @@
 @protocol PIFragmentBlockSpan <NSObject>
 
 - (NSString *)type;
+- (NSRange)range;
 
 @end
 
@@ -33,6 +34,7 @@
 @protocol PIFragmentBlockText <PIFragmentBlock>
 
 - (NSArray *)spans;
+- (NSAttributedString *)formattedText;
 
 @end
 
@@ -56,6 +58,11 @@
 - (NSArray *)blocks;
 
 - (PIFragmentBlockHeading *)firstTitleObject;
+- (NSString *)firstTitleFormatted;
 - (NSString *)firstTitle;
+
+- (PIFragmentBlockParagraph *)firstParagraphObject;
+- (NSString *)firstParagraphFormatted;
+- (NSString *)firstParagraph;
 
 @end

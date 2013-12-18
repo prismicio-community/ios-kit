@@ -6,14 +6,15 @@
 //  Copyright (c) 2013 Zengularity. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
+
 #import "PIFragmentStructuredText.h"
 
 /* span */
 
 @interface PIFragmentBlockSpanEm ()
 {
-    NSNumber *_start;
-    NSNumber *_end;
+    NSRange _range;
 }
 @end
 
@@ -22,8 +23,10 @@
 + (PIFragmentBlockSpanEm *)spanWithJson:(id)jsonObject
 {
     PIFragmentBlockSpanEm *span = [[PIFragmentBlockSpanEm alloc] init];
-    span->_start = jsonObject[@"start"];
-    span->_end = jsonObject[@"end"];
+    NSUInteger start = [jsonObject[@"start"] unsignedIntegerValue];
+    NSUInteger end = [jsonObject[@"end"] unsignedIntegerValue];
+    NSUInteger length = end - start;
+    span->_range = NSMakeRange(start, length);
     return span;
 }
 
@@ -32,12 +35,16 @@
     return @"em";
 }
 
+- (NSRange)range
+{
+    return _range;
+}
+
 @end
 
 @interface PIFragmentBlockSpanStrong ()
 {
-    NSNumber *_start;
-    NSNumber *_end;
+    NSRange _range;
 }
 @end
 
@@ -46,14 +53,21 @@
 + (PIFragmentBlockSpanStrong *)spanWithJson:(id)jsonObject
 {
     PIFragmentBlockSpanStrong *span = [[PIFragmentBlockSpanStrong alloc] init];
-    span->_start = jsonObject[@"start"];
-    span->_end = jsonObject[@"end"];
+    NSUInteger start = [jsonObject[@"start"] unsignedIntegerValue];
+    NSUInteger end = [jsonObject[@"end"] unsignedIntegerValue];
+    NSUInteger length = end - start;
+    span->_range = NSMakeRange(start, length);
     return span;
 }
 
 - (NSString *)type
 {
     return @"strong";
+}
+
+- (NSRange)range
+{
+    return _range;
 }
 
 @end
@@ -87,6 +101,39 @@
         }
     }
     return span;
+}
+
++ (NSAttributedString *)formatText:(id <PIFragmentBlockText>)block fontDescriptor:(UIFontDescriptor *)fontDescriptor
+{
+    // Create styles
+    UIFontDescriptor *boldFontDescriptor = [fontDescriptor fontDescriptorWithSymbolicTraits:UIFontDescriptorTraitBold];
+    UIFontDescriptor *italicFontDescriptor = [fontDescriptor fontDescriptorWithSymbolicTraits:UIFontDescriptorTraitItalic];
+    UIFont *normalFont = [UIFont fontWithDescriptor:fontDescriptor size:0.0];
+    UIFont *boldFont = [UIFont fontWithDescriptor:boldFontDescriptor size: 0.0];
+    UIFont *italicFont = [UIFont fontWithDescriptor:italicFontDescriptor size: 0.0];
+    NSDictionary *normalAttributes = @{ NSFontAttributeName : normalFont };
+    NSDictionary *boldAttributes = @{ NSFontAttributeName : boldFont };
+    NSDictionary *italicAttributes = @{ NSFontAttributeName : italicFont };
+
+    NSMutableAttributedString *content = [[NSMutableAttributedString alloc] initWithString:[block text]];
+    [content addAttributes:normalAttributes range:NSMakeRange(0, [content length])];
+
+    NSArray *spans = [block spans];
+    for (id <PIFragmentBlockSpan> span in spans) {
+        void (^selectedCase)() = @{
+            @"em" : ^{
+                [content addAttributes:boldAttributes range:[span range]];
+            },
+            @"strong" : ^{
+                [content addAttributes:italicAttributes range:[span range]];
+            },
+        }[[span type]];
+        if (selectedCase != nil) {
+            selectedCase();
+        }
+    }
+
+    return content;
 }
 
 @end
@@ -124,6 +171,12 @@
     return _spans;
 }
 
+- (NSAttributedString *)formattedText
+{
+    UIFontDescriptor* fontDescriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontTextStyleBody];
+    return [PIFragmentBlockSpan formatText:self fontDescriptor:fontDescriptor];
+}
+
 @end
 
 @interface PIFragmentBlockPreformated ()
@@ -157,6 +210,12 @@
 - (NSArray *)spans
 {
     return _spans;
+}
+
+- (NSAttributedString *)formattedText
+{
+    UIFontDescriptor* fontDescriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontTextStyleBody];
+    return [PIFragmentBlockSpan formatText:self fontDescriptor:fontDescriptor];
 }
 
 @end
@@ -199,6 +258,18 @@
 - (NSArray *)spans
 {
     return _spans;
+}
+
+- (NSAttributedString *)formattedText
+{
+    UIFontDescriptor* fontDescriptor = nil;
+    if ([_heading integerValue] == 1) {
+        fontDescriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontTextStyleHeadline];
+    }
+    else {
+        fontDescriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontTextStyleSubheadline];
+    }
+    return [PIFragmentBlockSpan formatText:self fontDescriptor:fontDescriptor];
 }
 
 @end
@@ -282,6 +353,15 @@
     return res;
 }
 
+- (NSAttributedString *)firstTitleFormatted
+{
+    PIFragmentBlockHeading *heading = [self firstTitleObject];
+    if (heading) {
+        return [heading formattedText];
+    }
+    return nil;
+}
+
 - (NSString *)firstTitle
 {
     PIFragmentBlockHeading *heading = [self firstTitleObject];
@@ -300,6 +380,15 @@
         }
     }
     return res;
+}
+
+- (NSAttributedString *)firstParagraphFormatted
+{
+    PIFragmentBlockParagraph *paragraph = [self firstParagraphObject];
+    if (paragraph) {
+        return [paragraph formattedText];
+    }
+    return nil;
 }
 
 - (NSString *)firstParagraph

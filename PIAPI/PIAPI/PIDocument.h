@@ -29,9 +29,13 @@
 
 - (PIFragmentBlockHeading *)firstTitleObject;
 
+- (NSAttributedString *)firstTitleFormatted;
+
 - (NSString *)firstTitle;
 
 - (PIFragmentBlockParagraph *)firstParagraphObject;
+
+- (NSAttributedString *)firstParagraphFormatted;
 
 - (NSString *)firstParagraph;
 

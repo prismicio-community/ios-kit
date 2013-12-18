@@ -129,6 +129,15 @@
     return res;
 }
 
+- (NSAttributedString *)firstTitleFormatted
+{
+    PIFragmentBlockHeading *heading = [self firstTitleObject];
+    if (heading) {
+        return [heading formattedText];
+    }
+    return nil;
+}
+
 - (NSString *)firstTitle
 {
     PIFragmentBlockHeading *heading = [self firstTitleObject];
@@ -149,6 +158,15 @@
                 return paragraph;
             }
         }
+    }
+    return nil;
+}
+
+- (NSAttributedString *)firstParagraphFormatted
+{
+    PIFragmentBlockParagraph *fragment = [self firstParagraphObject];
+    if (fragment) {
+        return [fragment formattedText];
     }
     return nil;
 }
