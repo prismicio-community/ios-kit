@@ -144,7 +144,7 @@
     PIFragmentBlockHeading *res = nil;
     for (id <PIFragmentBlock> block in _blocks) {
         if ([block isKindOfClass:[PIFragmentBlockHeading class]]) {
-            PIFragmentBlockHeading *heading = block;
+            PIFragmentBlockHeading *heading = (PIFragmentBlockHeading *)block;
             if (res == nil || [res heading] < [heading heading]) {
                 res = heading;
             }

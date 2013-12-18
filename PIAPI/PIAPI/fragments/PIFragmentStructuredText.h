@@ -33,7 +33,7 @@
 
 - (NSArray *)blocks;
 
-- (id <PIFragmentBlock>)firstTitleObject;
+- (PIFragmentBlockHeading *)firstTitleObject;
 - (NSString *)firstTitleText;
 
 @end
