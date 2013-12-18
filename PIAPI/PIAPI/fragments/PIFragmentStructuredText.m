@@ -16,7 +16,8 @@
 @end
 @implementation PIFragmentBlockParagraph
 
-+ (PIFragmentBlockParagraph *)paragraphWithJson:(id)jsonObject {
++ (PIFragmentBlockParagraph *)paragraphWithJson:(id)jsonObject
+{
     PIFragmentBlockParagraph *paragraph = [[PIFragmentBlockParagraph alloc] init];
     paragraph->_text = jsonObject[@"text"];
     return paragraph;
@@ -36,10 +37,11 @@
 @end
 @implementation PIFragmentBlockPreformated
 
-+ (PIFragmentBlockPreformated *)preformatedWithJson:(id)jsonObject {
-    PIFragmentBlockPreformated *paragraph = [[PIFragmentBlockPreformated alloc] init];
-    paragraph->_text = jsonObject[@"text"];
-    return paragraph;
++ (PIFragmentBlockPreformated *)preformatedWithJson:(id)jsonObject
+{
+    PIFragmentBlockPreformated *preformated = [[PIFragmentBlockPreformated alloc] init];
+    preformated->_text = jsonObject[@"text"];
+    return preformated;
 }
 
 - (NSString *)text
