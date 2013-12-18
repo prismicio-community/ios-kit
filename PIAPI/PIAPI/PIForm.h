@@ -8,10 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-#import "PISearchForm.h"
-
-@class PISearchForm;
-
 @interface PIField : NSObject
 
 + (PIField *)fieldWithJson:(NSDictionary *)jsonObject name:(NSString *)name;
@@ -34,8 +30,6 @@
 - (NSDictionary *)fields;
 
 - (PIField *)fieldForName:(NSString *)name;
-
-- (PISearchForm *)createSearchFormForName:(NSString *)name;
 
 
 @end
