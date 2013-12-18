@@ -22,6 +22,9 @@
 		9E69B36218463063000B1480 /* PIAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E69B36118463063000B1480 /* PIAPI.m */; };
 		9E7686F61847A35900933B3E /* PIRef.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E7686F51847A35900933B3E /* PIRef.m */; };
 		9E7686F71847A4D900933B3E /* PIRef.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9E7686F41847A35900933B3E /* PIRef.h */; };
+		9ECDFF251861F207004AA83E /* PIFragmentStructuredText.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9E112780185624C200027E01 /* PIFragmentStructuredText.h */; };
+		9ECDFF261861F20D004AA83E /* PIFragment.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9E11277A185617FF00027E01 /* PIFragment.h */; };
+		9ECDFF271861F212004AA83E /* PIFragmentText.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9E11277D1856187000027E01 /* PIFragmentText.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +34,9 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				9ECDFF271861F212004AA83E /* PIFragmentText.h in CopyFiles */,
+				9ECDFF261861F20D004AA83E /* PIFragment.h in CopyFiles */,
+				9ECDFF251861F207004AA83E /* PIFragmentStructuredText.h in CopyFiles */,
 				9E2EE7A51850C66200E6F8F0 /* PISearchResult.h in CopyFiles */,
 				9E2EE7A11850931900E6F8F0 /* PISearchForm.h in CopyFiles */,
 				9E485B07184CBAAF0089F045 /* PIForm.h in CopyFiles */,

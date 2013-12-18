@@ -8,9 +8,6 @@
 
 #import "PIDocument.h"
 
-#import "PIFragmentText.h"
-#import "PIFragmentStructuredText.h"
-
 @interface PIDocument ()
 {
     NSMutableDictionary *_data;
@@ -137,6 +134,30 @@
     PIFragmentBlockHeading *heading = [self firstTitleObject];
     if (heading) {
         return [heading text];
+    }
+    return nil;
+}
+
+- (PIFragmentBlockParagraph *)firstParagraphObject
+{
+    for (NSString *key in _data) {
+        id <PIFragment> fragment = _data[key];
+        if ([fragment isKindOfClass:[PIFragmentStructuredText class]]) {
+            PIFragmentStructuredText *structuredText = fragment;
+            PIFragmentBlockParagraph *paragraph = [structuredText firstParagraphObject];
+            if (paragraph != nil) {
+                return paragraph;
+            }
+        }
+    }
+    return nil;
+}
+
+- (NSString *)firstParagraph
+{
+    PIFragmentBlockParagraph *fragment = [self firstParagraphObject];
+    if (fragment) {
+        return [fragment text];
     }
     return nil;
 }

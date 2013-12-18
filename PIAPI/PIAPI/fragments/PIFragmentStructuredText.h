@@ -56,6 +56,6 @@
 - (NSArray *)blocks;
 
 - (PIFragmentBlockHeading *)firstTitleObject;
-- (NSString *)firstTitleText;
+- (NSString *)firstTitle;
 
 @end

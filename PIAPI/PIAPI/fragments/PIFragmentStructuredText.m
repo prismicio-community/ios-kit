@@ -282,11 +282,31 @@
     return res;
 }
 
-- (NSString *)firstTitleText
+- (NSString *)firstTitle
 {
     PIFragmentBlockHeading *heading = [self firstTitleObject];
     if (heading) {
         return [heading text];
+    }
+    return nil;
+}
+
+- (PIFragmentBlockParagraph *)firstParagraphObject
+{
+    PIFragmentBlockParagraph *res = nil;
+    for (id <PIFragmentBlock> block in _blocks) {
+        if ([block isKindOfClass:[PIFragmentBlockParagraph class]]) {
+            return (PIFragmentBlockParagraph *)block;
+        }
+    }
+    return res;
+}
+
+- (NSString *)firstParagraph
+{
+    PIFragmentBlockParagraph *paragraph = [self firstParagraphObject];
+    if (paragraph) {
+        return [paragraph text];
     }
     return nil;
 }

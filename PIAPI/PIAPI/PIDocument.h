@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+#import "PIFragmentText.h"
+#import "PIFragmentStructuredText.h"
+
 @interface PIDocument : NSObject
 
 + (PIDocument *)documentWithJson:(id)jsonObject;
@@ -24,6 +27,12 @@
 
 - (NSString *)type;
 
+- (PIFragmentBlockHeading *)firstTitleObject;
+
 - (NSString *)firstTitle;
+
+- (PIFragmentBlockParagraph *)firstParagraphObject;
+
+- (NSString *)firstParagraph;
 
 @end
