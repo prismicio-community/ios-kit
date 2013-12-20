@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9E11277F1856187000027E01 /* PIFragmentText.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E11277E1856187000027E01 /* PIFragmentText.m */; };
 		9E112782185624C200027E01 /* PIFragmentStructuredText.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E112781185624C200027E01 /* PIFragmentStructuredText.m */; };
+		9E1F437018649FD00017E031 /* PIFragmentColor.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9EF9340418649CB9007CF506 /* PIFragmentColor.h */; };
 		9E2EE7A0185091C300E6F8F0 /* PISearchForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2EE79F185091C300E6F8F0 /* PISearchForm.m */; };
 		9E2EE7A11850931900E6F8F0 /* PISearchForm.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9E2EE79E185091C300E6F8F0 /* PISearchForm.h */; };
 		9E2EE7A41850C62800E6F8F0 /* PISearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2EE7A31850C62800E6F8F0 /* PISearchResult.m */; };
@@ -31,6 +32,7 @@
 		9EF933FF18649593007CF506 /* PIFragmentImage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9EF933FC18648E95007CF506 /* PIFragmentImage.h */; };
 		9EF9340218649AE1007CF506 /* PIFragmentSelect.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EF9340118649AE1007CF506 /* PIFragmentSelect.m */; };
 		9EF9340318649B6E007CF506 /* PIFragmentSelect.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9EF9340018649AE1007CF506 /* PIFragmentSelect.h */; };
+		9EF9340618649CB9007CF506 /* PIFragmentColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EF9340518649CB9007CF506 /* PIFragmentColor.m */; };
 		9EFD118518647ADE007FDE83 /* PIFragmentBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EFD118418647ADE007FDE83 /* PIFragmentBlock.m */; };
 		9EFD118818647BA2007FDE83 /* PIFragmentBlockSpan.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EFD118718647BA2007FDE83 /* PIFragmentBlockSpan.m */; };
 		9EFD118918647CFB007FDE83 /* PIFragmentBlock.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9EFD118318647ADE007FDE83 /* PIFragmentBlock.h */; };
@@ -44,6 +46,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				9E1F437018649FD00017E031 /* PIFragmentColor.h in CopyFiles */,
 				9EF9340318649B6E007CF506 /* PIFragmentSelect.h in CopyFiles */,
 				9EF933FF18649593007CF506 /* PIFragmentImage.h in CopyFiles */,
 				9EFD118A18647D01007FDE83 /* PIFragmentBlockSpan.h in CopyFiles */,
@@ -92,6 +95,8 @@
 		9EF933FD18648E95007CF506 /* PIFragmentImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIFragmentImage.m; path = fragments/PIFragmentImage.m; sourceTree = "<group>"; };
 		9EF9340018649AE1007CF506 /* PIFragmentSelect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIFragmentSelect.h; path = fragments/PIFragmentSelect.h; sourceTree = "<group>"; };
 		9EF9340118649AE1007CF506 /* PIFragmentSelect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIFragmentSelect.m; path = fragments/PIFragmentSelect.m; sourceTree = "<group>"; };
+		9EF9340418649CB9007CF506 /* PIFragmentColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIFragmentColor.h; path = fragments/PIFragmentColor.h; sourceTree = "<group>"; };
+		9EF9340518649CB9007CF506 /* PIFragmentColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIFragmentColor.m; path = fragments/PIFragmentColor.m; sourceTree = "<group>"; };
 		9EFD118318647ADE007FDE83 /* PIFragmentBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIFragmentBlock.h; path = fragments/PIFragmentBlock.h; sourceTree = "<group>"; };
 		9EFD118418647ADE007FDE83 /* PIFragmentBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIFragmentBlock.m; path = fragments/PIFragmentBlock.m; sourceTree = "<group>"; };
 		9EFD118618647BA2007FDE83 /* PIFragmentBlockSpan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIFragmentBlockSpan.h; path = fragments/PIFragmentBlockSpan.h; sourceTree = "<group>"; };
@@ -168,6 +173,8 @@
 				9E11277E1856187000027E01 /* PIFragmentText.m */,
 				9EF9340018649AE1007CF506 /* PIFragmentSelect.h */,
 				9EF9340118649AE1007CF506 /* PIFragmentSelect.m */,
+				9EF9340418649CB9007CF506 /* PIFragmentColor.h */,
+				9EF9340518649CB9007CF506 /* PIFragmentColor.m */,
 			);
 			path = PIAPI;
 			sourceTree = "<group>";
@@ -241,6 +248,7 @@
 				9E112782185624C200027E01 /* PIFragmentStructuredText.m in Sources */,
 				9ECDFF2A18620865004AA83E /* PIFragmentLink.m in Sources */,
 				9E2EE7A0185091C300E6F8F0 /* PISearchForm.m in Sources */,
+				9EF9340618649CB9007CF506 /* PIFragmentColor.m in Sources */,
 				9E3144F018465F7C0017E6A6 /* PIDocument.m in Sources */,
 				9EFD118818647BA2007FDE83 /* PIFragmentBlockSpan.m in Sources */,
 				9E2EE7A41850C62800E6F8F0 /* PISearchResult.m in Sources */,

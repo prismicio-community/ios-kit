@@ -39,6 +39,9 @@
             @"Select" : ^{
                 return [PIFragmentSelect selectWithJson:jsonObject];
             },
+            @"Color" : ^{
+                return [PIFragmentColor colorWithJson:jsonObject];
+            },
         }[type];
         if (selectedCase != nil) {
             fragment = selectedCase();
