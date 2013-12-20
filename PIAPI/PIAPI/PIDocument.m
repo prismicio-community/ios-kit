@@ -42,6 +42,9 @@
         if (selectedCase != nil) {
             fragment = selectedCase();
         }
+        else {
+            NSLog(@"Unsupported fragment type: %@", type);
+        }
     }
     return fragment;
 }

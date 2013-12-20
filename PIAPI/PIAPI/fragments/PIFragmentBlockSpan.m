@@ -30,7 +30,7 @@
             span = selectedCase();
         }
         else {
-            NSLog(@"Unsupported block type: %@", type);
+            NSLog(@"Unsupported span type: %@", type);
         }
     }
     return span;

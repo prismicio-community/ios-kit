@@ -50,7 +50,7 @@
             block = selectedCase();
         }
         else {
-            NSLog(@"Unsupported fragment type: %@", type);
+            NSLog(@"Unsupported block type: %@", type);
         }
     }
     return block;
