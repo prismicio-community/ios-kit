@@ -8,16 +8,16 @@
 
 On our [prismic.io developer's portal](https://developers.prismic.io/), on top of the complete documentation, you will:
  * get a better understanding of [what prismic.io is and how to get started with it](https://developers.prismic.io/documentation/UjBaQsuvzdIHvE4D/getting-started).
- * get a thorough understanding of [how prismic.io kits work](https://developers.prismic.io/documentation/UjBe8bGIJ3EKtgBZ/api-documentation#kits-and-helpers), including this one. There's a couple of specificities for Ruby's case, described below.
- * see [what else is available for Ruby](https://developers.prismic.io/technologies/UjBh6MuvzeMJvE4m/ruby).
+ * get a thorough understanding of [how prismic.io kits work](https://developers.prismic.io/documentation/UjBe8bGIJ3EKtgBZ/api-documentation#kits-and-helpers), including this one. There's some specificities for iOS's case, described below.
+ * see [what else is available for iOS](https://developers.prismic.io/technologies/TODO).
 
 #### Kit documentation
 
 :: TODO ::
 
 ##### iOS kit's specificities
-:: TODO ::
 
+:: TODO ::
 
 #### Use it
 
