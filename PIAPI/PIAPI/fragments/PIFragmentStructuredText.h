@@ -9,51 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #import "PIFragment.h"
-#import "PIFragmentLink.h"
-
-/* spans */
-
-@protocol PIFragmentBlockSpan <NSObject>
-
-- (NSString *)type;
-- (NSRange)range;
-
-@end
-
-@interface PIFragmentBlockSpanEm : NSObject <PIFragmentBlockSpan>
-@end
-
-@interface PIFragmentBlockSpanStrong : NSObject <PIFragmentBlockSpan>
-@end
-
-@interface PIFragmentBlockSpanLink : NSObject <PIFragmentBlockSpan>
-@end
-
-/* block */
-
-@protocol PIFragmentBlock <NSObject>
-- (NSString *)text;
-@end
-
-@protocol PIFragmentBlockText <PIFragmentBlock>
-
-- (NSArray *)spans;
-- (NSAttributedString *)formattedText;
-
-@end
-
-@interface PIFragmentBlockParagraph : NSObject <PIFragmentBlockText>
-+ (PIFragmentBlockParagraph *)paragraphWithJson:(id)jsonObject;
-@end
-
-@interface PIFragmentBlockPreformated : NSObject <PIFragmentBlockText>
-+ (PIFragmentBlockPreformated *)preformatedWithJson:(id)jsonObject;
-@end
-
-@interface PIFragmentBlockHeading : NSObject <PIFragmentBlockText>
-+ (PIFragmentBlockHeading *)headingWithJson:(id)jsonObject heading:(NSNumber *)heading;
-- (NSNumber *)heading;
-@end
+#import "PIFragmentBlock.h"
 
 @interface PIFragmentStructuredText : NSObject <PIFragment>
 

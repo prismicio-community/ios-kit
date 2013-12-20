@@ -27,6 +27,10 @@
 		9ECDFF271861F212004AA83E /* PIFragmentText.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9E11277D1856187000027E01 /* PIFragmentText.h */; };
 		9ECDFF2A18620865004AA83E /* PIFragmentLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ECDFF2918620865004AA83E /* PIFragmentLink.m */; };
 		9ECDFF2B18620886004AA83E /* PIFragmentLink.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9ECDFF2818620865004AA83E /* PIFragmentLink.h */; };
+		9EFD118518647ADE007FDE83 /* PIFragmentBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EFD118418647ADE007FDE83 /* PIFragmentBlock.m */; };
+		9EFD118818647BA2007FDE83 /* PIFragmentBlockSpan.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EFD118718647BA2007FDE83 /* PIFragmentBlockSpan.m */; };
+		9EFD118918647CFB007FDE83 /* PIFragmentBlock.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9EFD118318647ADE007FDE83 /* PIFragmentBlock.h */; };
+		9EFD118A18647D01007FDE83 /* PIFragmentBlockSpan.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9EFD118618647BA2007FDE83 /* PIFragmentBlockSpan.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -36,6 +40,8 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				9EFD118A18647D01007FDE83 /* PIFragmentBlockSpan.h in CopyFiles */,
+				9EFD118918647CFB007FDE83 /* PIFragmentBlock.h in CopyFiles */,
 				9ECDFF2B18620886004AA83E /* PIFragmentLink.h in CopyFiles */,
 				9ECDFF271861F212004AA83E /* PIFragmentText.h in CopyFiles */,
 				9ECDFF261861F20D004AA83E /* PIFragment.h in CopyFiles */,
@@ -76,6 +82,10 @@
 		9E7686F51847A35900933B3E /* PIRef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIRef.m; sourceTree = "<group>"; };
 		9ECDFF2818620865004AA83E /* PIFragmentLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIFragmentLink.h; path = fragments/PIFragmentLink.h; sourceTree = "<group>"; };
 		9ECDFF2918620865004AA83E /* PIFragmentLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIFragmentLink.m; path = fragments/PIFragmentLink.m; sourceTree = "<group>"; };
+		9EFD118318647ADE007FDE83 /* PIFragmentBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIFragmentBlock.h; path = fragments/PIFragmentBlock.h; sourceTree = "<group>"; };
+		9EFD118418647ADE007FDE83 /* PIFragmentBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIFragmentBlock.m; path = fragments/PIFragmentBlock.m; sourceTree = "<group>"; };
+		9EFD118618647BA2007FDE83 /* PIFragmentBlockSpan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIFragmentBlockSpan.h; path = fragments/PIFragmentBlockSpan.h; sourceTree = "<group>"; };
+		9EFD118718647BA2007FDE83 /* PIFragmentBlockSpan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIFragmentBlockSpan.m; path = fragments/PIFragmentBlockSpan.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +147,10 @@
 				9E3144EF18465F7C0017E6A6 /* PIDocument.m */,
 				9E112780185624C200027E01 /* PIFragmentStructuredText.h */,
 				9E112781185624C200027E01 /* PIFragmentStructuredText.m */,
+				9EFD118318647ADE007FDE83 /* PIFragmentBlock.h */,
+				9EFD118418647ADE007FDE83 /* PIFragmentBlock.m */,
+				9EFD118618647BA2007FDE83 /* PIFragmentBlockSpan.h */,
+				9EFD118718647BA2007FDE83 /* PIFragmentBlockSpan.m */,
 				9E11277A185617FF00027E01 /* PIFragment.h */,
 				9E11277D1856187000027E01 /* PIFragmentText.h */,
 				9E11277E1856187000027E01 /* PIFragmentText.m */,
@@ -205,12 +219,14 @@
 			files = (
 				9E485B06184CB7BD0089F045 /* PIForm.m in Sources */,
 				9E7686F61847A35900933B3E /* PIRef.m in Sources */,
+				9EFD118518647ADE007FDE83 /* PIFragmentBlock.m in Sources */,
 				9E69B36218463063000B1480 /* PIAPI.m in Sources */,
 				9E11277F1856187000027E01 /* PIFragmentText.m in Sources */,
 				9E112782185624C200027E01 /* PIFragmentStructuredText.m in Sources */,
 				9ECDFF2A18620865004AA83E /* PIFragmentLink.m in Sources */,
 				9E2EE7A0185091C300E6F8F0 /* PISearchForm.m in Sources */,
 				9E3144F018465F7C0017E6A6 /* PIDocument.m in Sources */,
+				9EFD118818647BA2007FDE83 /* PIFragmentBlockSpan.m in Sources */,
 				9E2EE7A41850C62800E6F8F0 /* PISearchResult.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
