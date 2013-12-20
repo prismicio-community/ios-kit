@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol PIFragmentLink <NSObject>
+#import "PIFragment.h"
+
+@protocol PIFragmentLink <PIFragment>
 
 @end
 
