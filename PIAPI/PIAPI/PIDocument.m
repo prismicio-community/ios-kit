@@ -36,6 +36,9 @@
             @"Image" : ^{
                 return [PIFragmentImage imageWithJson:jsonObject[@"value"]];
             },
+            @"Select" : ^{
+                return [PIFragmentSelect selectWithJson:jsonObject];
+            },
         }[type];
         if (selectedCase != nil) {
             fragment = selectedCase();

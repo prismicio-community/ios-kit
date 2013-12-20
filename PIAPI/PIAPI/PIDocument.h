@@ -11,6 +11,7 @@
 #import "PIFragmentText.h"
 #import "PIFragmentStructuredText.h"
 #import "PIFragmentImage.h"
+#import "PIFragmentSelect.h"
 
 @interface PIDocument : NSObject
 
