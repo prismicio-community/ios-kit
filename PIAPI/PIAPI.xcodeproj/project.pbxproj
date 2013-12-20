@@ -25,6 +25,8 @@
 		9ECDFF251861F207004AA83E /* PIFragmentStructuredText.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9E112780185624C200027E01 /* PIFragmentStructuredText.h */; };
 		9ECDFF261861F20D004AA83E /* PIFragment.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9E11277A185617FF00027E01 /* PIFragment.h */; };
 		9ECDFF271861F212004AA83E /* PIFragmentText.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9E11277D1856187000027E01 /* PIFragmentText.h */; };
+		9ECDFF2A18620865004AA83E /* PIFragmentLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ECDFF2918620865004AA83E /* PIFragmentLink.m */; };
+		9ECDFF2B18620886004AA83E /* PIFragmentLink.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9ECDFF2818620865004AA83E /* PIFragmentLink.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,6 +36,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				9ECDFF2B18620886004AA83E /* PIFragmentLink.h in CopyFiles */,
 				9ECDFF271861F212004AA83E /* PIFragmentText.h in CopyFiles */,
 				9ECDFF261861F20D004AA83E /* PIFragment.h in CopyFiles */,
 				9ECDFF251861F207004AA83E /* PIFragmentStructuredText.h in CopyFiles */,
@@ -71,6 +74,8 @@
 		9E69B36B18463063000B1480 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		9E7686F41847A35900933B3E /* PIRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIRef.h; sourceTree = "<group>"; };
 		9E7686F51847A35900933B3E /* PIRef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIRef.m; sourceTree = "<group>"; };
+		9ECDFF2818620865004AA83E /* PIFragmentLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIFragmentLink.h; path = fragments/PIFragmentLink.h; sourceTree = "<group>"; };
+		9ECDFF2918620865004AA83E /* PIFragmentLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIFragmentLink.m; path = fragments/PIFragmentLink.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +120,8 @@
 		9E69B35C18463063000B1480 /* PIAPI */ = {
 			isa = PBXGroup;
 			children = (
+				9ECDFF2818620865004AA83E /* PIFragmentLink.h */,
+				9ECDFF2918620865004AA83E /* PIFragmentLink.m */,
 				9E69B35F18463063000B1480 /* PIAPI.h */,
 				9E69B36118463063000B1480 /* PIAPI.m */,
 				9E2EE7A21850C62800E6F8F0 /* PISearchResult.h */,
@@ -201,6 +208,7 @@
 				9E69B36218463063000B1480 /* PIAPI.m in Sources */,
 				9E11277F1856187000027E01 /* PIFragmentText.m in Sources */,
 				9E112782185624C200027E01 /* PIFragmentStructuredText.m in Sources */,
+				9ECDFF2A18620865004AA83E /* PIFragmentLink.m in Sources */,
 				9E2EE7A0185091C300E6F8F0 /* PISearchForm.m in Sources */,
 				9E3144F018465F7C0017E6A6 /* PIDocument.m in Sources */,
 				9E2EE7A41850C62800E6F8F0 /* PISearchResult.m in Sources */,

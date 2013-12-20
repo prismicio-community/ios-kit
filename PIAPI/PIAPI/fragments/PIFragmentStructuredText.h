@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #import "PIFragment.h"
+#import "PIFragmentLink.h"
 
 /* spans */
 
@@ -23,6 +24,9 @@
 @end
 
 @interface PIFragmentBlockSpanStrong : NSObject <PIFragmentBlockSpan>
+@end
+
+@interface PIFragmentBlockSpanLink : NSObject <PIFragmentBlockSpan>
 @end
 
 /* block */

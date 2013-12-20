@@ -72,6 +72,43 @@
 
 @end
 
+@interface PIFragmentBlockSpanLink ()
+{
+    NSRange _range;
+    id <PIFragmentLink> _link;
+}
+@end
+
+@implementation PIFragmentBlockSpanLink
+
++ (PIFragmentBlockSpanLink *)spanWithJson:(id)jsonObject
+{
+    PIFragmentBlockSpanLink *span = [[PIFragmentBlockSpanLink alloc] init];
+    NSUInteger start = [jsonObject[@"start"] unsignedIntegerValue];
+    NSUInteger end = [jsonObject[@"end"] unsignedIntegerValue];
+    NSUInteger length = end - start;
+    span->_range = NSMakeRange(start, length);
+    span->_link = [PIFragmentLink LinkWithJson:jsonObject[@"data"]];
+    return span;
+}
+
+- (NSString *)type
+{
+    return @"hyperlink";
+}
+
+- (NSRange)range
+{
+    return _range;
+}
+
+- (id <PIFragmentLink>)link
+{
+    return _link;
+}
+
+@end
+
 /* block */
 
 @interface PIFragmentBlockSpan : NSObject
@@ -89,9 +126,9 @@
             @"strong" : ^{
                 return [PIFragmentBlockSpanStrong spanWithJson:jsonObject];
             },
-            /*@"hyperlink" : ^{
-                return [PIFragmentBlockSpanLink linkWithJson:jsonObject heading:@1];
-            },*/
+            @"hyperlink" : ^{
+                return [PIFragmentBlockSpanLink spanWithJson:jsonObject];
+            },
         }[type];
         if (selectedCase != nil) {
             span = selectedCase();
