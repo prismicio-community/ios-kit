@@ -10,6 +10,7 @@
 
 #import "PIFragmentText.h"
 #import "PIFragmentStructuredText.h"
+#import "PIFragmentImage.h"
 
 @interface PIDocument : NSObject
 

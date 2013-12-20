@@ -34,7 +34,10 @@
             },
             @"StructuredText" : ^{
                 return [PIFragmentStructuredText structuredTextWithJson:jsonObject];
-            }
+            },
+            @"Image" : ^{
+                return [PIFragmentImage imageWithJson:jsonObject[@"value"]];
+            },
         }[type];
         if (selectedCase != nil) {
             fragment = selectedCase();
