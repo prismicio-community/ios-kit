@@ -24,8 +24,8 @@
             @"paragraph" : ^{
                 return [PIFragmentBlockParagraph paragraphWithJson:jsonObject];
             },
-            @"preformated" : ^{
-                return [PIFragmentBlockPreformated preformatedWithJson:jsonObject];
+            @"preformatted" : ^{
+                return [PIFragmentBlockPreformatted preformatedWithJson:jsonObject];
             },
             @"heading1" : ^{
                 return [PIFragmentBlockHeading headingWithJson:jsonObject heading:@1];

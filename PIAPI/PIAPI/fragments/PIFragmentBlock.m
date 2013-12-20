@@ -49,17 +49,17 @@
 
 @end
 
-@interface PIFragmentBlockPreformated ()
+@interface PIFragmentBlockPreformatted ()
 {
     NSString *_text;
     NSMutableArray *_spans;
 }
 @end
-@implementation PIFragmentBlockPreformated
+@implementation PIFragmentBlockPreformatted
 
-+ (PIFragmentBlockPreformated *)preformatedWithJson:(id)jsonObject
++ (PIFragmentBlockPreformatted *)preformatedWithJson:(id)jsonObject
 {
-    PIFragmentBlockPreformated *preformated = [[PIFragmentBlockPreformated alloc] init];
+    PIFragmentBlockPreformatted *preformated = [[PIFragmentBlockPreformatted alloc] init];
     preformated->_text = jsonObject[@"text"];
     preformated->_spans = [[NSMutableArray alloc] init];
     NSArray *spans = jsonObject[@"spans"];
