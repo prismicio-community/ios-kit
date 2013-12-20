@@ -19,8 +19,6 @@
 }
 @end
 
-
-
 @implementation PIDocument
 
 + (id <PIFragment>)parseFragment:(id)jsonObject

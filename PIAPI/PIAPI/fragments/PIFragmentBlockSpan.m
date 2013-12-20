@@ -54,13 +54,13 @@
     NSArray *spans = [block spans];
     for (id <PIFragmentBlockSpan> span in spans) {
         void (^selectedCase)() = @{
-                                   @"em" : ^{
-                                       [content addAttributes:boldAttributes range:[span range]];
-                                   },
-                                   @"strong" : ^{
-                                       [content addAttributes:italicAttributes range:[span range]];
-                                   },
-                                   }[[span type]];
+            @"em" : ^{
+                [content addAttributes:boldAttributes range:[span range]];
+            },
+            @"strong" : ^{
+                [content addAttributes:italicAttributes range:[span range]];
+            },
+        }[[span type]];
         if (selectedCase != nil) {
             selectedCase();
         }
