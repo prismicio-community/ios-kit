@@ -22,22 +22,22 @@
         NSString *type = jsonObject[@"type"];
         id <PIFragmentBlock> (^selectedCase)() = @{
             @"paragraph" : ^{
-                return [PIFragmentBlockParagraph paragraphWithJson:jsonObject];
+                return [PIFragmentBlockParagraph blockWithJson:jsonObject];
             },
             @"preformatted" : ^{
-                return [PIFragmentBlockPreformatted preformatedWithJson:jsonObject];
+                return [PIFragmentBlockPreformatted blockWithJson:jsonObject];
             },
             @"heading1" : ^{
-                return [PIFragmentBlockHeading headingWithJson:jsonObject heading:@1];
+                return [PIFragmentBlockHeading blockWithJson:jsonObject heading:@1];
             },
             @"heading2" : ^{
-                return [PIFragmentBlockHeading headingWithJson:jsonObject heading:@2];
+                return [PIFragmentBlockHeading blockWithJson:jsonObject heading:@2];
             },
             @"heading3" : ^{
-                return [PIFragmentBlockHeading headingWithJson:jsonObject heading:@3];
+                return [PIFragmentBlockHeading blockWithJson:jsonObject heading:@3];
             },
             @"heading4" : ^{
-                return [PIFragmentBlockHeading headingWithJson:jsonObject heading:@4];
+                return [PIFragmentBlockHeading blockWithJson:jsonObject heading:@4];
             },
         }[type];
         if (selectedCase != nil) {
