@@ -33,3 +33,11 @@
 + (PIFragmentBlockHeading *)blockWithJson:(id)jsonObject heading:(NSNumber *)heading;
 - (NSNumber *)heading;
 @end
+
+@interface PIFragmentBlockListItem : NSObject <PIFragmentBlockText>
++ (PIFragmentBlockListItem *)blockWithJson:(id)jsonObject;
+@end
+
+@interface PIFragmentBlockOrderedListItem : NSObject <PIFragmentBlockText>
++ (PIFragmentBlockOrderedListItem *)blockWithJson:(id)jsonObject;
+@end

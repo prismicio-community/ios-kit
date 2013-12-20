@@ -39,6 +39,12 @@
             @"heading4" : ^{
                 return [PIFragmentBlockHeading blockWithJson:jsonObject heading:@4];
             },
+            @"list-item" : ^{
+                return [PIFragmentBlockListItem blockWithJson:jsonObject];
+            },
+            @"o-list-item" : ^{
+                return [PIFragmentBlockOrderedListItem blockWithJson:jsonObject];
+            },
         }[type];
         if (selectedCase != nil) {
             block = selectedCase();

@@ -143,3 +143,86 @@
 }
 
 @end
+
+@interface PIFragmentBlockListItem ()
+{
+    NSString *_text;
+    NSMutableArray *_spans;
+}
+@end
+@implementation PIFragmentBlockListItem
+
++ (PIFragmentBlockListItem *)blockWithJson:(id)jsonObject
+{
+    PIFragmentBlockListItem *listBlock = [[PIFragmentBlockListItem alloc] init];
+    listBlock->_text = jsonObject[@"text"];
+    listBlock->_spans = [[NSMutableArray alloc] init];
+    NSArray *spans = jsonObject[@"spans"];
+    for (id jsonSpan in spans) {
+        PIFragmentBlockSpan *span = [PIFragmentBlockSpan spanWithJson:jsonSpan];
+        if (span != nil) {
+            [listBlock->_spans addObject:span];
+        }
+    }
+    return listBlock;
+}
+
+- (NSString *)text
+{
+    return _text;
+}
+
+- (NSArray *)spans
+{
+    return _spans;
+}
+
+- (NSAttributedString *)formattedText
+{
+    UIFontDescriptor* fontDescriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontTextStyleBody];
+    return [PIFragmentBlockSpan formatText:self fontDescriptor:fontDescriptor];
+}
+
+@end
+
+@interface PIFragmentBlockOrderedListItem ()
+{
+    NSString *_text;
+    NSMutableArray *_spans;
+}
+@end
+@implementation PIFragmentBlockOrderedListItem
+
++ (PIFragmentBlockOrderedListItem *)blockWithJson:(id)jsonObject
+{
+    PIFragmentBlockOrderedListItem *orderedListBlock = [[PIFragmentBlockOrderedListItem alloc] init];
+    orderedListBlock->_text = jsonObject[@"text"];
+    orderedListBlock->_spans = [[NSMutableArray alloc] init];
+    NSArray *spans = jsonObject[@"spans"];
+    for (id jsonSpan in spans) {
+        PIFragmentBlockSpan *span = [PIFragmentBlockSpan spanWithJson:jsonSpan];
+        if (span != nil) {
+            [orderedListBlock->_spans addObject:span];
+        }
+    }
+    return orderedListBlock;
+}
+
+- (NSString *)text
+{
+    return _text;
+}
+
+- (NSArray *)spans
+{
+    return _spans;
+}
+
+- (NSAttributedString *)formattedText
+{
+    UIFontDescriptor* fontDescriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontTextStyleBody];
+    return [PIFragmentBlockSpan formatText:self fontDescriptor:fontDescriptor];
+}
+
+@end
+
