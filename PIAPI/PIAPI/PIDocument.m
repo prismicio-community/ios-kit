@@ -42,6 +42,9 @@
             @"Color" : ^{
                 return [PIFragmentColor colorWithJson:jsonObject];
             },
+            @"Date" : ^{
+                return [PIFragmentDate dateWithJson:jsonObject];
+            },
         }[type];
         if (selectedCase != nil) {
             fragment = selectedCase();

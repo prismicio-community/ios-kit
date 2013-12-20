@@ -13,6 +13,7 @@
 #import "PIFragmentImage.h"
 #import "PIFragmentSelect.h"
 #import "PIFragmentColor.h"
+#import "PIFragmentDate.h"
 
 @interface PIDocument : NSObject
 
