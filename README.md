@@ -6,22 +6,31 @@
 
 #### Getting started with prismic.io
 
-On our [prismic.io developer's portal](https://developers.prismic.io/), on top of the complete documentation, you will:
- * get a better understanding of [what prismic.io is and how to get started with it](https://developers.prismic.io/documentation/UjBaQsuvzdIHvE4D/getting-started).
- * get a thorough understanding of [how prismic.io kits work](https://developers.prismic.io/documentation/UjBe8bGIJ3EKtgBZ/api-documentation#kits-and-helpers), including this one. There's some specificities for iOS's case, described below.
- * see [what else is available for iOS](https://developers.prismic.io/technologies/TODO).
+You can find out [how to get started with prismic.io](https://developers.prismic.io/documentation/UjBaQsuvzdIHvE4D/getting-started) on our [prismic.io developer's portal](https://developers.prismic.io/).
 
-#### Kit documentation
+#### Get started using the kit
 
-:: TODO ::
+Also on our [prismic.io developer's portal](https://developers.prismic.io/), on top of our full documentation, you will:
+ * get a thorough introduction of [how to use prismic.io kits](https://developers.prismic.io/documentation/UjBe8bGIJ3EKtgBZ/api-documentation#kits-and-helpers), including this one.
+ * :: TODO ::
 
-##### iOS kit's specificities
-
-:: TODO ::
-
-#### Use it
+#### Kit's detailed documentation
 
 :: TODO ::
+
+### Changelog
+
+Need to see what changed, or to upgrade your kit? We keep our changelog on [this repository's "Releases" tab](https://github.com/prismicio/ios-kit/releases).
+
+### Contribute to the kit
+
+Contribution is open to all developer levels, read our "[Contribute to the official kits](https://developers.prismic.io/documentation/UszOeAEAANUlwFpp/contribute-to-the-official-kits)" documentation to learn more.
+
+#### Documentation
+
+Please document any bugfix or new feature. Don't worry about generating the doc, we'll take care of that.
+
+If you find existing code that is not optimally documented and wish to make it better, we really appreciate it; but you should document it on its own branch and its own pull request.
 
 ### Licence
 
