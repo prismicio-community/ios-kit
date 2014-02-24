@@ -26,26 +26,23 @@
 
 @interface PIAPI ()
 {
-
-    NSURL *_url;
-    NSString *_accessToken;
-    
-    NSMutableDictionary *_refs;
-    PIRef *_masterRef;
-    NSMutableDictionary *_bookmarks;
-    NSMutableDictionary *_types;
-    NSMutableArray *_tags;
     NSMutableDictionary *_forms;
-    
     NSString *_oauthInitiate;
     NSString *_oauthToken;
-
 }
 @end
 
 @implementation PIAPI
 
-+ (PIAPI *)apiWithURL:(NSURL *)url error:(NSError **)error
+@synthesize url = _url;
+@synthesize accessToken = _accessToken;
+@synthesize refs = _refs;
+@synthesize masterRef = _masterRef;
+@synthesize bookmarks = _bookmarks;
+@synthesize types = _types;
+@synthesize tags = _tags;
+
++ (PIAPI *)ApiWithURL:(NSURL *)url error:(NSError **)error
 {
     // Send a synchronous request
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
@@ -56,7 +53,7 @@
                                          returningResponse:&response
                                                      error:&localError];
     if (localError == nil) {
-        PIAPI *api = [PIAPI apiWithJsonString:data error:&localError];
+        PIAPI *api = [PIAPI ApiWithJsonString:data error:&localError];
         if (localError == nil) {
             api->_url = url;
             return api;
@@ -73,13 +70,13 @@
     }
 }
 
-+ (PIAPI *)apiWithURL:(NSURL *)url andAccessToken:(NSString *)accessToken error:(NSError **)error
++ (PIAPI *)ApiWithURL:(NSURL *)url andAccessToken:(NSString *)accessToken error:(NSError **)error
 {
     
     NSError *localError = nil;
     NSString *query = [[NSString alloc] initWithFormat:@"%@=%@", @"access_token", accessToken];
     NSURL *urlWithQuery = [url URLByAppendingQueryString: query];
-    PIAPI *api = [PIAPI apiWithURL:urlWithQuery error:&localError];
+    PIAPI *api = [PIAPI ApiWithURL:urlWithQuery error:&localError];
     if (localError == nil) {
         api->_accessToken = accessToken;
         api->_url = url;  // stores the URL without the accessToken part
@@ -91,14 +88,14 @@
     }
 }
 
-+ (PIAPI *)apiWithJsonString:(id)jsonString error:(NSError **)error
++ (PIAPI *)ApiWithJsonString:(id)jsonString error:(NSError **)error
 {
     NSError * localError = nil;
     id jsonObjects = [NSJSONSerialization JSONObjectWithData:jsonString
                                                      options:NSJSONReadingMutableContainers
                                                        error:&localError];
     if (localError == nil) {
-        PIAPI *api = [PIAPI apiWithJson: jsonObjects];
+        PIAPI *api = [PIAPI ApiWithJson: jsonObjects];
         return api;
     }
     else {
@@ -107,52 +104,61 @@
     }
 }
 
-+ (PIAPI *)apiWithJson:(id)jsonObjects
++ (PIAPI *)ApiWithJson:(id)jsonObjects
 {
-    PIAPI *api = [[PIAPI alloc] init];
+    return [[PIAPI alloc] initWithJson:jsonObjects];
+}
+
+- (PIAPI *)initWithJson:(id)jsonObjects
+{
+    self = [self init];
     
-    api->_refs = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *refs = [[NSMutableDictionary alloc] init];
     NSArray *refsJson = jsonObjects[@"refs"];
     for (id refJson in refsJson) {
-        PIRef *ref = [PIRef refWithJson:refJson];
-        if ([ref isMasterRef]) {
-            api->_masterRef = ref;
+        PIRef *ref = [PIRef RefWithJson:refJson];
+        if (ref.isMasterRef) {
+            _masterRef = ref;
         }
-        api->_refs[[ref label]] = ref;
+        refs[ref.label] = ref;
     }
-    
-    api->_bookmarks = [[NSMutableDictionary alloc] init];
-    NSDictionary *bookmarks = jsonObjects[@"bookmarks"];
-    for (NSString *bookmarkName in bookmarks) {
-        NSString *bookmark = bookmarks[bookmarkName];
-        api->_bookmarks[bookmarkName] = bookmark;
+    _refs = refs;
+
+    NSMutableDictionary *bookmarks = [[NSMutableDictionary alloc] init];
+    NSDictionary *bookmarkFields = jsonObjects[@"bookmarks"];
+    for (NSString *bookmarkName in bookmarkFields) {
+        NSString *bookmark = bookmarkFields[bookmarkName];
+        bookmarks[bookmarkName] = bookmark;
     }
+    _bookmarks = bookmarks;
     
-    api->_types = [[NSMutableDictionary alloc] init];
-    NSDictionary *types = jsonObjects[@"types"];
-    for (NSString *typeName in types) {
-        NSString *type = types[typeName];
-        api->_types[typeName] = type;
+    NSMutableDictionary *types = [[NSMutableDictionary alloc] init];
+    NSDictionary *typeFields = jsonObjects[@"types"];
+    for (NSString *typeName in typeFields) {
+        NSString *type = typeFields[typeName];
+        types[typeName] = type;
     }
+    _types = types;
     
-    api->_tags = [[NSMutableArray alloc] init];
-    NSArray *tags = jsonObjects[@"tags"];
-    for (NSString *tag in tags) {
-        [api->_tags addObject:tag];
+    NSMutableArray *tags = [[NSMutableArray alloc] init];
+    NSArray *tagFields = jsonObjects[@"tags"];
+    for (NSString *tag in tagFields) {
+        [tags addObject:tag];
     }
+    _tags = tags;
     
-    api->_forms = [[NSMutableDictionary alloc] init];
+    _forms = [[NSMutableDictionary alloc] init];
     NSDictionary *forms = jsonObjects[@"forms"];
     for (NSString *formName in forms) {
         NSDictionary *formJson = forms[formName];
-        PIForm *form = [PIForm formWithJson:formJson name:formName];
-        api->_forms[formName] = form;
+        PIForm *form = [PIForm FormWithJson:formJson name:formName];
+        _forms[formName] = form;
     }
     
-    api->_oauthInitiate = jsonObjects[@"oauth_initiate"];
-    api->_oauthToken = jsonObjects[@"oauth_token"];
+    _oauthInitiate = jsonObjects[@"oauth_initiate"];
+    _oauthToken = jsonObjects[@"oauth_token"];
     
-    return api;
+    return self;
 }
 
 - (NSURL *)url
@@ -221,7 +227,7 @@
 
 - (NSString *)masterRefName
 {
-    return [_masterRef ref];
+    return _masterRef.ref;
 }
 
 - (NSString *)bookmarkForName:(NSString *)name
@@ -242,7 +248,7 @@
 - (PISearchForm *)searchFormForName:(NSString *)name
 {
     PIForm *form = [self formForName:name];
-    return [PISearchForm searchFormWithApi:self form:form];
+    return [PISearchForm SearchFormWithApi:self form:form];
 }
 
 @end

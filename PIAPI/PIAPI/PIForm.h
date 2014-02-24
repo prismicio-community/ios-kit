@@ -10,24 +10,25 @@
 
 @interface PIField : NSObject
 
-+ (PIField *)fieldWithJson:(NSDictionary *)jsonObject name:(NSString *)name;
++ (PIField *)FieldWithJson:(NSDictionary *)jsonObject name:(NSString *)name;
 
-- (NSString *)type;
-- (NSString *)fieldDefault;
-- (BOOL)isMultiple;
+@property (nonatomic, readonly) NSString *name;
+@property (nonatomic, readonly) NSString *type;
+@property (nonatomic, readonly) NSString *defaultValue;
+@property (nonatomic, readonly, getter=isMultiple) BOOL multiple;
 
 @end
 
 @interface PIForm : NSObject
 
-+ (PIForm *)formWithJson:(NSDictionary *)jsonObject name:(NSString *)name;
++ (PIForm *)FormWithJson:(NSDictionary *)jsonObject name:(NSString *)name;
 
-- (NSString *)name;
-- (NSString *)method;
-- (NSString *)rel;
-- (NSString *)enctype;
-- (NSString *)action;
-- (NSDictionary *)fields;
+@property (nonatomic, readonly) NSString *name;
+@property (nonatomic, readonly) NSString *method;
+@property (nonatomic, readonly) NSString *rel;
+@property (nonatomic, readonly) NSString *enctype;
+@property (nonatomic, readonly) NSString *action;
+@property (nonatomic, readonly) NSDictionary *fields;
 
 - (PIField *)fieldForName:(NSString *)name;
 

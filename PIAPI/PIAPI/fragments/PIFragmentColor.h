@@ -9,8 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface PIFragmentColor : NSObject
-+ (PIFragmentColor *)colorWithJson:(id)jsonObject;
+
++ (PIFragmentColor *)ColorWithJson:(id)jsonObject;
+
 - (NSString *)value;
 - (NSString *)text;
 - (UIColor *)Color;
+
 @end

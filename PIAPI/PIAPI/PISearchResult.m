@@ -12,96 +12,46 @@
 
 @class PIDocument;
 
-@interface PISearchResult ()
-{
-    NSMutableArray *_results;
-    NSNumber *_page;
-    NSNumber *_resultsPerPage;
-    NSNumber *_resultsSize;
-    NSNumber *_totalPages;
-    NSNumber *_totalResultsSize;
-    NSURL *_prevPage;
-    NSURL *_nextPage;
-}
-
-@end
-
 @implementation PISearchResult
 
-+ (PISearchResult *)SearchResultFromJson:(id)jsonObject
-{
-    PISearchResult *searchResult = [[PISearchResult alloc] init];
-    
-    searchResult->_results = [[NSMutableArray alloc] init];
-    NSArray *results = jsonObject[@"results"];
-    for (id result in results) {
-        PIDocument *document = [PIDocument documentWithJson:result];
-        [searchResult->_results addObject:document];
-    }
+@synthesize results = _results;
+@synthesize page = _page;
+@synthesize resultsPerPage = _resultsPerPage;
+@synthesize resultsSize = _resultsSize;
+@synthesize totalPages = _totalPages;
+@synthesize totalResultsSize = _totalResultsSize;
+@synthesize prevPage = _prevPage;
+@synthesize nextPage = _nextPage;
 
-    searchResult->_page = jsonObject[@"page"];
-    searchResult->_resultsPerPage = jsonObject[@"results_per_page"];
-    searchResult->_resultsSize = jsonObject[@"results_size"];
-    searchResult->_totalPages = jsonObject[@"total_pages"];
-    searchResult->_totalResultsSize = jsonObject[@"total_results_size"];
++ (PISearchResult *)SearchResultWithJson:(id)jsonObject
+{
+    return [[PISearchResult alloc] initWithJson:jsonObject];
+}
+
+- (PISearchResult *)initWithJson:(id)jsonObject
+{
+    self = [self init];
+    
+    NSMutableArray *results = [[NSMutableArray alloc] init];
+    NSArray *resultFields = jsonObject[@"results"];
+    for (id resultField in resultFields) {
+        PIDocument *document = [PIDocument DocumentWithJson:resultField];
+        [results addObject:document];
+    }
+    _results = results;
+
+    _page = jsonObject[@"page"];
+    _resultsPerPage = jsonObject[@"results_per_page"];
+    _resultsSize = jsonObject[@"results_size"];
+    _totalPages = jsonObject[@"total_pages"];
+    _totalResultsSize = jsonObject[@"total_results_size"];
     
     id prevPage = jsonObject[@"prev_page"];
-    if (prevPage != [NSNull null]) {
-        searchResult->_prevPage = [NSURL URLWithString:prevPage];
-    }
+    _prevPage = prevPage != [NSNull null] ? [NSURL URLWithString:prevPage] : nil;
     id nextPage = jsonObject[@"next_page"];
-    if (nextPage != [NSNull null]) {
-        searchResult->_nextPage = [NSURL URLWithString:nextPage];
-    }
+    _nextPage = nextPage != [NSNull null] ? [NSURL URLWithString:nextPage] : nil;
     
-    return searchResult;
+    return self;
 }
-
-- (NSMutableArray *)results
-{
-    return _results;
-}
-
-- (NSNumber *)page
-{
-    return _page;
-}
-
-
-- (NSNumber *)resultsPerPage
-{
-    return _resultsPerPage;
-}
-
-
-- (NSNumber *)resultsSize
-{
-    return _resultsSize;
-}
-
-
-- (NSNumber *)totalPages
-{
-    return _totalPages;
-}
-
-
-- (NSNumber *)totalResultsSize
-{
-    return _totalResultsSize;
-}
-
-
-- (NSURL *)prevPage
-{
-    return _prevPage;
-}
-
-
-- (NSURL *)nextPage
-{
-    return _nextPage;
-}
-
 
 @end

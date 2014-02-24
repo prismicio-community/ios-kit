@@ -9,7 +9,10 @@
 #import <Foundation/Foundation.h>
 
 @interface PIFragmentSelect : NSObject
-+ (PIFragmentSelect *)selectWithJson:(id)jsonObject;
+
++ (PIFragmentSelect *)SelectWithJson:(id)jsonObject;
+
 - (NSString *)value;
 - (NSString *)text;
+
 @end

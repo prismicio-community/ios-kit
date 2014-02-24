@@ -16,7 +16,7 @@
 
 @implementation PIFragmentSelect
 
-+ (PIFragmentSelect *)selectWithJson:(id)jsonObject
++ (PIFragmentSelect *)SelectWithJson:(id)jsonObject
 {
     PIFragmentSelect *select = [[PIFragmentSelect alloc] init];
     select->_value = jsonObject[@"value"];

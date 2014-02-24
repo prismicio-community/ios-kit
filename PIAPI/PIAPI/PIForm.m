@@ -8,110 +8,63 @@
 
 #import "PIForm.h"
 
-@interface PIField ()
-{
-    NSString *_name;
-    NSString *_type;
-    NSString *_default;
-    BOOL _multiple;
-}
-@end
-
 @implementation PIField
 
-+ (PIField *)fieldWithJson:(NSDictionary *)jsonObject name:(NSString *)name
+@synthesize name = _name;
+@synthesize type = _type;
+@synthesize defaultValue = _defaultValue;
+@synthesize multiple = _multiple;
+
++ (PIField *)FieldWithJson:(NSDictionary *)jsonObject name:(NSString *)name
 {
-    PIField *field = [[PIField alloc] init];
-    field->_name = name;
-    field->_type = jsonObject[@"type"];
-    field->_default = jsonObject[@"default"];
+    return [[PIField alloc] initWithJson:jsonObject name:name];
+}
+
+- (PIField *)initWithJson:(NSDictionary *)jsonObject name:(NSString *)name
+{
+    self = [self init];
+    _name = name;
+    _type = jsonObject[@"type"];
+    _defaultValue = jsonObject[@"default"];
     NSNumber *multiple = jsonObject[@"multiple"];
-    field->_multiple = multiple && multiple.boolValue;;
-    return field;
+    _multiple = multiple && multiple.boolValue;;
+    return self;
 }
 
-- (NSString *)name
-{
-    return _name;
-}
-
-- (NSString *)type
-{
-    return _type;
-}
-
-- (NSString *)fieldDefault
-{
-    return _default;
-}
-
-- (BOOL)isMultiple
-{
-    return _multiple;
-}
-
-@end
-
-@interface PIForm ()
-{
-    NSString *_name;
-    NSString *_method;
-    NSString *_rel;
-    NSString *_enctype;
-    NSString *_action;
-    NSDictionary *_fields;
-}
 @end
 
 @implementation PIForm
 
-+ (PIForm *)formWithJson:(NSDictionary *)jsonObject name:(NSString *)name
+@synthesize name = _name;
+@synthesize method = _method;
+@synthesize rel = _rel;
+@synthesize enctype = _enctype;
+@synthesize action = _action;
+@synthesize fields = _fields;
+
++ (PIForm *)FormWithJson:(NSDictionary *)jsonObject name:(NSString *)name
 {
-    PIForm *form = [[PIForm alloc] init];
-    form->_name = name;
-    form->_method = jsonObject[@"method"];
-    form->_rel = jsonObject[@"rel"];
-    form->_enctype = jsonObject[@"enctype"];
-    form->_action = jsonObject[@"action"];
+    return [[PIForm alloc] initWithJson:jsonObject name:name];
+}
+
+- (PIForm *)initWithJson:(NSDictionary *)jsonObject name:(NSString *)name
+{
+    self = [self init];
+    _name = name;
+    _method = jsonObject[@"method"];
+    _rel = jsonObject[@"rel"];
+    _enctype = jsonObject[@"enctype"];
+    _action = jsonObject[@"action"];
     NSDictionary *fieldsJson = jsonObject[@"fields"];
     NSMutableDictionary *fields = [[NSMutableDictionary alloc] init];
-    form->_fields = fields;
     for (NSString *fieldName in fieldsJson) {
         NSDictionary *fieldJson = fieldsJson[fieldName];
-        PIField *field = [PIField fieldWithJson:fieldJson name:fieldName];
+        PIField *field = [PIField FieldWithJson:fieldJson name:fieldName];
         fields[fieldName] = field;
     }
-    return form;
-}
+    _fields = fields;
 
-- (NSString *)name
-{
-    return _name;
-}
-
-- (NSString *)method
-{
-    return _method;
-}
-
-- (NSString *)rel
-{
-    return _rel;
-}
-
-- (NSString *)enctype
-{
-    return _enctype;
-}
-
-- (NSString *)action
-{
-    return _action;
-}
-
-- (NSDictionary *)fields
-{
-    return _fields;
+    return self;
 }
 
 - (PIField *)fieldForName:(NSString *)name

@@ -17,19 +17,14 @@
 
 @interface PIDocument : NSObject
 
-+ (PIDocument *)documentWithJson:(id)jsonObject;
++ (PIDocument *)DocumentWithJson:(id)jsonObject;
 
-- (NSMutableDictionary *)data;
-
-- (NSURL *)href;
-
-- (NSString *)id;
-
-- (NSMutableArray *)slugs;
-
-- (NSMutableArray *)tags;
-
-- (NSString *)type;
+@property (nonatomic, readonly) NSDictionary *data;
+@property (nonatomic, readonly) NSURL *href;
+@property (nonatomic, readonly) NSString *id;
+@property (nonatomic, readonly) NSArray *slugs;
+@property (nonatomic, readonly) NSArray *tags;
+@property (nonatomic, readonly) NSString *type;
 
 - (PIFragmentBlockHeading *)firstTitleObject;
 

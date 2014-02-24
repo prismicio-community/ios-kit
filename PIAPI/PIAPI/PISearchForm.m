@@ -40,7 +40,7 @@
 
 @implementation PIFormDatum
 
-+ (PIFormDatum *)formDatumWithName:(NSString *)name
++ (PIFormDatum *)FormDatumWithName:(NSString *)name
 {
     PIFormDatum *datum = [[PIFormDatum alloc] init];
     datum->_name = name;
@@ -68,7 +68,7 @@
 
 @implementation PIFormData
 
-+ (PIFormData *)formDataWithName:(NSString *)name
++ (PIFormData *)FormDataWithName:(NSString *)name
 {
     PIFormData *data = [[PIFormData alloc] init];
     data->_name = name;
@@ -101,18 +101,17 @@
 
 @implementation PISearchForm
 
-+ (PISearchForm *)searchFormWithApi:(PIAPI *)api form:(PIForm *)form
++ (PISearchForm *)SearchFormWithApi:(PIAPI *)api form:(PIForm *)form
 {
     PISearchForm *searchForm = [[PISearchForm alloc] init];
     searchForm->_api = api;
     searchForm->_form = form;
     searchForm->_data = [[NSMutableDictionary alloc] init];
-    NSDictionary *fields = [searchForm->_form fields];
+    NSDictionary *fields = searchForm->_form.fields;
     for (NSString *fieldName in fields) {
         PIField *field = fields[fieldName];
-        id fieldDefault = [field fieldDefault];
-        if (fieldDefault) {
-            [searchForm setValue:fieldDefault forKey:fieldName];
+        if (field.defaultValue) {
+            [searchForm setValue:field.defaultValue forKey:fieldName];
         }
     }
     return searchForm;
@@ -123,10 +122,10 @@
     id <PIFormData> data = _data[key];
     if (!data) {
         if ([self isMultiple:key]) {
-            data = [PIFormData formDataWithName:key];
+            data = [PIFormData FormDataWithName:key];
         }
         else {
-            data = [PIFormDatum formDatumWithName:key];
+            data = [PIFormDatum FormDatumWithName:key];
         }
         _data[key] = data;
     }
@@ -145,7 +144,7 @@
 
 - (void)setRefObject:(PIRef *)ref
 {
-    [self setRef:[ref ref]];
+    [self setRef:ref.ref];
 }
 
 - (void)setRef:(NSString *)ref
@@ -164,8 +163,8 @@
                                         userInfo:errorDictionary];
         return nil;
     }
-    NSString *formMethod = [_form method];
-    NSString *formEnctype = [_form enctype];
+    NSString *formMethod = _form.method;
+    NSString *formEnctype = _form.enctype;
     if ([formMethod isEqualToString:@"GET"] && [formEnctype isEqualToString:@"application/x-www-form-urlencoded"]) {
         NSString *accessToken = _api.accessToken;
         NSURL *url = [NSURL URLWithString:_form.action];
@@ -187,7 +186,7 @@
                                                              options:NSJSONReadingMutableContainers
                                                                error:&localError];
             if (localError == nil) {
-                PISearchResult *result = [PISearchResult SearchResultFromJson:jsonObjects];
+                PISearchResult *result = [PISearchResult SearchResultWithJson:jsonObjects];
                 return result;
             }
             else {
@@ -203,7 +202,7 @@
     else {
         NSString *description = NSLocalizedString(@"Form's method or enctype not handled", @"");
         NSDictionary *errorDictionary = @{NSLocalizedDescriptionKey : description,
-                                          @"formName" : [_form name],
+                                          @"formName" : _form.name,
                                           @"formMethod" : formMethod,
                                           @"formEnctype" : formEnctype};
         *error = [[NSError alloc] initWithDomain:@"prismic.io"
@@ -231,7 +230,7 @@
 {
     PIField *field = [_form fieldForName:fieldName];
     if (field) {
-        return [field isMultiple];
+        return field.isMultiple;
     }
     else {
         return false;

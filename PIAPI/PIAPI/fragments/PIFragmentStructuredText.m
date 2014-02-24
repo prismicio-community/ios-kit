@@ -22,28 +22,28 @@
         NSString *type = jsonObject[@"type"];
         id <PIFragmentBlock> (^selectedCase)() = @{
             @"paragraph" : ^{
-                return [PIFragmentBlockParagraph blockWithJson:jsonObject];
+                return [PIFragmentBlockParagraph BlockWithJson:jsonObject];
             },
             @"preformatted" : ^{
-                return [PIFragmentBlockPreformatted blockWithJson:jsonObject];
+                return [PIFragmentBlockPreformatted BlockWithJson:jsonObject];
             },
             @"heading1" : ^{
-                return [PIFragmentBlockHeading blockWithJson:jsonObject heading:@1];
+                return [PIFragmentBlockHeading BlockWithJson:jsonObject heading:@1];
             },
             @"heading2" : ^{
-                return [PIFragmentBlockHeading blockWithJson:jsonObject heading:@2];
+                return [PIFragmentBlockHeading BlockWithJson:jsonObject heading:@2];
             },
             @"heading3" : ^{
-                return [PIFragmentBlockHeading blockWithJson:jsonObject heading:@3];
+                return [PIFragmentBlockHeading BlockWithJson:jsonObject heading:@3];
             },
             @"heading4" : ^{
-                return [PIFragmentBlockHeading blockWithJson:jsonObject heading:@4];
+                return [PIFragmentBlockHeading BlockWithJson:jsonObject heading:@4];
             },
             @"list-item" : ^{
-                return [PIFragmentBlockListItem blockWithJson:jsonObject];
+                return [PIFragmentBlockListItem BlockWithJson:jsonObject];
             },
             @"o-list-item" : ^{
-                return [PIFragmentBlockOrderedListItem blockWithJson:jsonObject];
+                return [PIFragmentBlockOrderedListItem BlockWithJson:jsonObject];
             },
         }[type];
         if (selectedCase != nil) {
@@ -56,7 +56,7 @@
     return block;
 }
 
-+ (PIFragmentStructuredText *)structuredTextWithJson:(id)jsonObject
++ (PIFragmentStructuredText *)StructuredTextWithJson:(id)jsonObject
 {
     PIFragmentStructuredText *structuredText = [[PIFragmentStructuredText alloc] init];
     

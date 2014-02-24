@@ -8,20 +8,14 @@
 
 #import "PIFragmentImage.h"
 
-@interface Dimensions ()
-{
-    NSUInteger _width;
-    NSUInteger _height;
-}
-@end
 @implementation Dimensions
+
+@synthesize width = _width;
+@synthesize height = _height;
 
 + (Dimensions *)DimensionsWithWidth:(NSUInteger)width height:(NSUInteger)height
 {
-    Dimensions *dimension = [[Dimensions alloc] init];
-    dimension->_width = width;
-    dimension->_height = height;
-    return dimension;
+    return [[Dimensions alloc] initWithWidth:width height:height];
 }
 
 + (Dimensions *)DimensionsWithJson:(id)jsonObject
@@ -31,56 +25,36 @@
     return [self DimensionsWithWidth:[width unsignedIntegerValue] height:[height unsignedIntegerValue]];
 }
 
-- (NSUInteger)width
+- (Dimensions *)initWithWidth:(NSUInteger)width height:(NSUInteger)height
 {
-    return _width;
-}
-
-- (NSUInteger)height;
-{
-    return _height;
+    self = [self init];
+    _width = width;
+    _height = height;
+    return self;
 }
 
 @end
 
-@interface PIFragmentImageView ()
-{
-    NSURL *_url;
-    NSString *_alt;
-    NSString *_copyright;
-    Dimensions *_dimensions;
-}
-@end
 @implementation PIFragmentImageView
+
+@synthesize url = _url;
+@synthesize alt = _alt;
+@synthesize copyright = _copyright;
+@synthesize dimensions = _dimensions;
 
 + (PIFragmentImageView *)ViewWithJson:(id)jsonObject
 {
-    PIFragmentImageView *view = [[PIFragmentImageView alloc] init];
-    view->_url = jsonObject[@"url"];
-    view->_alt = jsonObject[@"alt"];
-    view->_copyright = jsonObject[@"copyright"];
-    view->_dimensions = [Dimensions DimensionsWithJson:jsonObject[@"dimensions"]];
-    return view;
+    return [[PIFragmentImageView alloc] initWithJson:jsonObject];
 }
 
-- (NSURL *)url;
+- (PIFragmentImageView *)initWithJson:(id)jsonObject
 {
-    return _url;
-}
-
-- (NSString *)alt;
-{
-    return _alt;
-}
-
-- (NSString *)copyright;
-{
-    return _copyright;
-}
-
-- (Dimensions *)dimensions;
-{
-    return _dimensions;
+    self = [self init];
+    _url = jsonObject[@"url"];
+    _alt = jsonObject[@"alt"];
+    _copyright = jsonObject[@"copyright"];
+    _dimensions = [Dimensions DimensionsWithJson:jsonObject[@"dimensions"]];
+    return self;
 }
 
 @end

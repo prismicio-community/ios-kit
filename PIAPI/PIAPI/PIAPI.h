@@ -22,15 +22,17 @@
 
 @interface PIAPI : NSObject
 
-+ (PIAPI *)apiWithURL:(NSURL *)url error:(NSError **)error;
-+ (PIAPI *)apiWithURL:(NSURL *)url andAccessToken:(NSString *)accessToken error:(NSError **)error;
++ (PIAPI *)ApiWithURL:(NSURL *)url error:(NSError **)error;
++ (PIAPI *)ApiWithURL:(NSURL *)url andAccessToken:(NSString *)accessToken error:(NSError **)error;
 
-- (NSURL *)url;
-- (NSString *)accessToken;
-- (NSDictionary *)refs;
-- (NSDictionary *)bookmarks;
-- (NSDictionary *)types;
-- (NSArray *)tags;
+@property (nonatomic, readonly) NSURL *url;
+@property (nonatomic, readonly) NSString *accessToken;
+@property (nonatomic, readonly) NSDictionary *refs;
+@property (nonatomic, readonly) PIRef *masterRef;
+@property (nonatomic, readonly) NSDictionary *bookmarks;
+@property (nonatomic, readonly) NSDictionary *types;
+@property (nonatomic, readonly) NSArray *tags;
+
 - (NSDictionary *)forms;
 - (NSString *)oauthInitiate;
 - (NSString *)oauthToken;

@@ -16,7 +16,7 @@
 
 @implementation PIFragmentText
 
-+ (PIFragmentText *)textWithJson:(id)jsonObject
++ (PIFragmentText *)TextWithJson:(id)jsonObject
 {
     PIFragmentText *text = [[PIFragmentText alloc] init];
     text->_value = jsonObject[@"value"];

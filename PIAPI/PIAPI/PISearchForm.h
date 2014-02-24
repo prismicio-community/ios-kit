@@ -20,7 +20,7 @@
 
 @interface PISearchForm : NSObject
 
-+ (PISearchForm *)searchFormWithApi:(PIAPI *)api form:(PIForm *)form;
++ (PISearchForm *)SearchFormWithApi:(PIAPI *)api form:(PIForm *)form;
 
 - (void)setValue:(id)value forKey:(NSString *)key;
 

@@ -8,18 +8,14 @@
 
 #import "PIDocument.h"
 
-@interface PIDocument ()
-{
-    NSMutableDictionary *_data;
-    NSURL *_href;
-    NSString *_id;
-    NSMutableArray *_slugs;
-    NSMutableArray *_tags;
-    NSString *_type;
-}
-@end
-
 @implementation PIDocument
+
+@synthesize data = _data;
+@synthesize href = _href;
+@synthesize id = _id;
+@synthesize slugs = _slugs;
+@synthesize tags = _tags;
+@synthesize type = _type;
 
 + (id <PIFragment>)parseFragment:(id)jsonObject
 {
@@ -28,22 +24,22 @@
         NSString *type = jsonObject[@"type"];
         id <PIFragment> (^selectedCase)() = @{
             @"Text" : ^{
-                return [PIFragmentText textWithJson:jsonObject];
+                return [PIFragmentText TextWithJson:jsonObject];
             },
             @"StructuredText" : ^{
-                return [PIFragmentStructuredText structuredTextWithJson:jsonObject];
+                return [PIFragmentStructuredText StructuredTextWithJson:jsonObject];
             },
             @"Image" : ^{
                 return [PIFragmentImage imageWithJson:jsonObject[@"value"]];
             },
             @"Select" : ^{
-                return [PIFragmentSelect selectWithJson:jsonObject];
+                return [PIFragmentSelect SelectWithJson:jsonObject];
             },
             @"Color" : ^{
-                return [PIFragmentColor colorWithJson:jsonObject];
+                return [PIFragmentColor ColorWithJson:jsonObject];
             },
             @"Date" : ^{
-                return [PIFragmentDate dateWithJson:jsonObject];
+                return [PIFragmentDate DateWithJson:jsonObject];
             },
         }[type];
         if (selectedCase != nil) {
@@ -56,74 +52,52 @@
     return fragment;
 }
 
-+ (PIDocument *)documentWithJson:(id)jsonObject
++ (PIDocument *)DocumentWithJson:(id)jsonObject
 {
-    PIDocument *document = [[PIDocument alloc] init];
+    return [[PIDocument alloc] initWithJson:jsonObject];
+}
 
-    document->_data = [[NSMutableDictionary alloc] init];
+- (PIDocument *)initWithJson:(id)jsonObject
+{
+    self = [self init];
+
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
     NSDictionary *docData = jsonObject[@"data"];
     for (NSString *docName in docData) {
         // 1st loop for free (data's syntax is {"<collection>":{<real-data>}}
-        NSDictionary *data = docData[docName];
-        for (NSString *fieldName in data) {
-            NSDictionary *field = data[fieldName];
+        NSDictionary *fieldData = docData[docName];
+        for (NSString *fieldName in fieldData) {
+            NSDictionary *field = fieldData[fieldName];
             id <PIFragment> fragment = [PIDocument parseFragment:field];
             if (fragment != nil) {
-                [document->_data setObject:fragment forKey:fieldName];
+                [data setObject:fragment forKey:fieldName];
             }
         }
     }
+    _data = data;
 
     NSString *href = jsonObject[@"href"];
-    document->_href = href ? [NSURL URLWithString:href] : nil;
+    _href = href ? [NSURL URLWithString:href] : nil;
 
-    document->_id = jsonObject[@"id"];
+    _id = jsonObject[@"id"];
 
-    document->_slugs = [[NSMutableArray alloc] init];
-    NSArray *slugs = jsonObject[@"slugs"];
-    for (NSString *slug in slugs) {
-        [document->_slugs addObject:slug];
+    NSMutableArray *slugs = [[NSMutableArray alloc] init];
+    NSArray *slugFields = jsonObject[@"slugs"];
+    for (NSString *slugField in slugFields) {
+        [slugs addObject:slugField];
     }
+    _slugs = slugs;
 
-    document->_tags = [[NSMutableArray alloc] init];
-    NSArray *tags = jsonObject[@"tags"];
-    for (NSString *tag in tags) {
-        [document->_tags addObject:tag];
+    NSMutableArray *tags = [[NSMutableArray alloc] init];
+    NSArray *tagFields = jsonObject[@"tags"];
+    for (NSString *tagField in tagFields) {
+        [tags addObject:tagField];
     }
+    _tags = tags;
 
-    document->_type = jsonObject[@"type"];
+    _type = jsonObject[@"type"];
 
-    return document;
-}
-
-- (NSMutableDictionary *)data
-{
-    return _data;
-}
-
-- (NSURL *)href
-{
-    return _href;
-}
-
-- (NSString *)id
-{
-    return _id;
-}
-
-- (NSMutableArray *)slugs
-{
-    return _slugs;
-}
-
-- (NSMutableArray *)tags
-{
-    return _tags;
-}
-
-- (NSString *)type
-{
-    return _type;
+    return self;
 }
 
 - (PIFragmentBlockHeading *)firstTitleObject

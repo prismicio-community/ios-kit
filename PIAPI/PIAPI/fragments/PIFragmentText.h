@@ -12,7 +12,7 @@
 
 @interface PIFragmentText : NSObject <PIFragment>
 
-+ (PIFragmentText *)textWithJson:(id)jsonObject;
++ (PIFragmentText *)TextWithJson:(id)jsonObject;
 
 - (NSString *)value;
 

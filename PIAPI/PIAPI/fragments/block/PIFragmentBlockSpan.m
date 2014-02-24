@@ -10,20 +10,20 @@
 
 @implementation PIFragmentBlockSpan
 
-+ (id <PIFragmentBlockSpan>)spanWithJson:(id)jsonObject
++ (id <PIFragmentBlockSpan>)SpanWithJson:(id)jsonObject
 {
     id <PIFragmentBlockSpan> span = nil;
     if ([jsonObject isKindOfClass:[NSDictionary class]]) {
         NSString *type = jsonObject[@"type"];
         id <PIFragmentBlockSpan> (^selectedCase)() = @{
             @"em" : ^{
-                return [PIFragmentBlockSpanEm spanWithJson:jsonObject];
+                return [PIFragmentBlockSpanEm SpanWithJson:jsonObject];
             },
             @"strong" : ^{
-                return [PIFragmentBlockSpanStrong spanWithJson:jsonObject];
+                return [PIFragmentBlockSpanStrong SpanWithJson:jsonObject];
             },
             @"hyperlink" : ^{
-                return [PIFragmentBlockSpanLink spanWithJson:jsonObject];
+                return [PIFragmentBlockSpanLink SpanWithJson:jsonObject];
             },
         }[type];
         if (selectedCase != nil) {
@@ -79,7 +79,7 @@
 
 @implementation PIFragmentBlockSpanEm
 
-+ (PIFragmentBlockSpanEm *)spanWithJson:(id)jsonObject
++ (PIFragmentBlockSpanEm *)SpanWithJson:(id)jsonObject
 {
     PIFragmentBlockSpanEm *span = [[PIFragmentBlockSpanEm alloc] init];
     NSUInteger start = [jsonObject[@"start"] unsignedIntegerValue];
@@ -109,7 +109,7 @@
 
 @implementation PIFragmentBlockSpanStrong
 
-+ (PIFragmentBlockSpanStrong *)spanWithJson:(id)jsonObject
++ (PIFragmentBlockSpanStrong *)SpanWithJson:(id)jsonObject
 {
     PIFragmentBlockSpanStrong *span = [[PIFragmentBlockSpanStrong alloc] init];
     NSUInteger start = [jsonObject[@"start"] unsignedIntegerValue];
@@ -140,7 +140,7 @@
 
 @implementation PIFragmentBlockSpanLink
 
-+ (PIFragmentBlockSpanLink *)spanWithJson:(id)jsonObject
++ (PIFragmentBlockSpanLink *)SpanWithJson:(id)jsonObject
 {
     PIFragmentBlockSpanLink *span = [[PIFragmentBlockSpanLink alloc] init];
     NSUInteger start = [jsonObject[@"start"] unsignedIntegerValue];

@@ -16,7 +16,7 @@
 
 @implementation PIFragmentDate
 
-+ (PIFragmentDate *)dateWithJson:(id)jsonObject
++ (PIFragmentDate *)DateWithJson:(id)jsonObject
 {
     PIFragmentDate *date = [[PIFragmentDate alloc] init];
     date->_value = jsonObject[@"value"];

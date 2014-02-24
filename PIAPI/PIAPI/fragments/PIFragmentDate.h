@@ -9,9 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @interface PIFragmentDate : NSObject
-+ (PIFragmentDate *)dateWithJson:(id)jsonObject;
+
++ (PIFragmentDate *)DateWithJson:(id)jsonObject;
+
 - (NSDate *)parseDate:(NSString *)value;
 - (NSString *)value;
 - (NSString *)text;
 - (NSDate *)Date;
+
 @end

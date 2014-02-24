@@ -22,22 +22,22 @@
 @end
 
 @interface PIFragmentBlockParagraph : NSObject <PIFragmentBlockText>
-+ (PIFragmentBlockParagraph *)blockWithJson:(id)jsonObject;
++ (PIFragmentBlockParagraph *)BlockWithJson:(id)jsonObject;
 @end
 
 @interface PIFragmentBlockPreformatted : NSObject <PIFragmentBlockText>
-+ (PIFragmentBlockPreformatted *)blockWithJson:(id)jsonObject;
++ (PIFragmentBlockPreformatted *)BlockWithJson:(id)jsonObject;
 @end
 
 @interface PIFragmentBlockHeading : NSObject <PIFragmentBlockText>
-+ (PIFragmentBlockHeading *)blockWithJson:(id)jsonObject heading:(NSNumber *)heading;
++ (PIFragmentBlockHeading *)BlockWithJson:(id)jsonObject heading:(NSNumber *)heading;
 - (NSNumber *)heading;
 @end
 
 @interface PIFragmentBlockListItem : NSObject <PIFragmentBlockText>
-+ (PIFragmentBlockListItem *)blockWithJson:(id)jsonObject;
++ (PIFragmentBlockListItem *)BlockWithJson:(id)jsonObject;
 @end
 
 @interface PIFragmentBlockOrderedListItem : NSObject <PIFragmentBlockText>
-+ (PIFragmentBlockOrderedListItem *)blockWithJson:(id)jsonObject;
++ (PIFragmentBlockOrderedListItem *)BlockWithJson:(id)jsonObject;
 @end

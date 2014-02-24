@@ -16,6 +16,12 @@
 
 @interface PIFragmentLinkDocument : NSObject <PIFragmentLink>
 
+@property (nonatomic, readonly) NSString *id;
+@property (nonatomic, readonly) NSString *type;
+@property (nonatomic, readonly) NSArray *tags;
+@property (nonatomic, readonly) NSString *slug;
+@property (nonatomic, readonly, getter=isBroken) NSString *broken;
+
 @end
 
 @interface PIFragmentLink : NSObject

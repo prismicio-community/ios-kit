@@ -8,15 +8,13 @@
 
 #import "PIFragmentLink.h"
 
-@interface PIFragmentLinkDocument ()
-@property NSString *id;
-@property NSString *type;
-@property NSArray *tags;
-@property NSString *slug;
-@property NSString *isBroken;
-@end
-
 @implementation PIFragmentLinkDocument
+
+@synthesize id = _id;
+@synthesize type = _type;
+@synthesize tags = _tags;
+@synthesize slug = _slug;
+@synthesize broken = _broken;
 
 + (PIFragmentLinkDocument *)LinkWithJson:(id)jsonObject
 {
@@ -26,16 +24,16 @@
 - (PIFragmentLinkDocument *)initWithJson:(id)jsonObject
 {
     NSDictionary *jsonDocument = jsonObject[@"document"];
-    self.id = jsonDocument[@"id"];
-    self.type = jsonDocument[@"type"];
+    _id = jsonDocument[@"id"];
+    _type = jsonDocument[@"type"];
     NSArray *tagsJson = jsonDocument[@"tags"];
     NSMutableArray *tags = [[NSMutableArray alloc] init];
     for (NSString *tag in tagsJson) {
         [tags addObject:tag];
     }
-    self.tags = _tags;
-    self.slug = jsonDocument[@"slug"];
-    self.isBroken = jsonObject[@"isBroken"];
+    _tags = tags;
+    _slug = jsonDocument[@"slug"];
+    _broken = jsonObject[@"isBroken"];
     return self;
 }
 

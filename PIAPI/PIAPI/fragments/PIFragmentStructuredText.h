@@ -13,7 +13,7 @@
 
 @interface PIFragmentStructuredText : NSObject <PIFragment>
 
-+ (PIFragmentStructuredText *)structuredTextWithJson:(id)jsonObject;
++ (PIFragmentStructuredText *)StructuredTextWithJson:(id)jsonObject;
 
 - (NSArray *)blocks;
 

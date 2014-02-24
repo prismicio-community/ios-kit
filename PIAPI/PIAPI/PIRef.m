@@ -8,39 +8,26 @@
 
 #import "PIRef.h"
 
-@interface PIRef ()
-{
-    NSString *_ref;
-    NSString *_label;
-    BOOL _isMasterRef;
-}
-@end
-
 @implementation PIRef
 
-+ (PIRef *) refWithJson:(NSDictionary *)jsonObject
+@synthesize ref = _ref;
+@synthesize label = _label;
+@synthesize masterRef = _masterRef;
+
++ (PIRef *) RefWithJson:(id)jsonObject
 {
-    PIRef *ref = [[PIRef alloc] init];
-    ref->_ref = jsonObject[@"ref"];
-    ref->_label = jsonObject[@"label"];
-    NSNumber *isMasterRef = jsonObject[@"isMasterRef"];
-    ref->_isMasterRef = isMasterRef && isMasterRef.boolValue;
-    return ref;
+    return [[PIRef alloc] initWithJson:jsonObject];
 }
 
-- (NSString *) ref
+- (PIRef *) initWithJson:(id)jsonObject
 {
-    return _ref;
-}
-
-- (NSString *) label
-{
-    return _label;
-}
-
-- (BOOL) isMasterRef
-{
-    return _isMasterRef;
+    if ((self = [self init]) == nil)
+        return nil;
+    _ref = jsonObject[@"ref"];
+    _label = jsonObject[@"label"];
+    NSNumber *masterRef = jsonObject[@"isMasterRef"];
+    _masterRef = masterRef && masterRef.boolValue;
+    return self;
 }
 
 @end

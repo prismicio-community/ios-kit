@@ -10,10 +10,10 @@
 
 @interface PIRef : NSObject
 
-+ (PIRef *) refWithJson:(NSDictionary *)jsonObject;
++ (PIRef *) RefWithJson:(id)jsonObject;
 
-- (NSString *) ref;
-- (NSString *) label;
-- (BOOL) isMasterRef;
+@property (nonatomic, readonly) NSString *ref;
+@property (nonatomic, readonly) NSString *label;
+@property (nonatomic, readonly, getter=isMasterRef) BOOL masterRef;
 
 @end

@@ -12,22 +12,15 @@
 
 @interface PISearchResult : NSObject
 
-+ (PISearchResult *)SearchResultFromJson:(id)jsonObject;
++ (PISearchResult *)SearchResultWithJson:(id)jsonObject;
 
-- (NSMutableArray *)results;
-
-- (NSNumber *)page;
-
-- (NSNumber *)resultsPerPage;
-
-- (NSNumber *)resultsSize;
-
-- (NSNumber *)totalPages;
-
-- (NSNumber *)totalResultsSize;
-
-- (NSURL *)prevPage;
-
-- (NSURL *)nextPage;
+@property (nonatomic, readonly) NSArray *results;
+@property (nonatomic, readonly) NSNumber *page;
+@property (nonatomic, readonly) NSNumber *resultsPerPage;
+@property (nonatomic, readonly) NSNumber *resultsSize;
+@property (nonatomic, readonly) NSNumber *totalPages;
+@property (nonatomic, readonly) NSNumber *totalResultsSize;
+@property (nonatomic, readonly) NSURL *prevPage;
+@property (nonatomic, readonly) NSURL *nextPage;
 
 @end

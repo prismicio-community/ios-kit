@@ -37,7 +37,7 @@
     NSURL *url = [NSURL URLWithString: @"https://lesbonneschoses-uj8crgij1aniotz.prismic.io/api"];
     NSString *accessToken = @"MC5VbGdWemJPNTN5VW41czlC.X0nvv73vv73vv71d77-9PO-_ve-_ve-_ve-_ve-_ve-_ve-_vT5NJWMv77-977-9JTAKCO-_vXvvv70NflM";
     NSError *error = nil;
-    self.api = [PIAPI apiWithURL:url andAccessToken:accessToken error:&error];
+    self.api = [PIAPI ApiWithURL:url andAccessToken:accessToken error:&error];
     if (error == nil) {
         self.documents = [[NSMutableArray alloc] init];
         [self loadInitialData];

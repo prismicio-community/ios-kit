@@ -16,14 +16,14 @@
 @end
 @implementation PIFragmentBlockParagraph
 
-+ (PIFragmentBlockParagraph *)blockWithJson:(id)jsonObject
++ (PIFragmentBlockParagraph *)BlockWithJson:(id)jsonObject
 {
     PIFragmentBlockParagraph *paragraph = [[PIFragmentBlockParagraph alloc] init];
     paragraph->_text = jsonObject[@"text"];
     paragraph->_spans = [[NSMutableArray alloc] init];
     NSArray *spans = jsonObject[@"spans"];
     for (id jsonSpan in spans) {
-        PIFragmentBlockSpan *span = [PIFragmentBlockSpan spanWithJson:jsonSpan];
+        PIFragmentBlockSpan *span = [PIFragmentBlockSpan SpanWithJson:jsonSpan];
         if (span != nil) {
             [paragraph->_spans addObject:span];
         }
@@ -57,14 +57,14 @@
 @end
 @implementation PIFragmentBlockPreformatted
 
-+ (PIFragmentBlockPreformatted *)blockWithJson:(id)jsonObject
++ (PIFragmentBlockPreformatted *)BlockWithJson:(id)jsonObject
 {
     PIFragmentBlockPreformatted *preformated = [[PIFragmentBlockPreformatted alloc] init];
     preformated->_text = jsonObject[@"text"];
     preformated->_spans = [[NSMutableArray alloc] init];
     NSArray *spans = jsonObject[@"spans"];
     for (id jsonSpan in spans) {
-        PIFragmentBlockSpan *span = [PIFragmentBlockSpan spanWithJson:jsonSpan];
+        PIFragmentBlockSpan *span = [PIFragmentBlockSpan SpanWithJson:jsonSpan];
         if (span != nil) {
             [preformated->_spans addObject:span];
         }
@@ -99,14 +99,14 @@
 @end
 @implementation PIFragmentBlockHeading
 
-+ (PIFragmentBlockHeading *)blockWithJson:(id)jsonObject heading:(NSNumber *)heading
++ (PIFragmentBlockHeading *)BlockWithJson:(id)jsonObject heading:(NSNumber *)heading
 {
     PIFragmentBlockHeading *headingBlock = [[PIFragmentBlockHeading alloc] init];
     headingBlock->_text = jsonObject[@"text"];
     headingBlock->_spans = [[NSMutableArray alloc] init];
     NSArray *spans = jsonObject[@"spans"];
     for (id jsonSpan in spans) {
-        PIFragmentBlockSpan *span = [PIFragmentBlockSpan spanWithJson:jsonSpan];
+        PIFragmentBlockSpan *span = [PIFragmentBlockSpan SpanWithJson:jsonSpan];
         if (span != nil) {
             [headingBlock->_spans addObject:span];
         }
@@ -152,14 +152,14 @@
 @end
 @implementation PIFragmentBlockListItem
 
-+ (PIFragmentBlockListItem *)blockWithJson:(id)jsonObject
++ (PIFragmentBlockListItem *)BlockWithJson:(id)jsonObject
 {
     PIFragmentBlockListItem *listBlock = [[PIFragmentBlockListItem alloc] init];
     listBlock->_text = jsonObject[@"text"];
     listBlock->_spans = [[NSMutableArray alloc] init];
     NSArray *spans = jsonObject[@"spans"];
     for (id jsonSpan in spans) {
-        PIFragmentBlockSpan *span = [PIFragmentBlockSpan spanWithJson:jsonSpan];
+        PIFragmentBlockSpan *span = [PIFragmentBlockSpan SpanWithJson:jsonSpan];
         if (span != nil) {
             [listBlock->_spans addObject:span];
         }
@@ -193,14 +193,14 @@
 @end
 @implementation PIFragmentBlockOrderedListItem
 
-+ (PIFragmentBlockOrderedListItem *)blockWithJson:(id)jsonObject
++ (PIFragmentBlockOrderedListItem *)BlockWithJson:(id)jsonObject
 {
     PIFragmentBlockOrderedListItem *orderedListBlock = [[PIFragmentBlockOrderedListItem alloc] init];
     orderedListBlock->_text = jsonObject[@"text"];
     orderedListBlock->_spans = [[NSMutableArray alloc] init];
     NSArray *spans = jsonObject[@"spans"];
     for (id jsonSpan in spans) {
-        PIFragmentBlockSpan *span = [PIFragmentBlockSpan spanWithJson:jsonSpan];
+        PIFragmentBlockSpan *span = [PIFragmentBlockSpan SpanWithJson:jsonSpan];
         if (span != nil) {
             [orderedListBlock->_spans addObject:span];
         }

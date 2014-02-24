@@ -18,14 +18,14 @@
 
 @implementation PIFragmentColor
 
-+ (PIFragmentColor *)colorWithJson:(id)jsonObject
++ (PIFragmentColor *)ColorWithJson:(id)jsonObject
 {
     PIFragmentColor *color = [[PIFragmentColor alloc] init];
     color->_value = jsonObject[@"value"];
     return color;
 }
 
-- (UIColor *) colorFromHexString:(NSString *)hexString {
+- (UIColor *) ColorFromHexString:(NSString *)hexString {
     // Copied from a StackOverflow answer from Dave DeLong (2010-09-27)
     // http://stackoverflow.com/questions/3805177/how-to-convert-hex-rgb-color-codes-to-uicolor
     NSString *cleanString = [hexString stringByReplacingOccurrencesOfString:@"#" withString:@""];
@@ -62,7 +62,7 @@
 
 - (UIColor *)Color
 {
-    return [self colorFromHexString: _value];
+    return [self ColorFromHexString: _value];
 }
 
 @end

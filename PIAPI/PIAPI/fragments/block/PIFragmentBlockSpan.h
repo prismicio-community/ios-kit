@@ -23,25 +23,25 @@
 
 @interface PIFragmentBlockSpanEm : NSObject <PIFragmentBlockSpan>
 
-+ (PIFragmentBlockSpanEm *)spanWithJson:(id)jsonObject;
++ (PIFragmentBlockSpanEm *)SpanWithJson:(id)jsonObject;
 
 @end
 
 @interface PIFragmentBlockSpanStrong : NSObject <PIFragmentBlockSpan>
 
-+ (PIFragmentBlockSpanStrong *)spanWithJson:(id)jsonObject;
++ (PIFragmentBlockSpanStrong *)SpanWithJson:(id)jsonObject;
 
 @end
 
 @interface PIFragmentBlockSpanLink : NSObject <PIFragmentBlockSpan>
 
-+ (PIFragmentBlockSpanLink *)spanWithJson:(id)jsonObject;
++ (PIFragmentBlockSpanLink *)SpanWithJson:(id)jsonObject;
 
 @end
 
 @interface PIFragmentBlockSpan : NSObject
 
-+ (id <PIFragmentBlockSpan>)spanWithJson:(id)jsonObject;
++ (id <PIFragmentBlockSpan>)SpanWithJson:(id)jsonObject;
 
 + (NSAttributedString *)formatText:(id <PIFragmentBlockText>)block fontDescriptor:(UIFontDescriptor *)fontDescriptor;
 
