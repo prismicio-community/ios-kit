@@ -28,6 +28,8 @@
 		9E69B36218463063000B1480 /* PIAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E69B36118463063000B1480 /* PIAPI.m */; };
 		9E7686F61847A35900933B3E /* PIRef.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E7686F51847A35900933B3E /* PIRef.m */; };
 		9E7686F71847A4D900933B3E /* PIRef.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9E7686F41847A35900933B3E /* PIRef.h */; };
+		9E87EF7518BB9CE80047C820 /* PIFragmentBlock.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9E1F43761864A1CB0017E031 /* PIFragmentBlock.h */; };
+		9E87EF7618BB9D180047C820 /* PIFragmentBlockSpan.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9E1F43791864A2050017E031 /* PIFragmentBlockSpan.h */; };
 		9ECDFF251861F207004AA83E /* PIFragmentStructuredText.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9E112780185624C200027E01 /* PIFragmentStructuredText.h */; };
 		9ECDFF261861F20D004AA83E /* PIFragment.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9E11277A185617FF00027E01 /* PIFragment.h */; };
 		9ECDFF271861F212004AA83E /* PIFragmentText.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9E11277D1856187000027E01 /* PIFragmentText.h */; };
@@ -47,6 +49,8 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				9E87EF7618BB9D180047C820 /* PIFragmentBlockSpan.h in CopyFiles */,
+				9E87EF7518BB9CE80047C820 /* PIFragmentBlock.h in CopyFiles */,
 				9E1F437D1864A4E00017E031 /* PIFragmentDate.h in CopyFiles */,
 				9E1F437018649FD00017E031 /* PIFragmentColor.h in CopyFiles */,
 				9EF9340318649B6E007CF506 /* PIFragmentSelect.h in CopyFiles */,
