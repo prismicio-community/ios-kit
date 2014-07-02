@@ -1,8 +1,14 @@
 ## iOS development kit for prismic.io
 
+### **Note**
+
+This kit in currently a Work in Progress: some features may be missing.
+
+Any pull-request are most welcomed.
+
 ### Getting Started with the kit
 
-:: TODO ::
+For now the kit has only be used within the [iOS Starter](https://github.com/prismicio/ios-starter): you can directly go and test this one.
 
 #### Getting started with prismic.io
 
