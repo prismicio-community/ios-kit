@@ -7,39 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9E11277F1856187000027E01 /* PIFragmentText.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E11277E1856187000027E01 /* PIFragmentText.m */; };
-		9E112782185624C200027E01 /* PIFragmentStructuredText.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E112781185624C200027E01 /* PIFragmentStructuredText.m */; };
-		9E1F437018649FD00017E031 /* PIFragmentColor.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9EF9340418649CB9007CF506 /* PIFragmentColor.h */; };
-		9E1F43751864A1610017E031 /* PIFragmentDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F43741864A1610017E031 /* PIFragmentDate.m */; };
-		9E1F43781864A1CB0017E031 /* PIFragmentBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F43771864A1CB0017E031 /* PIFragmentBlock.m */; };
-		9E1F437B1864A2050017E031 /* PIFragmentBlockSpan.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F437A1864A2050017E031 /* PIFragmentBlockSpan.m */; };
-		9E1F437C1864A26C0017E031 /* PIFragmentDate.h in Sources */ = {isa = PBXBuildFile; fileRef = 9E1F43731864A1610017E031 /* PIFragmentDate.h */; };
-		9E1F437D1864A4E00017E031 /* PIFragmentDate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9E1F43731864A1610017E031 /* PIFragmentDate.h */; };
-		9E2EE7A0185091C300E6F8F0 /* PISearchForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2EE79F185091C300E6F8F0 /* PISearchForm.m */; };
-		9E2EE7A11850931900E6F8F0 /* PISearchForm.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9E2EE79E185091C300E6F8F0 /* PISearchForm.h */; };
-		9E2EE7A41850C62800E6F8F0 /* PISearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E2EE7A31850C62800E6F8F0 /* PISearchResult.m */; };
-		9E2EE7A51850C66200E6F8F0 /* PISearchResult.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9E2EE7A21850C62800E6F8F0 /* PISearchResult.h */; };
-		9E3144F018465F7C0017E6A6 /* PIDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E3144EF18465F7C0017E6A6 /* PIDocument.m */; };
-		9E3144F1184660230017E6A6 /* PIDocument.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9E3144EE18465F7C0017E6A6 /* PIDocument.h */; };
-		9E485B06184CB7BD0089F045 /* PIForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E485B05184CB7BD0089F045 /* PIForm.m */; };
-		9E485B07184CBAAF0089F045 /* PIForm.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9E485B04184CB7BD0089F045 /* PIForm.h */; };
+		5D38EE4C1A251E9600355867 /* PISearchForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D38EE4B1A251E9600355867 /* PISearchForm.swift */; };
+		5D38EE4E1A25200C00355867 /* PIDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D38EE4D1A25200C00355867 /* PIDocument.swift */; };
+		5D3B1D721A237C7800F664AB /* PIAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3B1D711A237C7800F664AB /* PIAPI.swift */; };
+		5D3B1D741A237F8100F664AB /* PIRef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3B1D731A237F8100F664AB /* PIRef.swift */; };
+		5D3B1D761A237FC700F664AB /* PIForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3B1D751A237FC700F664AB /* PIForm.swift */; };
+		5D3B1D781A237FE400F664AB /* PIExperiments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3B1D771A237FE400F664AB /* PIExperiments.swift */; };
+		5D3B1D7A1A23840700F664AB /* PIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3B1D791A23840700F664AB /* PIError.swift */; };
+		5D3B1D7C1A238ECB00F664AB /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D3B1D7B1A238ECB00F664AB /* SwiftyJSON.swift */; };
 		9E69B35B18463063000B1480 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E69B35A18463063000B1480 /* Foundation.framework */; };
-		9E69B36018463063000B1480 /* PIAPI.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9E69B35F18463063000B1480 /* PIAPI.h */; };
-		9E69B36218463063000B1480 /* PIAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E69B36118463063000B1480 /* PIAPI.m */; };
-		9E7686F61847A35900933B3E /* PIRef.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E7686F51847A35900933B3E /* PIRef.m */; };
-		9E7686F71847A4D900933B3E /* PIRef.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9E7686F41847A35900933B3E /* PIRef.h */; };
-		9E87EF7518BB9CE80047C820 /* PIFragmentBlock.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9E1F43761864A1CB0017E031 /* PIFragmentBlock.h */; };
-		9E87EF7618BB9D180047C820 /* PIFragmentBlockSpan.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9E1F43791864A2050017E031 /* PIFragmentBlockSpan.h */; };
-		9ECDFF251861F207004AA83E /* PIFragmentStructuredText.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9E112780185624C200027E01 /* PIFragmentStructuredText.h */; };
-		9ECDFF261861F20D004AA83E /* PIFragment.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9E11277A185617FF00027E01 /* PIFragment.h */; };
-		9ECDFF271861F212004AA83E /* PIFragmentText.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9E11277D1856187000027E01 /* PIFragmentText.h */; };
-		9ECDFF2A18620865004AA83E /* PIFragmentLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ECDFF2918620865004AA83E /* PIFragmentLink.m */; };
-		9ECDFF2B18620886004AA83E /* PIFragmentLink.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9ECDFF2818620865004AA83E /* PIFragmentLink.h */; };
-		9EF933FE18648E95007CF506 /* PIFragmentImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EF933FD18648E95007CF506 /* PIFragmentImage.m */; };
-		9EF933FF18649593007CF506 /* PIFragmentImage.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9EF933FC18648E95007CF506 /* PIFragmentImage.h */; };
-		9EF9340218649AE1007CF506 /* PIFragmentSelect.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EF9340118649AE1007CF506 /* PIFragmentSelect.m */; };
-		9EF9340318649B6E007CF506 /* PIFragmentSelect.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9EF9340018649AE1007CF506 /* PIFragmentSelect.h */; };
-		9EF9340618649CB9007CF506 /* PIFragmentColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EF9340518649CB9007CF506 /* PIFragmentColor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -49,64 +25,24 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				9E87EF7618BB9D180047C820 /* PIFragmentBlockSpan.h in CopyFiles */,
-				9E87EF7518BB9CE80047C820 /* PIFragmentBlock.h in CopyFiles */,
-				9E1F437D1864A4E00017E031 /* PIFragmentDate.h in CopyFiles */,
-				9E1F437018649FD00017E031 /* PIFragmentColor.h in CopyFiles */,
-				9EF9340318649B6E007CF506 /* PIFragmentSelect.h in CopyFiles */,
-				9EF933FF18649593007CF506 /* PIFragmentImage.h in CopyFiles */,
-				9ECDFF2B18620886004AA83E /* PIFragmentLink.h in CopyFiles */,
-				9ECDFF271861F212004AA83E /* PIFragmentText.h in CopyFiles */,
-				9ECDFF261861F20D004AA83E /* PIFragment.h in CopyFiles */,
-				9ECDFF251861F207004AA83E /* PIFragmentStructuredText.h in CopyFiles */,
-				9E2EE7A51850C66200E6F8F0 /* PISearchResult.h in CopyFiles */,
-				9E2EE7A11850931900E6F8F0 /* PISearchForm.h in CopyFiles */,
-				9E485B07184CBAAF0089F045 /* PIForm.h in CopyFiles */,
-				9E7686F71847A4D900933B3E /* PIRef.h in CopyFiles */,
-				9E3144F1184660230017E6A6 /* PIDocument.h in CopyFiles */,
-				9E69B36018463063000B1480 /* PIAPI.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		9E11277A185617FF00027E01 /* PIFragment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIFragment.h; sourceTree = "<group>"; };
-		9E11277D1856187000027E01 /* PIFragmentText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIFragmentText.h; path = fragments/PIFragmentText.h; sourceTree = "<group>"; };
-		9E11277E1856187000027E01 /* PIFragmentText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIFragmentText.m; path = fragments/PIFragmentText.m; sourceTree = "<group>"; };
-		9E112780185624C200027E01 /* PIFragmentStructuredText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIFragmentStructuredText.h; path = fragments/PIFragmentStructuredText.h; sourceTree = "<group>"; };
-		9E112781185624C200027E01 /* PIFragmentStructuredText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIFragmentStructuredText.m; path = fragments/PIFragmentStructuredText.m; sourceTree = "<group>"; };
-		9E1F43731864A1610017E031 /* PIFragmentDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIFragmentDate.h; path = fragments/PIFragmentDate.h; sourceTree = "<group>"; };
-		9E1F43741864A1610017E031 /* PIFragmentDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIFragmentDate.m; path = fragments/PIFragmentDate.m; sourceTree = "<group>"; };
-		9E1F43761864A1CB0017E031 /* PIFragmentBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIFragmentBlock.h; path = fragments/block/PIFragmentBlock.h; sourceTree = "<group>"; };
-		9E1F43771864A1CB0017E031 /* PIFragmentBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIFragmentBlock.m; path = fragments/block/PIFragmentBlock.m; sourceTree = "<group>"; };
-		9E1F43791864A2050017E031 /* PIFragmentBlockSpan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIFragmentBlockSpan.h; path = fragments/block/PIFragmentBlockSpan.h; sourceTree = "<group>"; };
-		9E1F437A1864A2050017E031 /* PIFragmentBlockSpan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIFragmentBlockSpan.m; path = fragments/block/PIFragmentBlockSpan.m; sourceTree = "<group>"; };
-		9E2EE79E185091C300E6F8F0 /* PISearchForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PISearchForm.h; sourceTree = "<group>"; };
-		9E2EE79F185091C300E6F8F0 /* PISearchForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PISearchForm.m; sourceTree = "<group>"; };
-		9E2EE7A21850C62800E6F8F0 /* PISearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PISearchResult.h; sourceTree = "<group>"; };
-		9E2EE7A31850C62800E6F8F0 /* PISearchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PISearchResult.m; sourceTree = "<group>"; };
-		9E3144EE18465F7C0017E6A6 /* PIDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIDocument.h; sourceTree = "<group>"; };
-		9E3144EF18465F7C0017E6A6 /* PIDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIDocument.m; sourceTree = "<group>"; };
-		9E485B04184CB7BD0089F045 /* PIForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIForm.h; sourceTree = "<group>"; };
-		9E485B05184CB7BD0089F045 /* PIForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIForm.m; sourceTree = "<group>"; };
+		5D38EE4B1A251E9600355867 /* PISearchForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PISearchForm.swift; sourceTree = "<group>"; };
+		5D38EE4D1A25200C00355867 /* PIDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PIDocument.swift; sourceTree = "<group>"; };
+		5D3B1D711A237C7800F664AB /* PIAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PIAPI.swift; sourceTree = "<group>"; };
+		5D3B1D731A237F8100F664AB /* PIRef.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PIRef.swift; sourceTree = "<group>"; };
+		5D3B1D751A237FC700F664AB /* PIForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PIForm.swift; sourceTree = "<group>"; };
+		5D3B1D771A237FE400F664AB /* PIExperiments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PIExperiments.swift; path = ../PIExperiments.swift; sourceTree = "<group>"; };
+		5D3B1D791A23840700F664AB /* PIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PIError.swift; sourceTree = "<group>"; };
+		5D3B1D7B1A238ECB00F664AB /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		9E69B35718463063000B1480 /* libPIAPI.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPIAPI.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E69B35A18463063000B1480 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		9E69B35E18463063000B1480 /* PIAPI-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PIAPI-Prefix.pch"; sourceTree = "<group>"; };
-		9E69B35F18463063000B1480 /* PIAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIAPI.h; sourceTree = "<group>"; };
-		9E69B36118463063000B1480 /* PIAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PIAPI.m; sourceTree = "<group>"; };
 		9E69B36818463063000B1480 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		9E69B36B18463063000B1480 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		9E7686F41847A35900933B3E /* PIRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIRef.h; sourceTree = "<group>"; };
-		9E7686F51847A35900933B3E /* PIRef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIRef.m; sourceTree = "<group>"; };
-		9ECDFF2818620865004AA83E /* PIFragmentLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIFragmentLink.h; path = fragments/PIFragmentLink.h; sourceTree = "<group>"; };
-		9ECDFF2918620865004AA83E /* PIFragmentLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIFragmentLink.m; path = fragments/PIFragmentLink.m; sourceTree = "<group>"; };
-		9EF933FC18648E95007CF506 /* PIFragmentImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIFragmentImage.h; path = fragments/PIFragmentImage.h; sourceTree = "<group>"; };
-		9EF933FD18648E95007CF506 /* PIFragmentImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIFragmentImage.m; path = fragments/PIFragmentImage.m; sourceTree = "<group>"; };
-		9EF9340018649AE1007CF506 /* PIFragmentSelect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIFragmentSelect.h; path = fragments/PIFragmentSelect.h; sourceTree = "<group>"; };
-		9EF9340118649AE1007CF506 /* PIFragmentSelect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIFragmentSelect.m; path = fragments/PIFragmentSelect.m; sourceTree = "<group>"; };
-		9EF9340418649CB9007CF506 /* PIFragmentColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIFragmentColor.h; path = fragments/PIFragmentColor.h; sourceTree = "<group>"; };
-		9EF9340518649CB9007CF506 /* PIFragmentColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIFragmentColor.m; path = fragments/PIFragmentColor.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,40 +57,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9E1F43711864A0B40017E031 /* PIFragment */ = {
-			isa = PBXGroup;
-			children = (
-				9ECDFF2818620865004AA83E /* PIFragmentLink.h */,
-				9ECDFF2918620865004AA83E /* PIFragmentLink.m */,
-				9E112780185624C200027E01 /* PIFragmentStructuredText.h */,
-				9E112781185624C200027E01 /* PIFragmentStructuredText.m */,
-				9EF933FC18648E95007CF506 /* PIFragmentImage.h */,
-				9EF933FD18648E95007CF506 /* PIFragmentImage.m */,
-				9E1F43721864A0C30017E031 /* PIFragmentBlock */,
-				9E11277A185617FF00027E01 /* PIFragment.h */,
-				9E11277D1856187000027E01 /* PIFragmentText.h */,
-				9E11277E1856187000027E01 /* PIFragmentText.m */,
-				9E1F43731864A1610017E031 /* PIFragmentDate.h */,
-				9E1F43741864A1610017E031 /* PIFragmentDate.m */,
-				9EF9340018649AE1007CF506 /* PIFragmentSelect.h */,
-				9EF9340118649AE1007CF506 /* PIFragmentSelect.m */,
-				9EF9340418649CB9007CF506 /* PIFragmentColor.h */,
-				9EF9340518649CB9007CF506 /* PIFragmentColor.m */,
-			);
-			name = PIFragment;
-			sourceTree = "<group>";
-		};
-		9E1F43721864A0C30017E031 /* PIFragmentBlock */ = {
-			isa = PBXGroup;
-			children = (
-				9E1F43791864A2050017E031 /* PIFragmentBlockSpan.h */,
-				9E1F437A1864A2050017E031 /* PIFragmentBlockSpan.m */,
-				9E1F43761864A1CB0017E031 /* PIFragmentBlock.h */,
-				9E1F43771864A1CB0017E031 /* PIFragmentBlock.m */,
-			);
-			name = PIFragmentBlock;
-			sourceTree = "<group>";
-		};
 		9E69B34E18463063000B1480 = {
 			isa = PBXGroup;
 			children = (
@@ -185,30 +87,16 @@
 		9E69B35C18463063000B1480 /* PIAPI */ = {
 			isa = PBXGroup;
 			children = (
-				9E1F43711864A0B40017E031 /* PIFragment */,
-				9E69B35F18463063000B1480 /* PIAPI.h */,
-				9E69B36118463063000B1480 /* PIAPI.m */,
-				9E2EE7A21850C62800E6F8F0 /* PISearchResult.h */,
-				9E2EE7A31850C62800E6F8F0 /* PISearchResult.m */,
-				9E485B04184CB7BD0089F045 /* PIForm.h */,
-				9E485B05184CB7BD0089F045 /* PIForm.m */,
-				9E2EE79E185091C300E6F8F0 /* PISearchForm.h */,
-				9E2EE79F185091C300E6F8F0 /* PISearchForm.m */,
-				9E7686F41847A35900933B3E /* PIRef.h */,
-				9E7686F51847A35900933B3E /* PIRef.m */,
-				9E69B35D18463063000B1480 /* Supporting Files */,
-				9E3144EE18465F7C0017E6A6 /* PIDocument.h */,
-				9E3144EF18465F7C0017E6A6 /* PIDocument.m */,
+				5D3B1D771A237FE400F664AB /* PIExperiments.swift */,
+				5D38EE4B1A251E9600355867 /* PISearchForm.swift */,
+				5D3B1D711A237C7800F664AB /* PIAPI.swift */,
+				5D3B1D731A237F8100F664AB /* PIRef.swift */,
+				5D3B1D751A237FC700F664AB /* PIForm.swift */,
+				5D3B1D791A23840700F664AB /* PIError.swift */,
+				5D3B1D7B1A238ECB00F664AB /* SwiftyJSON.swift */,
+				5D38EE4D1A25200C00355867 /* PIDocument.swift */,
 			);
 			path = PIAPI;
-			sourceTree = "<group>";
-		};
-		9E69B35D18463063000B1480 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				9E69B35E18463063000B1480 /* PIAPI-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,8 +125,8 @@
 		9E69B34F18463063000B1480 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
-				ORGANIZATIONNAME = Zengularity;
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = Prismic.io;
 			};
 			buildConfigurationList = 9E69B35218463063000B1480 /* Build configuration list for PBXProject "PIAPI" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -262,22 +150,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E1F437C1864A26C0017E031 /* PIFragmentDate.h in Sources */,
-				9E485B06184CB7BD0089F045 /* PIForm.m in Sources */,
-				9E7686F61847A35900933B3E /* PIRef.m in Sources */,
-				9EF9340218649AE1007CF506 /* PIFragmentSelect.m in Sources */,
-				9E1F43781864A1CB0017E031 /* PIFragmentBlock.m in Sources */,
-				9E69B36218463063000B1480 /* PIAPI.m in Sources */,
-				9EF933FE18648E95007CF506 /* PIFragmentImage.m in Sources */,
-				9E1F437B1864A2050017E031 /* PIFragmentBlockSpan.m in Sources */,
-				9E11277F1856187000027E01 /* PIFragmentText.m in Sources */,
-				9E112782185624C200027E01 /* PIFragmentStructuredText.m in Sources */,
-				9ECDFF2A18620865004AA83E /* PIFragmentLink.m in Sources */,
-				9E2EE7A0185091C300E6F8F0 /* PISearchForm.m in Sources */,
-				9EF9340618649CB9007CF506 /* PIFragmentColor.m in Sources */,
-				9E3144F018465F7C0017E6A6 /* PIDocument.m in Sources */,
-				9E2EE7A41850C62800E6F8F0 /* PISearchResult.m in Sources */,
-				9E1F43751864A1610017E031 /* PIFragmentDate.m in Sources */,
+				5D38EE4E1A25200C00355867 /* PIDocument.swift in Sources */,
+				5D38EE4C1A251E9600355867 /* PISearchForm.swift in Sources */,
+				5D3B1D7C1A238ECB00F664AB /* SwiftyJSON.swift in Sources */,
+				5D3B1D761A237FC700F664AB /* PIForm.swift in Sources */,
+				5D3B1D781A237FE400F664AB /* PIExperiments.swift in Sources */,
+				5D3B1D721A237C7800F664AB /* PIAPI.swift in Sources */,
+				5D3B1D7A1A23840700F664AB /* PIError.swift in Sources */,
+				5D3B1D741A237F8100F664AB /* PIRef.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,7 +168,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -317,8 +196,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				ONLY_ACTIVE_ARCH = NO;
-				SDKROOT = iphoneos7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -326,7 +205,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -350,7 +228,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = NO;
-				SDKROOT = iphoneos7.0;
+				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -358,6 +236,7 @@
 		9E69B37B18463063000B1480 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DSTROOT = /tmp/PIAPI.dst;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -365,15 +244,18 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PIAPI/PIAPI-Prefix.pch";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		9E69B37C18463063000B1480 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DSTROOT = /tmp/PIAPI.dst;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -381,6 +263,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PIAPI/PIAPI-Prefix.pch";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
