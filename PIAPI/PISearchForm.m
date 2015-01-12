@@ -54,7 +54,7 @@
 
 - (NSString *)queryString
 {
-    return [NSString stringWithFormat:@"%@=%@", _name, _value];
+    return [NSString stringWithFormat:@"%@=%@", _name, [_value stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
 }
 
 @end
@@ -135,7 +135,7 @@
 
 - (void)addQuery:(NSString *)query
 {
-    [self setValue:query forKey:@"query"];
+    [self setValue:query forKey:@"q"];
 }
 
 - (void)setRefName:(NSString *)name
@@ -151,6 +151,11 @@
 - (void)setRef:(NSString *)ref
 {
     [self setValue:ref forKey:@"ref"];
+}
+
+- (void)setOrderings:(NSString *)orderings;
+{
+    [self setValue:orderings forKey:@"orderings"];
 }
 
 - (PISearchResult *)submit:(NSError **)error

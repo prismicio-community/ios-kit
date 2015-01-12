@@ -62,4 +62,25 @@
     XCTAssertEqual(response.results.count, 16);
 }
 
+- (void)testGroupFragments {
+    NSError *error = nil;
+    NSString *master = self->_micro_api.masterRef.ref;
+    PISearchForm *form = [self->_micro_api searchFormForName:@"everything"];
+    [form setRef:master];
+    [form addQuery:@"[[:d = at(document.type, \"docchapter\")]]"];
+    [form setOrderings:@"[my.docchapter.priority]"];
+    PISearchResult *response = [form submit:&error];
+
+    PIDocument *docchapter = response.results[0];
+    PIFragmentGroup *docchapterGroup = [docchapter getGroup:@"docchapter.docs"];
+    XCTAssertEqual(docchapterGroup.groupDocs.count, 2);
+    /* Assert.assertEquals(
+                            "Properly browsing the group until inside a subfragment",
+                            ((Fragment.DocumentLink) docchapterGroup.getDocs().get(0).getLink("linktodoc")).getId(),
+                            "UrDofwEAALAdpbNH"
+                            );
+    }*/
+
+}
+
 @end

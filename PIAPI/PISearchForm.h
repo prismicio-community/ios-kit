@@ -29,6 +29,7 @@
 - (void)setRefName:(NSString *)ref;
 - (void)setRefObject:(PIRef *)ref;
 - (void)setRef:(NSString *)ref;
+- (void)setOrderings:(NSString *)orderings;
 
 - (PISearchResult *)submit:(NSError **)error;
 

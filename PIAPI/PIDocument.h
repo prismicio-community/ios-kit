@@ -8,14 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-#import "PIFragmentText.h"
-#import "PIFragmentStructuredText.h"
-#import "PIFragmentImage.h"
-#import "PIFragmentSelect.h"
-#import "PIFragmentColor.h"
-#import "PIFragmentDate.h"
+#import "PIWithFragments.h"
 
-@interface PIDocument : NSObject
+@interface PIDocument : PIWithFragments
 
 + (PIDocument *)DocumentWithJson:(id)jsonObject;
 
@@ -26,16 +21,6 @@
 @property (nonatomic, readonly) NSArray *tags;
 @property (nonatomic, readonly) NSString *type;
 
-- (PIFragmentBlockHeading *)firstTitleObject;
-
-- (NSAttributedString *)firstTitleFormatted;
-
-- (NSString *)firstTitle;
-
-- (PIFragmentBlockParagraph *)firstParagraphObject;
-
-- (NSAttributedString *)firstParagraphFormatted;
-
-- (NSString *)firstParagraph;
+- (PIFragmentGroup *)getGroup:(NSString*)field;
 
 @end
