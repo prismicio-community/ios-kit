@@ -85,7 +85,7 @@
 {
     NSMutableArray *query = [[NSMutableArray alloc] init];
     for (id value in _values) {
-        [query addObject:[NSString stringWithFormat:@"%@=%@", _name, value]];
+        [query addObject:[NSString stringWithFormat:@"%@=%@", _name, [value stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     }
     return [query componentsJoinedByString:@"&"];
 }

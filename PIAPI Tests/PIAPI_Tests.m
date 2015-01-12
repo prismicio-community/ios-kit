@@ -58,6 +58,7 @@
     PISearchForm *form = [self->_lbc_api searchFormForName:@"products"];
     [form setRef:master];
     PISearchResult *response = [form submit:&error];
+    XCTAssertNil(error);
     XCTAssertEqual(response.results.count, 16);
 }
 
