@@ -72,6 +72,7 @@
 {
     PIFormData *data = [[PIFormData alloc] init];
     data->_name = name;
+    data->_values = [[NSMutableArray alloc] init];
     return data;
 }
 

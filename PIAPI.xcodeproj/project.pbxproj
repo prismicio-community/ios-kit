@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D476D881A63D4EA009881BB /* PIAPI_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D476D871A63D4EA009881BB /* PIAPI_Tests.m */; };
+		5D476D891A63D4EA009881BB /* libPIAPI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E69B35718463063000B1480 /* libPIAPI.a */; };
 		9E11277F1856187000027E01 /* PIFragmentText.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E11277E1856187000027E01 /* PIFragmentText.m */; };
 		9E112782185624C200027E01 /* PIFragmentStructuredText.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E112781185624C200027E01 /* PIFragmentStructuredText.m */; };
 		9E1F437018649FD00017E031 /* PIFragmentColor.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 9EF9340418649CB9007CF506 /* PIFragmentColor.h */; };
@@ -42,6 +44,16 @@
 		9EF9340618649CB9007CF506 /* PIFragmentColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EF9340518649CB9007CF506 /* PIFragmentColor.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5D476D8A1A63D4EA009881BB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9E69B34F18463063000B1480 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9E69B35618463063000B1480;
+			remoteInfo = PIAPI;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		9E69B35518463063000B1480 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -71,6 +83,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5D476D831A63D4EA009881BB /* PIAPI Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PIAPI Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D476D861A63D4EA009881BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5D476D871A63D4EA009881BB /* PIAPI_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PIAPI_Tests.m; sourceTree = "<group>"; };
 		9E11277A185617FF00027E01 /* PIFragment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIFragment.h; sourceTree = "<group>"; };
 		9E11277D1856187000027E01 /* PIFragmentText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIFragmentText.h; path = fragments/PIFragmentText.h; sourceTree = "<group>"; };
 		9E11277E1856187000027E01 /* PIFragmentText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIFragmentText.m; path = fragments/PIFragmentText.m; sourceTree = "<group>"; };
@@ -110,6 +125,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5D476D801A63D4EA009881BB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D476D891A63D4EA009881BB /* libPIAPI.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9E69B35418463063000B1480 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -121,6 +144,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D476D841A63D4EA009881BB /* PIAPI Tests */ = {
+			isa = PBXGroup;
+			children = (
+				5D476D871A63D4EA009881BB /* PIAPI_Tests.m */,
+				5D476D851A63D4EA009881BB /* Supporting Files */,
+			);
+			path = "PIAPI Tests";
+			sourceTree = "<group>";
+		};
+		5D476D851A63D4EA009881BB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5D476D861A63D4EA009881BB /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		9E1F43711864A0B40017E031 /* PIFragment */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				9E69B35C18463063000B1480 /* PIAPI */,
+				5D476D841A63D4EA009881BB /* PIAPI Tests */,
 				9E69B35918463063000B1480 /* Frameworks */,
 				9E69B35818463063000B1480 /* Products */,
 			);
@@ -168,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				9E69B35718463063000B1480 /* libPIAPI.a */,
+				5D476D831A63D4EA009881BB /* PIAPI Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -214,6 +256,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5D476D821A63D4EA009881BB /* PIAPI Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5D476D8E1A63D4EA009881BB /* Build configuration list for PBXNativeTarget "PIAPI Tests" */;
+			buildPhases = (
+				5D476D7F1A63D4EA009881BB /* Sources */,
+				5D476D801A63D4EA009881BB /* Frameworks */,
+				5D476D811A63D4EA009881BB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5D476D8B1A63D4EA009881BB /* PBXTargetDependency */,
+			);
+			name = "PIAPI Tests";
+			productName = "PIAPI Tests";
+			productReference = 5D476D831A63D4EA009881BB /* PIAPI Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		9E69B35618463063000B1480 /* PIAPI */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9E69B37A18463063000B1480 /* Build configuration list for PBXNativeTarget "PIAPI" */;
@@ -239,6 +299,11 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = Zengularity;
+				TargetAttributes = {
+					5D476D821A63D4EA009881BB = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
 			};
 			buildConfigurationList = 9E69B35218463063000B1480 /* Build configuration list for PBXProject "PIAPI" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -253,11 +318,30 @@
 			projectRoot = "";
 			targets = (
 				9E69B35618463063000B1480 /* PIAPI */,
+				5D476D821A63D4EA009881BB /* PIAPI Tests */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		5D476D811A63D4EA009881BB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		5D476D7F1A63D4EA009881BB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D476D881A63D4EA009881BB /* PIAPI_Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9E69B35318463063000B1480 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -283,7 +367,58 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		5D476D8B1A63D4EA009881BB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9E69B35618463063000B1480 /* PIAPI */;
+			targetProxy = 5D476D8A1A63D4EA009881BB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		5D476D8C1A63D4EA009881BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "PIAPI Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		5D476D8D1A63D4EA009881BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "PIAPI Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
 		9E69B37818463063000B1480 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -318,7 +453,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = NO;
-				SDKROOT = iphoneos7.0;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
@@ -350,7 +485,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = NO;
-				SDKROOT = iphoneos7.0;
+				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -390,6 +525,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5D476D8E1A63D4EA009881BB /* Build configuration list for PBXNativeTarget "PIAPI Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5D476D8C1A63D4EA009881BB /* Debug */,
+				5D476D8D1A63D4EA009881BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		9E69B35218463063000B1480 /* Build configuration list for PBXProject "PIAPI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
