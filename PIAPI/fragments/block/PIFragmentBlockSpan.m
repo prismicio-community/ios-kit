@@ -134,7 +134,7 @@
 @interface PIFragmentBlockSpanLink ()
 {
     NSRange _range;
-    PIFragmentLink *_link;
+    id<PIFragmentLink> _link;
 }
 @end
 
@@ -147,7 +147,7 @@
     NSUInteger end = [jsonObject[@"end"] unsignedIntegerValue];
     NSUInteger length = end - start;
     span->_range = NSMakeRange(start, length);
-    span->_link = [PIFragmentLink LinkWithJson:jsonObject[@"data"]];
+    span->_link = (id<PIFragmentLink>)[PIWithFragments parseFragment:jsonObject[@"data"]];
     return span;
 }
 
@@ -161,7 +161,7 @@
     return _range;
 }
 
-- (PIFragmentLink *)link
+- (id<PIFragmentLink>)link
 {
     return _link;
 }

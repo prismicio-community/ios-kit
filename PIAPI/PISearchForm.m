@@ -153,6 +153,16 @@
     [self setValue:ref forKey:@"ref"];
 }
 
+- (void)setFetchLinks:(NSString *)fetchLinks
+{
+    [self setValue:fetchLinks forKey:@"fetchLinks"];
+}
+
+- (void)setFetch:(NSString *)fetch
+{
+    [self setValue:fetch forKey:@"fetch"];
+}
+
 - (void)setOrderings:(NSString *)orderings;
 {
     [self setValue:orderings forKey:@"orderings"];

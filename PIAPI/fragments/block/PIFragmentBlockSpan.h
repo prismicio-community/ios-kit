@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#import "PIWithFragments.h"
 #import "PIFragmentBlock.h"
-#import "PIFragmentLink.h"
 
 @protocol PIFragmentBlockText;
+@protocol PIFragmentLink;
 
 @protocol PIFragmentBlockSpan <NSObject>
 
@@ -37,7 +38,7 @@
 
 + (PIFragmentBlockSpanLink *)SpanWithJson:(id)jsonObject;
 
-- (PIFragmentLink*)link;
+- (id<PIFragmentLink>)link;
 
 @end
 

@@ -9,17 +9,19 @@
 #import <Foundation/Foundation.h>
 
 #import "PIFragment.h"
+#import "PIWithFragmentsProtocol.h"
 
-@interface PIFragmentLink : NSObject <PIFragment>
-+ (PIFragmentLink *)LinkWithJson:(id)jsonObject;
+@protocol PIFragmentLink <PIFragment>
 @end
 
-@interface PIFragmentLinkDocument : PIFragmentLink
+@interface PIFragmentLinkDocument : NSObject <PIWithFragments, PIFragmentLink>
 
 @property (nonatomic, readonly) NSString *id;
 @property (nonatomic, readonly) NSString *type;
 @property (nonatomic, readonly) NSArray *tags;
 @property (nonatomic, readonly) NSString *slug;
 @property (nonatomic, readonly, getter=isBroken) NSString *broken;
+
++ (PIFragmentLinkDocument *)LinkWithJson:(id)jsonObject;
 
 @end

@@ -34,27 +34,9 @@
     _tags = tags;
     _slug = jsonDocument[@"slug"];
     _broken = jsonObject[@"isBroken"];
+    
     return self;
 }
 
 @end
 
-@implementation PIFragmentLink
-+ (PIFragmentLink *)LinkWithJson:(id)jsonObject
-{
-    PIFragmentLink *link = nil;
-    NSString *type = jsonObject[@"type"];
-    PIFragmentLink *(^selectedCase)() = @{
-        @"Link.document" : ^{
-            return [PIFragmentLinkDocument LinkWithJson:jsonObject[@"value"]];
-        },
-    }[type];
-    if (selectedCase != nil) {
-        link = selectedCase();
-    }
-    else {
-        NSLog(@"Unsupported link type: %@", type);
-    }
-    return link;
-}
-@end

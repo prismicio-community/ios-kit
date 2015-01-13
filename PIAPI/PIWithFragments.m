@@ -80,12 +80,23 @@
         // 1st loop for free (data's syntax is {"<collection>":{<real-data>}}
         NSDictionary *fieldData = docData[docName];
         for (NSString *fieldName in fieldData) {
-            NSDictionary *field = fieldData[fieldName];
-            id <PIFragment> fragment = [PIWithFragments parseFragment:field];
-            if (fragment != nil) {
-                [data setObject:fragment forKey:[NSString stringWithFormat:@"%@.%@", docName, fieldName]];
+            if ([fieldData[fieldName] isKindOfClass:[NSArray class]]) {
+                for (int i = 0; i < [fieldData[fieldName] count]; i++) {
+                    NSDictionary *item = fieldData[fieldName][i];
+                    id <PIFragment> fragment = [PIWithFragments parseFragment:item];
+                    if (fragment != nil) {
+                        [data setObject:fragment forKey:[NSString stringWithFormat:@"%@.%@[%d]", docName, fieldName, i]];
+                    }
+                }
+            } else {
+                NSDictionary *field = fieldData[fieldName];
+                id <PIFragment> fragment = [PIWithFragments parseFragment:field];
+                if (fragment != nil) {
+                    [data setObject:fragment forKey:[NSString stringWithFormat:@"%@.%@", docName, fieldName]];
+                }
             }
         }
+        
     }
     self->_data = data;
     
@@ -196,11 +207,29 @@
     return fragment;
 }
 
-- (PIFragmentLink *)getLink:(NSString*)field
+- (PIFragmentText*)getText:(NSString*)field
 {
     id<PIFragment> fragment = [self get:field];
-    if ([fragment isKindOfClass:[PIFragmentLink class]]) {
+    if ([fragment isKindOfClass:[PIFragmentText class]]) {
         return fragment;
+    }
+    return nil;
+}
+
+- (PIFragmentDate*)getDate:(NSString*)field
+{
+    id<PIFragment> fragment = [self get:field];
+    if ([fragment isKindOfClass:[PIFragmentDate class]]) {
+        return fragment;
+    }
+    return nil;
+}
+
+- (id<PIFragmentLink>)getLink:(NSString*)field
+{
+    id<PIFragment> fragment = [self get:field];
+    if ([fragment conformsToProtocol:@protocol(PIFragmentLink)]) {
+        return (id<PIFragmentLink>)fragment;
     }
     return nil;
 }

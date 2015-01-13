@@ -1,34 +1,27 @@
 //
-//  PIWithFragments.h
+//  PIWithFragmentsProtocol.h
 //  PIAPI
 //
-//  Created by Erwan Loisant on 12/01/15.
+//  Created by Erwan Loisant on 13/01/15.
 //  Copyright (c) 2015 Zengularity. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#ifndef PIAPI_PIWithFragmentsProtocol_h
+#define PIAPI_PIWithFragmentsProtocol_h
 
-#import "PIFragment.h"
-#import "PIWithFragmentsProtocol.h"
-#import "PIFragmentText.h"
-#import "PIFragmentLink.h"
-#import "PIFragmentStructuredText.h"
-#import "PIFragmentImage.h"
-#import "PIFragmentNumber.h"
-#import "PIFragmentSelect.h"
-#import "PIFragmentColor.h"
-#import "PIFragmentDate.h"
-#import "PIFragmentGroup.h"
+@class PIFragmentBlockHeading;
+@class PIFragmentBlockParagraph;
+@class PIFragmentStructuredText;
+@class PIFragmentDate;
+@class PIFragmentImage;
+@class PIFragmentGroup;
+@class PIFragmentText;
+@class PIFragmentColor;
+@protocol PIFragmentLink;
 
-@interface PIWithFragments : NSObject<PIWithFragments>
+@protocol PIWithFragments
 
 @property (nonatomic, readwrite) NSDictionary *data;
-
-+ (PIWithFragments *)WithFragmentsWithJson:(id)jsonObject;
-
-- (PIWithFragments *)initWithFragments:(NSDictionary *)data;
-
-+ (id <PIFragment>)parseFragment:(id)jsonObject;
 
 - (PIFragmentBlockHeading *)firstTitleObject;
 
@@ -70,5 +63,6 @@
 
 // TODO - (PIFragmentBoolean *)getBoolean:(NSString*)field;
 
-
 @end
+
+#endif

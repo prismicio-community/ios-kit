@@ -29,6 +29,8 @@
 - (void)setRefName:(NSString *)ref;
 - (void)setRefObject:(PIRef *)ref;
 - (void)setRef:(NSString *)ref;
+- (void)setFetch:(NSString *)fetch;
+- (void)setFetchLinks:(NSString *)fetchLinks;
 - (void)setOrderings:(NSString *)orderings;
 - (void)setPageSize:(NSUInteger)pageSize;
 - (void)setPage:(NSUInteger)page;

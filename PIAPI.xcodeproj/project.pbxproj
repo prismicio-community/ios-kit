@@ -95,6 +95,7 @@
 		5D476D971A6413A6009881BB /* PIWithFragments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIWithFragments.m; sourceTree = "<group>"; };
 		5D476D991A6427AA009881BB /* PIFragmentNumber.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIFragmentNumber.h; sourceTree = "<group>"; };
 		5D476D9A1A64280A009881BB /* PIFragmentNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIFragmentNumber.m; sourceTree = "<group>"; };
+		5D476D9F1A6547F7009881BB /* PIWithFragmentsProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIWithFragmentsProtocol.h; sourceTree = "<group>"; };
 		9E11277A185617FF00027E01 /* PIFragment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PIFragment.h; sourceTree = "<group>"; };
 		9E11277D1856187000027E01 /* PIFragmentText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIFragmentText.h; path = fragments/PIFragmentText.h; sourceTree = "<group>"; };
 		9E11277E1856187000027E01 /* PIFragmentText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIFragmentText.m; path = fragments/PIFragmentText.m; sourceTree = "<group>"; };
@@ -252,6 +253,7 @@
 				9E7686F41847A35900933B3E /* PIRef.h */,
 				9E7686F51847A35900933B3E /* PIRef.m */,
 				9E69B35D18463063000B1480 /* Supporting Files */,
+				5D476D9F1A6547F7009881BB /* PIWithFragmentsProtocol.h */,
 				5D476D961A641396009881BB /* PIWithFragments.h */,
 				5D476D971A6413A6009881BB /* PIWithFragments.m */,
 				9E3144EE18465F7C0017E6A6 /* PIDocument.h */,

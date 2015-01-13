@@ -38,7 +38,7 @@
      * Make sure a call to a private repository without a token returns the expected error
      */
     NSError *error = nil;
-    NSURL *lbc_url = [NSURL URLWithString:@"https://private-test..prismic.io/api"];
+    NSURL *lbc_url = [NSURL URLWithString:@"https://private-test.prismic.io/api"];
     self->_lbc_api = [PIAPI ApiWithURL:lbc_url error:&error];
     XCTAssertNotNil(error);
 }
@@ -149,5 +149,20 @@
     PIDocument *first = orderedProducts.results[0];
     XCTAssertTrue([first.id isEqual:@"UlfoxUnM0wkXYXbK"]);
 }
+
+- (void)testFetchLinks {
+    NSError *error = nil;
+    NSString *master = self->_lbc_api.masterRef.ref;
+    PISearchForm *form = [self->_lbc_api searchFormForName:@"everything"];
+    [form setRef:master];
+    [form setFetchLinks:@"blog-post.author"];
+    [form addQuery:@"[[:d = at(document.id, \"UlfoxUnM0wkXYXbt\")]]"];
+    PISearchResult *response = [form submit:&error];
+    PIFragmentLinkDocument *link = (PIFragmentLinkDocument*)[response.results[0] getLink:@"blog-post.relatedpost[0]"];
+    NSLog(@"Link fragments: %li", [link.data count]);
+    NSLog(@"Author name = %@", [link getText:@"blog-post.author"]);
+    XCTAssertTrue([[link getText:@"blog-post.author"] isEqual:@"John M. Martelle, Fine Pastry Magazine"]);
+}
+
 
 @end
