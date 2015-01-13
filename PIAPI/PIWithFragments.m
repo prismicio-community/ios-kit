@@ -217,6 +217,15 @@
     return fragment;
 }
 
+- (PIFragmentStructuredText*)getStructuredText:(NSString*)field
+{
+    id<PIFragment> fragment = [self get:field];
+    if ([fragment isKindOfClass:[PIFragmentStructuredText class]]) {
+        return fragment;
+    }
+    return nil;
+}
+
 - (PIFragmentText*)getText:(NSString*)field
 {
     id<PIFragment> fragment = [self get:field];
@@ -240,6 +249,24 @@
     id<PIFragment> fragment = [self get:field];
     if ([fragment conformsToProtocol:@protocol(PIFragmentLink)]) {
         return (id<PIFragmentLink>)fragment;
+    }
+    return nil;
+}
+
+- (PIFragmentImage*)getImage:(NSString*)field
+{
+    id<PIFragment> fragment = [self get:field];
+    if ([fragment isKindOfClass:[PIFragmentImage class]]) {
+        return (PIFragmentImage*)fragment;
+    }
+    return nil;
+}
+
+- (PIFragmentImageView*)getImageView:(NSString*)field view:(NSString *)view
+{
+    PIFragmentImage *image = [self getImage:field];
+    if (image != nil) {
+        return [image view:view];
     }
     return nil;
 }

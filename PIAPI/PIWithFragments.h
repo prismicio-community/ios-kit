@@ -13,6 +13,7 @@
 @protocol PIFragmentLink;
 @class PIFragmentStructuredText;
 @class PIFragmentImage;
+@class PIFragmentImageView;
 @class PIFragmentNumber;
 @class PIFragmentSelect;
 @class PIFragmentColor;
@@ -47,9 +48,13 @@
 
 - (id<PIFragment>)get:(NSString*)field;
 
-- (PIFragmentImage *)getImage:(NSString*)field view:(NSString*)view;
+- (PIFragmentImage *)getImage:(NSString*)field;
 
-- (NSArray *)getAllImages:(NSString*)field view:(NSString*)view;
+- (PIFragmentImageView *)getImageView:(NSString*)field view:(NSString*)view;
+
+// TODO - (NSArray *)getAllImages:(NSString*)field;
+
+// TODO - (NSArray *)getAllImageViews:(NSString*)field view:(NSString*)view;
 
 - (PIFragmentStructuredText *)getStructuredText:(NSString*)field;
 

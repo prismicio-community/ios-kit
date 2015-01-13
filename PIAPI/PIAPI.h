@@ -16,6 +16,7 @@
 
 #import "PIFragment.h"
 #import "PIFragmentLink.h"
+#import "PIFragmentImage.h"
 #import "PIFragmentGroup.h"
 #import "PIFragmentText.h"
 #import "PIFragmentDate.h"
