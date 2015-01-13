@@ -9,6 +9,16 @@
 #import <Foundation/Foundation.h>
 
 #import "PIWithFragments.h"
+#import "PIFragment.h"
+#import "PIFragmentText.h"
+#import "PIFragmentLink.h"
+#import "PIFragmentStructuredText.h"
+#import "PIFragmentImage.h"
+#import "PIFragmentNumber.h"
+#import "PIFragmentSelect.h"
+#import "PIFragmentColor.h"
+#import "PIFragmentDate.h"
+#import "PIFragmentGroup.h"
 
 @implementation PIWithFragments
 

@@ -8,19 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
-#import "PIFragment.h"
-#import "PIWithFragmentsProtocol.h"
-#import "PIFragmentText.h"
-#import "PIFragmentLink.h"
-#import "PIFragmentStructuredText.h"
-#import "PIFragmentImage.h"
-#import "PIFragmentNumber.h"
-#import "PIFragmentSelect.h"
-#import "PIFragmentColor.h"
-#import "PIFragmentDate.h"
-#import "PIFragmentGroup.h"
+@protocol PIFragment;
+@class PIFragmentText;
+@protocol PIFragmentLink;
+@class PIFragmentStructuredText;
+@class PIFragmentImage;
+@class PIFragmentNumber;
+@class PIFragmentSelect;
+@class PIFragmentColor;
+@class PIFragmentDate;
+@class PIFragmentGroup;
+@class PIFragmentBlockParagraph;
+@class PIFragmentBlockHeading;
 
-@interface PIWithFragments : NSObject<PIWithFragments>
+@interface PIWithFragments : NSObject
 
 @property (nonatomic, readwrite) NSDictionary *data;
 

@@ -14,8 +14,14 @@
 #import "PISearchForm.h"
 #import "PISearchResult.h"
 
+#import "PIFragment.h"
+#import "PIFragmentLink.h"
+#import "PIFragmentGroup.h"
+#import "PIFragmentText.h"
+#import "PIFragmentDate.h"
+#import "PIFragmentSelect.h"
+
 @class PIDocument;
-@class PIRef;
 @class PIForm;
 @class PISearchForm;
 @class PISearchResult;

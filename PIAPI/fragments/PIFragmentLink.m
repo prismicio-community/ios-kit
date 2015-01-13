@@ -8,6 +8,8 @@
 
 #import "PIFragmentLink.h"
 
+#import "PIWithFragments.h"
+
 @implementation PIFragmentLinkDocument
 
 @synthesize id = _id;
@@ -35,6 +37,9 @@
     _slug = jsonDocument[@"slug"];
     _broken = jsonObject[@"isBroken"];
     
+    PIWithFragments *withFragments = [PIWithFragments WithFragmentsWithJson:jsonDocument];
+    self.data = [withFragments data];
+
     return self;
 }
 

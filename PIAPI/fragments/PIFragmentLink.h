@@ -9,12 +9,12 @@
 #import <Foundation/Foundation.h>
 
 #import "PIFragment.h"
-#import "PIWithFragmentsProtocol.h"
+#import "PIWithFragments.h"
 
 @protocol PIFragmentLink <PIFragment>
 @end
 
-@interface PIFragmentLinkDocument : NSObject <PIWithFragments, PIFragmentLink>
+@interface PIFragmentLinkDocument : PIWithFragments<PIFragmentLink>
 
 @property (nonatomic, readonly) NSString *id;
 @property (nonatomic, readonly) NSString *type;

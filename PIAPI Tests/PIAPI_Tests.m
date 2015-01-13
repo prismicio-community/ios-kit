@@ -159,9 +159,7 @@
     [form addQuery:@"[[:d = at(document.id, \"UlfoxUnM0wkXYXbt\")]]"];
     PISearchResult *response = [form submit:&error];
     PIFragmentLinkDocument *link = (PIFragmentLinkDocument*)[response.results[0] getLink:@"blog-post.relatedpost[0]"];
-    NSLog(@"Link fragments: %li", [link.data count]);
-    NSLog(@"Author name = %@", [link getText:@"blog-post.author"]);
-    XCTAssertTrue([[link getText:@"blog-post.author"] isEqual:@"John M. Martelle, Fine Pastry Magazine"]);
+    XCTAssertTrue([[link getText:@"blog-post.author"].value isEqual:@"John M. Martelle, Fine Pastry Magazine"]);
 }
 
 
