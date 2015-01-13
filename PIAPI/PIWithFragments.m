@@ -19,6 +19,7 @@
 #import "PIFragmentColor.h"
 #import "PIFragmentDate.h"
 #import "PIFragmentGroup.h"
+#import "PIFragmentEmbed.h"
 
 @implementation PIWithFragments
 
@@ -56,6 +57,9 @@
                                               },
                                               @"Group" : ^{
                                                   return [PIFragmentGroup GroupWithJson:jsonObject];
+                                              },
+                                              @"Embed" : ^{
+                                                  return [[PIFragmentEmbed alloc] initWithJson:jsonObject];
                                               },
                                               }[type];
         if (selectedCase != nil) {

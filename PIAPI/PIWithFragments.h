@@ -15,9 +15,13 @@
 @class PIFragmentImage;
 @class PIFragmentImageView;
 @class PIFragmentNumber;
+@class PIFragmentEmbed;
 @class PIFragmentSelect;
 @class PIFragmentColor;
 @class PIFragmentDate;
+@class PIFragmentBoolean;
+@class PIFragmentGeoPoint;
+@class PIFragmentTimestamp;
 @class PIFragmentGroup;
 @class PIFragmentBlockParagraph;
 @class PIFragmentBlockHeading;
@@ -60,21 +64,21 @@
 
 - (id<PIFragmentLink>)getLink:(NSString*)field;
 
-// TODO - (PIFragmentEmbed *)getEmbed:(NSString*)field;
+- (PIFragmentEmbed *)getEmbed:(NSString*)field;
 
 - (PIFragmentText *)getText:(NSString*)field;
 
 - (PIFragmentColor *)getColor:(NSString*)field;
 
-// TODO - (PIFragmentNumber *)getNumber:(NSString*)field;
+- (PIFragmentNumber *)getNumber:(NSString*)field;
 
 - (PIFragmentDate *)getDate:(NSString*)field;
 
-// TODO - (PIFragmentTimestamp *)getTimestamp:(NSString*)field;
+- (PIFragmentTimestamp *)getTimestamp:(NSString*)field;
 
-// TODO - (PIFragmentGeoPoint *)getGeoPoint:(NSString*)field;
+- (PIFragmentGeoPoint *)getGeoPoint:(NSString*)field;
 
-// TODO - (PIFragmentBoolean *)getBoolean:(NSString*)field;
+- (PIFragmentBoolean *)getBoolean:(NSString*)field;
 
 
 @end
