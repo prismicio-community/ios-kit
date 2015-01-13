@@ -30,6 +30,8 @@
 - (void)setRefObject:(PIRef *)ref;
 - (void)setRef:(NSString *)ref;
 - (void)setOrderings:(NSString *)orderings;
+- (void)setPageSize:(NSUInteger)pageSize;
+- (void)setPage:(NSUInteger)page;
 
 - (PISearchResult *)submit:(NSError **)error;
 

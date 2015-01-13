@@ -158,6 +158,16 @@
     [self setValue:orderings forKey:@"orderings"];
 }
 
+- (void)setPageSize:(NSUInteger)pageSize
+{
+    [self setValue:[NSString stringWithFormat:@"%li", pageSize] forKey:@"pageSize"];
+}
+
+- (void)setPage:(NSUInteger)page
+{
+    [self setValue:[NSString stringWithFormat:@"%li", page] forKey:@"page"];
+}
+
 - (PISearchResult *)submit:(NSError **)error
 {
     NSString *ref = [self ref];

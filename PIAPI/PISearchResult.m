@@ -40,11 +40,11 @@
     }
     _results = results;
 
-    _page = jsonObject[@"page"];
-    _resultsPerPage = jsonObject[@"results_per_page"];
-    _resultsSize = jsonObject[@"results_size"];
-    _totalPages = jsonObject[@"total_pages"];
-    _totalResultsSize = jsonObject[@"total_results_size"];
+    _page = [jsonObject[@"page"] intValue];
+    _resultsPerPage = [jsonObject[@"results_per_page"] intValue];
+    _resultsSize = [jsonObject[@"results_size"] intValue];
+    _totalPages = [jsonObject[@"total_pages"] intValue];
+    _totalResultsSize = [jsonObject[@"total_results_size"] intValue];
     
     id prevPage = jsonObject[@"prev_page"];
     _prevPage = prevPage != [NSNull null] ? [NSURL URLWithString:prevPage] : nil;

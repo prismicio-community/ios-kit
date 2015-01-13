@@ -15,11 +15,11 @@
 + (PISearchResult *)SearchResultWithJson:(id)jsonObject;
 
 @property (nonatomic, readonly) NSArray *results;
-@property (nonatomic, readonly) NSNumber *page;
-@property (nonatomic, readonly) NSNumber *resultsPerPage;
-@property (nonatomic, readonly) NSNumber *resultsSize;
-@property (nonatomic, readonly) NSNumber *totalPages;
-@property (nonatomic, readonly) NSNumber *totalResultsSize;
+@property (readonly) NSUInteger page;
+@property (readonly) NSUInteger resultsPerPage;
+@property (readonly) NSUInteger resultsSize;
+@property (readonly) NSUInteger totalPages;
+@property (nonatomic, readonly) NSUInteger totalResultsSize;
 @property (nonatomic, readonly) NSURL *prevPage;
 @property (nonatomic, readonly) NSURL *nextPage;
 

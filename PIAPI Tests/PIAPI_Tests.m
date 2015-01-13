@@ -92,4 +92,62 @@
     XCTAssertEqual([[first linkedDocuments] count], 1);
 }
 
+- (void)testPagination {
+    NSError *error = nil;
+    NSString *master = self->_lbc_api.masterRef.ref;
+
+    // Page number is right if page 1 requested
+    PISearchForm *form = [self->_lbc_api searchFormForName:@"everything"];
+    [form setRef:master];
+    XCTAssertEqual([form submit:&error].page, 1);
+
+    // Results per page is right if page 1 requested
+    form = [self->_lbc_api searchFormForName:@"everything"];
+    [form setRef:master];
+    XCTAssertEqual([form submit:&error].resultsPerPage, 20);
+    
+    // Total results size is right if page 1 requested
+    form = [self->_lbc_api searchFormForName:@"everything"];
+    [form setRef:master];
+    XCTAssertEqual([form submit:&error].totalResultsSize, 40);
+
+    // Total pages is right if page 1 requested
+    form = [self->_lbc_api searchFormForName:@"everything"];
+    [form setRef:master];
+    XCTAssertEqual([form submit:&error].totalPages, 2);
+
+    // Next page is right if page 1 requested
+    form = [self->_lbc_api searchFormForName:@"everything"];
+    [form setRef:master];
+    XCTAssertTrue([[form submit:&error].nextPage.absoluteString isEqual:@"https://lesbonneschoses.cdn.prismic.io/api/documents/search?ref=UlfoxUnM08QWYXdl&page=2&pageSize=20"]);
+    
+    // Previous page is right if page 1 requested
+    form = [self->_lbc_api searchFormForName:@"everything"];
+    [form setRef:master];
+    XCTAssertNil([form submit:&error].prevPage);
+}
+
+- (void)testFormFunction {
+    NSError *error = nil;
+    NSString *master = self->_lbc_api.masterRef.ref;
+
+    // The page and pageSize functions work well with an integer
+    PISearchForm *form = [self->_lbc_api searchFormForName:@"everything"];
+    [form setRef:master];
+    [form setPage:2];
+    [form setPageSize:15];
+    PISearchResult *docsInt = [form submit:&error];
+    XCTAssertEqual(docsInt.page, 2);
+    XCTAssertEqual(docsInt.resultsPerPage, 15);
+    XCTAssertEqual([docsInt.results count], 15);
+
+    // Orderings
+    form = [self->_lbc_api searchFormForName:@"products"];
+    [form setRef:master];
+    [form setOrderings:@"[my.product.price]"];
+    PISearchResult *orderedProducts = [form submit:&error];
+    PIDocument *first = orderedProducts.results[0];
+    XCTAssertTrue([first.id isEqual:@"UlfoxUnM0wkXYXbK"]);
+}
+
 @end
