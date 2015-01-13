@@ -10,11 +10,11 @@
 
 #import "PIFragment.h"
 
-@protocol PIFragmentLink <PIFragment>
-
+@interface PIFragmentLink : NSObject <PIFragment>
++ (PIFragmentLink *)LinkWithJson:(id)jsonObject;
 @end
 
-@interface PIFragmentLinkDocument : NSObject <PIFragmentLink>
+@interface PIFragmentLinkDocument : PIFragmentLink
 
 @property (nonatomic, readonly) NSString *id;
 @property (nonatomic, readonly) NSString *type;
@@ -22,8 +22,4 @@
 @property (nonatomic, readonly) NSString *slug;
 @property (nonatomic, readonly, getter=isBroken) NSString *broken;
 
-@end
-
-@interface PIFragmentLink : NSObject
-+ (id <PIFragmentLink>)LinkWithJson:(id)jsonObject;
 @end

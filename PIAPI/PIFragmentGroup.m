@@ -23,13 +23,19 @@
 {
     PIFragmentGroup *group = [[PIFragmentGroup alloc] init];
     group->_groupDocs =  [[NSMutableArray alloc] init];
-
+    
     NSArray *values = jsonObject[@"value"];
-    for (NSDictionary *jsonDoc in values) {
-        PIWithFragments *groupDoc = [PIWithFragments WithFragmentsWithJson:jsonDoc];
-        if (groupDoc != nil) {
-            [group->_groupDocs addObject:groupDoc];
+    for (NSDictionary *docData in values) {
+        NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
+        for (NSString *fieldName in docData) {
+            NSDictionary *field = docData[fieldName];
+            id <PIFragment> fragment = [PIWithFragments parseFragment:field];
+            if (fragment != nil) {
+                [data setObject:fragment forKey:fieldName];
+            }
         }
+        PIWithFragments *groupDoc = [[PIWithFragments alloc] initWithFragments:data];
+        [group->_groupDocs addObject:groupDoc];
     }
 
     return group;

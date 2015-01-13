@@ -24,6 +24,10 @@
 
 + (PIWithFragments *)WithFragmentsWithJson:(id)jsonObject;
 
+- (PIWithFragments *)initWithFragments:(NSDictionary *)data;
+
++ (id <PIFragment>)parseFragment:(id)jsonObject;
+
 - (PIFragmentBlockHeading *)firstTitleObject;
 
 - (NSAttributedString *)firstTitleFormatted;

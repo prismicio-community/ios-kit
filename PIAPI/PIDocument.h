@@ -14,7 +14,6 @@
 
 + (PIDocument *)DocumentWithJson:(id)jsonObject;
 
-@property (nonatomic, readonly) NSDictionary *data;
 @property (nonatomic, readonly) NSURL *href;
 @property (nonatomic, readonly) NSString *id;
 @property (nonatomic, readonly) NSArray *slugs;

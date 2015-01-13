@@ -134,7 +134,7 @@
 @interface PIFragmentBlockSpanLink ()
 {
     NSRange _range;
-    id <PIFragmentLink> _link;
+    PIFragmentLink *_link;
 }
 @end
 
@@ -161,7 +161,7 @@
     return _range;
 }
 
-- (id <PIFragmentLink>)link
+- (PIFragmentLink *)link
 {
     return _link;
 }

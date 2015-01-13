@@ -74,12 +74,11 @@
     PIDocument *docchapter = response.results[0];
     PIFragmentGroup *docchapterGroup = [docchapter getGroup:@"docchapter.docs"];
     XCTAssertEqual(docchapterGroup.groupDocs.count, 2);
-    /* Assert.assertEquals(
-                            "Properly browsing the group until inside a subfragment",
-                            ((Fragment.DocumentLink) docchapterGroup.getDocs().get(0).getLink("linktodoc")).getId(),
-                            "UrDofwEAALAdpbNH"
-                            );
-    }*/
+
+    // Properly browsing the group until inside a subfragment"
+    PIWithFragments *groupDoc = docchapterGroup.groupDocs[0];
+    PIFragmentLinkDocument *link = (PIFragmentLinkDocument *)[groupDoc getLink:@"linktodoc"];
+    XCTAssertTrue([link.id isEqualToString:@"UrDofwEAALAdpbNH"]);
 
 }
 

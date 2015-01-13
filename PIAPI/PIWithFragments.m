@@ -20,6 +20,9 @@
     if ([jsonObject isKindOfClass:[NSDictionary class]]) {
         NSString *type = jsonObject[@"type"];
         id <PIFragment> (^selectedCase)() = @{
+                                              @"Link.document" : ^{
+                                                  return [PIFragmentLinkDocument LinkWithJson:jsonObject[@"value"]];
+                                              },
                                               @"Text" : ^{
                                                   return [PIFragmentText TextWithJson:jsonObject];
                                               },
@@ -60,6 +63,13 @@
     return [[PIWithFragments alloc] initWithJson:jsonObject];
 }
 
+- (PIWithFragments *)initWithFragments:(NSDictionary *)data
+{
+    self = [self init];
+    self->_data = data;
+    return self;
+}
+
 - (PIWithFragments *)initWithJson:(id)jsonObject
 {
     self = [self init];
@@ -73,7 +83,6 @@
             NSDictionary *field = fieldData[fieldName];
             id <PIFragment> fragment = [PIWithFragments parseFragment:field];
             if (fragment != nil) {
-                NSString *key = [NSString stringWithFormat:@"%@.%@", docName, fieldName];
                 [data setObject:fragment forKey:[NSString stringWithFormat:@"%@.%@", docName, fieldName]];
             }
         }
@@ -156,6 +165,14 @@
     return fragment;
 }
 
+- (PIFragmentLink *)getLink:(NSString*)field
+{
+    id<PIFragment> fragment = [self get:field];
+    if ([fragment isKindOfClass:[PIFragmentLink class]]) {
+        return fragment;
+    }
+    return nil;
+}
 
 
 @end

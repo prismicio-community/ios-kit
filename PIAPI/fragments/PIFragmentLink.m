@@ -40,11 +40,11 @@
 @end
 
 @implementation PIFragmentLink
-+ (id <PIFragmentLink>)LinkWithJson:(id)jsonObject
++ (PIFragmentLink *)LinkWithJson:(id)jsonObject
 {
-    id <PIFragmentLink> link = nil;
+    PIFragmentLink *link = nil;
     NSString *type = jsonObject[@"type"];
-    id <PIFragmentLink> (^selectedCase)() = @{
+    PIFragmentLink *(^selectedCase)() = @{
         @"Link.document" : ^{
             return [PIFragmentLinkDocument LinkWithJson:jsonObject[@"value"]];
         },
