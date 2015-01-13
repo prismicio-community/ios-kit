@@ -40,6 +40,8 @@
 
 - (NSString *)firstParagraph;
 
+- (NSArray *)linkedDocuments;
+
 - (id<PIFragment>)get:(NSString*)field;
 
 - (PIFragmentImage *)getImage:(NSString*)field view:(NSString*)view;

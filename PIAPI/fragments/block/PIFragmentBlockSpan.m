@@ -36,7 +36,7 @@
     return span;
 }
 
-+ (NSAttributedString *)formatText:(id <PIFragmentBlockText>)block fontDescriptor:(UIFontDescriptor *)fontDescriptor
++ (NSAttributedString *)formatText:(id<PIFragmentBlockText>)block fontDescriptor:(UIFontDescriptor *)fontDescriptor
 {
     // Create styles
     UIFontDescriptor *boldFontDescriptor = [fontDescriptor fontDescriptorWithSymbolicTraits:UIFontDescriptorTraitBold];

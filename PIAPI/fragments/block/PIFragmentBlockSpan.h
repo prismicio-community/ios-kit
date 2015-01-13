@@ -37,6 +37,8 @@
 
 + (PIFragmentBlockSpanLink *)SpanWithJson:(id)jsonObject;
 
+- (PIFragmentLink*)link;
+
 @end
 
 @interface PIFragmentBlockSpan : NSObject

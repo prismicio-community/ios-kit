@@ -79,7 +79,17 @@
     PIWithFragments *groupDoc = docchapterGroup.groupDocs[0];
     PIFragmentLinkDocument *link = (PIFragmentLinkDocument *)[groupDoc getLink:@"linktodoc"];
     XCTAssertTrue([link.id isEqualToString:@"UrDofwEAALAdpbNH"]);
+}
 
+- (void)testLinkedDocuments {
+    NSError *error = nil;
+    NSString *master = self->_micro_api.masterRef.ref;
+    PISearchForm *form = [self->_micro_api searchFormForName:@"everything"];
+    [form setRef:master];
+    [form addQuery:@"[[:d = any(document.type, [\"doc\", \"docchapter\"])]]"];
+    PISearchResult *response = [form submit:&error];
+    PIDocument *first = response.results[0];
+    XCTAssertEqual([[first linkedDocuments] count], 1);
 }
 
 @end

@@ -159,6 +159,37 @@
     return nil;
 }
 
+- (NSArray *)linkedDocuments
+{
+    NSMutableArray *result = [[NSMutableArray alloc] init];
+    for (NSString *key in _data) {
+        id <PIFragment> fragment = _data[key];
+        if ([fragment isKindOfClass:[PIFragmentLinkDocument class]]) {
+            [result addObject:fragment];
+        }
+        if ([fragment isKindOfClass:[PIFragmentGroup class]]) {
+            for (PIWithFragments *groupDoc in [(PIFragmentGroup*)fragment groupDocs]) {
+                [result addObjectsFromArray:[groupDoc linkedDocuments]];
+            }
+        }
+        if ([fragment isKindOfClass:[PIFragmentStructuredText class]]) {
+            for (id<PIFragmentBlock> block in [(PIFragmentStructuredText*)fragment blocks]) {
+                if ([block conformsToProtocol:@protocol(PIFragmentBlockText)]) {
+                    for (PIFragmentBlockSpan *span in [(id<PIFragmentBlockText>)block spans]) {
+                        if ([span isKindOfClass:[PIFragmentBlockSpanLink class]]) {
+                            PIFragmentBlockSpanLink *link = (PIFragmentBlockSpanLink*)span;
+                            if ([[link link] isKindOfClass:[PIFragmentLinkDocument class]]) {
+                                [result addObject:link];
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return result;
+}
+
 - (id<PIFragment>)get:(NSString*)field
 {
     id<PIFragment> fragment = self->_data[field];
