@@ -244,6 +244,42 @@
     return nil;
 }
 
+- (PIFragmentEmbed*)getEmbed:(NSString*)field
+{
+    id<PIFragment> fragment = [self get:field];
+    if ([fragment isKindOfClass:[PIFragmentEmbed class]]) {
+        return fragment;
+    }
+    return nil;
+}
+
+- (PIFragmentColor*)getColor:(NSString*)field
+{
+    id<PIFragment> fragment = [self get:field];
+    if ([fragment isKindOfClass:[PIFragmentColor class]]) {
+        return fragment;
+    }
+    return nil;
+}
+
+- (PIFragmentGeoPoint*)getGeoPoint:(NSString*)field
+{
+    id<PIFragment> fragment = [self get:field];
+    if ([fragment isKindOfClass:[PIFragmentGeoPoint class]]) {
+        return fragment;
+    }
+    return nil;
+}
+
+- (PIFragmentNumber*)getNumber:(NSString*)field
+{
+    id<PIFragment> fragment = [self get:field];
+    if ([fragment isKindOfClass:[PIFragmentNumber class]]) {
+        return fragment;
+    }
+    return nil;
+}
+
 - (PIFragmentDate*)getDate:(NSString*)field
 {
     id<PIFragment> fragment = [self get:field];

@@ -78,7 +78,4 @@
 
 - (PIFragmentGeoPoint *)getGeoPoint:(NSString*)field;
 
-- (PIFragmentBoolean *)getBoolean:(NSString*)field;
-
-
 @end
