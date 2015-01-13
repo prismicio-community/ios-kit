@@ -162,5 +162,17 @@
     XCTAssertTrue([[link getText:@"blog-post.author"].value isEqual:@"John M. Martelle, Fine Pastry Magazine"]);
 }
 
+- (void)testFormNames {
+    NSDictionary *forms = self->_lbc_api.forms;
+    // The correct number of form names is returned
+    XCTAssertEqual([forms count], 10);
+    // Form names are populated with accurate data
+    XCTAssertTrue([[self->_lbc_api formForName:@"cupcakes"].name isEqual:@"cupcakes"]);
+}
+
+- (void)testBookmarks {
+    NSDictionary *bookmarks = self->_lbc_api.bookmarks;
+    XCTAssertEqual([bookmarks count], 3);
+}
 
 @end
