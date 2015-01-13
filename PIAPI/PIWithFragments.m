@@ -20,6 +20,8 @@
 #import "PIFragmentDate.h"
 #import "PIFragmentGroup.h"
 #import "PIFragmentEmbed.h"
+#import "PIFragmentGeoPoint.h"
+
 
 @implementation PIWithFragments
 
@@ -60,6 +62,9 @@
                                               },
                                               @"Embed" : ^{
                                                   return [[PIFragmentEmbed alloc] initWithJson:jsonObject];
+                                              },
+                                              @"GeoPoint" : ^{
+                                                  return [[PIFragmentGeoPoint alloc] initWithJson:jsonObject];
                                               },
                                               }[type];
         if (selectedCase != nil) {
