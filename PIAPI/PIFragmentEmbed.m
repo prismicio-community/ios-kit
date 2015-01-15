@@ -28,8 +28,8 @@
     _provider = _oembedJson[@"provider_name"];
     _url = _oembedJson[@"url"];
     _html = _oembedJson[@"html"];
-    _width = [_oembedJson[@"width"] intValue];
-    _height = [_oembedJson[@"height"] intValue];
+    _width = _oembedJson[@"width"];
+    _height = _oembedJson[@"height"];
     return self;
 }
 

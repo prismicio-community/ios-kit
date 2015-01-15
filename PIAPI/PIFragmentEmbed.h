@@ -15,8 +15,8 @@
 @property (nonatomic, readonly) NSString *type;
 @property (nonatomic, readonly) NSString *provider;
 @property (nonatomic, readonly) NSString *url;
-@property (readonly) NSUInteger width;
-@property (readonly) NSUInteger height;
+@property (nonatomic, readonly) NSNumber* width;
+@property (nonatomic, readonly) NSNumber* height;
 @property (nonatomic, readonly) NSString *html;
 @property (nonatomic, readonly) id oembedJson;
 

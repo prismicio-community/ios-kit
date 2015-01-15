@@ -191,6 +191,7 @@
     NSMutableArray *_spans;
 }
 @end
+
 @implementation PIFragmentBlockOrderedListItem
 
 + (PIFragmentBlockOrderedListItem *)BlockWithJson:(id)jsonObject
@@ -222,6 +223,60 @@
 {
     UIFontDescriptor* fontDescriptor = [UIFontDescriptor preferredFontDescriptorWithTextStyle:UIFontTextStyleBody];
     return [PIFragmentBlockSpan formatText:self fontDescriptor:fontDescriptor];
+}
+
+@end
+
+@implementation PIFragmentBlockImage
+
+@synthesize view = _view;
+
+- (PIFragmentBlockImage*)init:(PIFragmentImageView *)view
+{
+    _view = view;
+    return self;
+}
+
+- (NSArray *)spans
+{
+    return nil;
+}
+
+- (NSString *)text
+{
+    return nil;
+}
+
+- (NSAttributedString *)formattedText
+{
+    return nil;
+}
+
+@end
+
+@implementation PIFragmentBlockEmbed
+
+@synthesize embed = _embed;
+
+- (PIFragmentBlockEmbed*)init:(PIFragmentEmbed *)embed
+{
+    _embed = embed;
+    return self;
+}
+
+- (NSArray *)spans
+{
+    return nil;
+}
+
+- (NSString *)text
+{
+    return nil;
+}
+
+- (NSAttributedString *)formattedText
+{
+    return nil;
 }
 
 @end

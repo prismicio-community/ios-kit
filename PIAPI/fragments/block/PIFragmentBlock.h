@@ -41,3 +41,19 @@
 @interface PIFragmentBlockOrderedListItem : NSObject<PIFragmentBlockText>
 + (PIFragmentBlockOrderedListItem *)BlockWithJson:(id)jsonObject;
 @end
+
+@interface PIFragmentBlockImage : NSObject<PIFragmentBlockText>
+
+@property (nonatomic, readonly) PIFragmentImageView *view;
+
+- (PIFragmentBlockImage *)init:(PIFragmentImageView*)view;
+
+@end
+
+@interface PIFragmentBlockEmbed : NSObject<PIFragmentBlockText>
+
+@property (nonatomic, readonly) PIFragmentEmbed *embed;
+
+- (PIFragmentBlockEmbed *)init:(PIFragmentEmbed*)view;
+
+@end

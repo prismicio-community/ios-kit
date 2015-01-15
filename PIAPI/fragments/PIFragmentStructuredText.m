@@ -8,6 +8,9 @@
 
 #import "PIFragmentStructuredText.h"
 
+#import "PIFragmentImage.h"
+#import "PIFragmentEmbed.h"
+
 @interface PIFragmentStructuredText () {
     NSMutableArray *_blocks;
 }
@@ -44,6 +47,14 @@
             },
             @"o-list-item" : ^{
                 return [PIFragmentBlockOrderedListItem BlockWithJson:jsonObject];
+            },
+            @"image" : ^{
+                PIFragmentImageView *view = [PIFragmentImageView ViewWithJson:jsonObject];
+                return [[PIFragmentBlockImage alloc] init:view];
+            },
+            @"embed" : ^{
+                PIFragmentEmbed *embed = [[PIFragmentEmbed alloc] initWithJson:jsonObject];
+                return [[PIFragmentBlockEmbed alloc] init:embed];
             },
         }[type];
         if (selectedCase != nil) {
