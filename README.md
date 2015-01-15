@@ -1,5 +1,7 @@
 ## iOS development kit for prismic.io
 
+[![Build Status](https://api.travis-ci.org/prismicio/ios-kit.png)](https://travis-ci.org/prismicio/ios-kit)
+
 ### **Note**
 
 This kit in currently a Work in Progress: some features may be missing.
