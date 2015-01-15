@@ -1,0 +1,8 @@
+# Generic
+.DS_Store
+.Trashes
+*.swp
+
+# XCode
+xcuserdata
+
