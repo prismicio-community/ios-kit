@@ -3,3 +3,7 @@ language: objective-c
 xcode_project: PIAPI.xcodeproj
 xcode_scheme: PIAPI Tests
 
+branches:
+  only:
+    - master
+
