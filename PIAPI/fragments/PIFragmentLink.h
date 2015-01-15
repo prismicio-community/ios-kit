@@ -22,6 +22,15 @@
 @property (nonatomic, readonly) NSString *slug;
 @property (nonatomic, readonly, getter=isBroken) NSString *broken;
 
-+ (PIFragmentLinkDocument *)LinkWithJson:(id)jsonObject;
+- (PIFragmentLinkDocument *)initWithJson:(id)jsonObject;
+
+@end
+
+@interface PIFragmentLinkWeb : NSObject<PIFragmentLink>
+
+@property (nonatomic, readonly) NSURL *url;
+@property (nonatomic, readonly) NSString *contentType;
+
+- (PIFragmentLinkWeb *)initWithJson:(id)jsonObject;
 
 @end

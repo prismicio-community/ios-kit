@@ -34,7 +34,10 @@
         NSString *type = jsonObject[@"type"];
         id <PIFragment> (^selectedCase)() = @{
                                               @"Link.document" : ^{
-                                                  return [PIFragmentLinkDocument LinkWithJson:jsonObject[@"value"]];
+                                                  return [[PIFragmentLinkDocument alloc] initWithJson:jsonObject[@"value"]];
+                                              },
+                                              @"Link.web" : ^{
+                                                  return [[PIFragmentLinkWeb alloc] initWithJson:jsonObject[@"value"]];
                                               },
                                               @"Text" : ^{
                                                   return [PIFragmentText TextWithJson:jsonObject];

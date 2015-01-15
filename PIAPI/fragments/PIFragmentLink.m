@@ -18,11 +18,6 @@
 @synthesize slug = _slug;
 @synthesize broken = _broken;
 
-+ (PIFragmentLinkDocument *)LinkWithJson:(id)jsonObject
-{
-    return [[PIFragmentLinkDocument alloc] initWithJson:jsonObject];
-}
-
 - (PIFragmentLinkDocument *)initWithJson:(id)jsonObject
 {
     NSDictionary *jsonDocument = jsonObject[@"document"];
@@ -45,3 +40,17 @@
 
 @end
 
+@implementation PIFragmentLinkWeb
+
+@synthesize url = _url;
+@synthesize contentType = _contentType;
+
+- (PIFragmentLinkWeb *)initWithJson:(id)jsonObject
+{
+    id url = jsonObject[@"prev_page"];
+    _url = url != [NSNull null] ? [NSURL URLWithString:url] : nil;
+    _contentType = nil;
+    return self;
+}
+
+@end

@@ -7,6 +7,7 @@
 //
 
 #import "PIDocument.h"
+#import "PIFragmentGroup.h"
 
 @implementation PIDocument
 
