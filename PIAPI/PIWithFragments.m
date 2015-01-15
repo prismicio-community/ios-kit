@@ -18,6 +18,7 @@
 #import "PIFragmentSelect.h"
 #import "PIFragmentColor.h"
 #import "PIFragmentDate.h"
+#import "PIFragmentTimestamp.h"
 #import "PIFragmentGroup.h"
 #import "PIFragmentEmbed.h"
 #import "PIFragmentGeoPoint.h"
@@ -62,6 +63,9 @@
                                               },
                                               @"Date" : ^{
                                                   return [PIFragmentDate DateWithJson:jsonObject];
+                                              },
+                                              @"Timestamp" : ^{
+                                                  return [[PIFragmentTimestamp alloc] initWithJson:jsonObject];
                                               },
                                               @"Group" : ^{
                                                   return [PIFragmentGroup GroupWithJson:jsonObject];
@@ -290,6 +294,15 @@
 {
     id<PIFragment> fragment = [self get:field];
     if ([fragment isKindOfClass:[PIFragmentDate class]]) {
+        return fragment;
+    }
+    return nil;
+}
+
+- (PIFragmentTimestamp*)getTimestamp:(NSString*)field
+{
+    id<PIFragment> fragment = [self get:field];
+    if ([fragment isKindOfClass:[PIFragmentTimestamp class]]) {
         return fragment;
     }
     return nil;

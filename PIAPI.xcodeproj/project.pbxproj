@@ -12,6 +12,7 @@
 		5D476D951A6411C8009881BB /* PIFragmentGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D476D941A6411C8009881BB /* PIFragmentGroup.m */; };
 		5D476D981A6413A6009881BB /* PIWithFragments.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D476D971A6413A6009881BB /* PIWithFragments.m */; };
 		5D476D9B1A64280A009881BB /* PIFragmentNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D476D9A1A64280A009881BB /* PIFragmentNumber.m */; };
+		5D8EF7501A68058C00C9FDCE /* PIFragmentTimestamp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8EF74F1A68058C00C9FDCE /* PIFragmentTimestamp.m */; };
 		5DEFC81E1A65739D00FF0CC0 /* PIAPI_DocumentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEFC81D1A65739D00FF0CC0 /* PIAPI_DocumentTests.m */; };
 		5DEFC8211A65798B00FF0CC0 /* PIFragmentEmbed.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEFC8201A65798B00FF0CC0 /* PIFragmentEmbed.m */; };
 		5DEFC8231A657F0500FF0CC0 /* PIFragmentGeoPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DEFC8221A657F0500FF0CC0 /* PIFragmentGeoPoint.m */; };
@@ -98,6 +99,8 @@
 		5D476D971A6413A6009881BB /* PIWithFragments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIWithFragments.m; sourceTree = "<group>"; };
 		5D476D991A6427AA009881BB /* PIFragmentNumber.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIFragmentNumber.h; sourceTree = "<group>"; };
 		5D476D9A1A64280A009881BB /* PIFragmentNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIFragmentNumber.m; sourceTree = "<group>"; };
+		5D8EF74E1A68057D00C9FDCE /* PIFragmentTimestamp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIFragmentTimestamp.h; sourceTree = "<group>"; };
+		5D8EF74F1A68058C00C9FDCE /* PIFragmentTimestamp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIFragmentTimestamp.m; sourceTree = "<group>"; };
 		5DEFC81D1A65739D00FF0CC0 /* PIAPI_DocumentTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIAPI_DocumentTests.m; sourceTree = "<group>"; };
 		5DEFC81F1A65797E00FF0CC0 /* PIFragmentEmbed.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PIFragmentEmbed.h; sourceTree = "<group>"; };
 		5DEFC8201A65798B00FF0CC0 /* PIFragmentEmbed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PIFragmentEmbed.m; sourceTree = "<group>"; };
@@ -206,6 +209,8 @@
 				5DEFC8201A65798B00FF0CC0 /* PIFragmentEmbed.m */,
 				5DEFC8241A657F1300FF0CC0 /* PIFragmentGeoPoint.h */,
 				5DEFC8221A657F0500FF0CC0 /* PIFragmentGeoPoint.m */,
+				5D8EF74E1A68057D00C9FDCE /* PIFragmentTimestamp.h */,
+				5D8EF74F1A68058C00C9FDCE /* PIFragmentTimestamp.m */,
 			);
 			name = PIFragment;
 			sourceTree = "<group>";
@@ -382,6 +387,7 @@
 				9E7686F61847A35900933B3E /* PIRef.m in Sources */,
 				9EF9340218649AE1007CF506 /* PIFragmentSelect.m in Sources */,
 				9E1F43781864A1CB0017E031 /* PIFragmentBlock.m in Sources */,
+				5D8EF7501A68058C00C9FDCE /* PIFragmentTimestamp.m in Sources */,
 				9E69B36218463063000B1480 /* PIAPI.m in Sources */,
 				9EF933FE18648E95007CF506 /* PIFragmentImage.m in Sources */,
 				9E1F437B1864A2050017E031 /* PIFragmentBlockSpan.m in Sources */,
