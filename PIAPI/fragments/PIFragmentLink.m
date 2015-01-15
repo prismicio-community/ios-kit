@@ -47,9 +47,29 @@
 
 - (PIFragmentLinkWeb *)initWithJson:(id)jsonObject
 {
-    id url = jsonObject[@"prev_page"];
+    id url = jsonObject[@"url"];
     _url = url != [NSNull null] ? [NSURL URLWithString:url] : nil;
     _contentType = nil;
+    return self;
+}
+
+@end
+
+@implementation PIFragmentLinkFile
+
+@synthesize url = _url;
+@synthesize kind = _kind;
+@synthesize size = _size;
+@synthesize filename = _filename;
+
+- (PIFragmentLinkFile *)initWithJson:(id)jsonObject
+{
+    NSDictionary *file = jsonObject[@"file"];
+    id url = file[@"url"];
+    _url = url != [NSNull null] ? [NSURL URLWithString:url] : nil;
+    _kind = file[@"kind"];
+    _size = [file[@"size"] intValue];
+    _filename = file[@"filename"];
     return self;
 }
 

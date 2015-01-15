@@ -39,6 +39,9 @@
                                               @"Link.web" : ^{
                                                   return [[PIFragmentLinkWeb alloc] initWithJson:jsonObject[@"value"]];
                                               },
+                                              @"Link.file" : ^{
+                                                  return [[PIFragmentLinkFile alloc] initWithJson:jsonObject[@"value"]];
+                                              },
                                               @"Text" : ^{
                                                   return [PIFragmentText TextWithJson:jsonObject];
                                               },

@@ -34,3 +34,14 @@
 - (PIFragmentLinkWeb *)initWithJson:(id)jsonObject;
 
 @end
+
+@interface PIFragmentLinkFile : NSObject<PIFragmentLink>
+
+@property (nonatomic, readonly) NSURL *url;
+@property (nonatomic, readonly) NSString *kind;
+@property (readonly) NSUInteger size;
+@property (nonatomic, readonly) NSString *filename;
+
+- (PIFragmentLinkFile *)initWithJson:(id)jsonObject;
+
+@end
